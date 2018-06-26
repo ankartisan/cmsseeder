@@ -33,4 +33,36 @@ class PageController extends Controller
         return view('register');
     }
 
+    public function contact(Request $request)
+    {
+        return view('contact');
+    }
+
+    public function contactSubmit(Request $request)
+    {
+        Mail::send(new ContactMail($request->all()));
+
+        return $this->respond(["success" => 1]);
+    }
+
+    public function termsConditions(Request $request)
+    {
+        return view('terms_and_conditions');
+    }
+
+    public function privacyPolicy(Request $request)
+    {
+        return view('privacy_policy');
+    }
+
+    public function sitemap(Request $request)
+    {
+        return view('sitemap', []);
+    }
+
+    public function sitemapXML()
+    {
+        return response()->view('sitemap_xml', [])->header('Content-Type', 'text/xml');
+    }
+
 }

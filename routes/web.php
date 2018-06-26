@@ -25,6 +25,16 @@ Route::post('login-facebook', 'Auth\AuthController@loginFacebook');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+// CONTACT
+Route::get('/contact', 'Web\PageController@contact')->name('contact');
+Route::post('/contact', 'Web\PageController@contactSubmit')->name('contact.submit');
+// LEGAL
+Route::get('/terms-and-conditions', 'Web\PageController@termsConditions')->name('terms_conditions');
+Route::get('/privacy-policy', 'Web\PageController@privacyPolicy')->name('privacy_policy');
+// SITEMAP
+Route::get('/sitemap', 'Web\PageController@sitemap')->name('sitemap');
+Route::get('/sitemap.xml', 'Web\PageController@sitemapXML')->name('sitemap_xml');
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('logout', 'Auth\AuthController@logout')->name('logout');

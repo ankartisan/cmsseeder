@@ -98,13 +98,8 @@
                     <!-- Navigation -->
                     <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
                         <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
-                             <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                                 <a href="#" class="nav-link g-py-7 g-px-0">
-                                     {{ __("About") }}
-                                 </a>
-                             </li>
                             <li class="nav-item  g-mx-10--lg g-mx-15--xl">
-                                <a href="#" class="nav-link g-py-7 g-px-0">
+                                <a href="{{ route('contact') }}" class="nav-link g-py-7 g-px-0">
                                     {{ __("Contact") }}
                                 </a>
                             </li>
@@ -135,16 +130,16 @@
                         <h2 class="h5 g-color-gray-light-v3 mb-4">CMS Seeder</h2>
                         <ul class="list-unstyled g-font-size-13 mb-0">
                             <li class="g-mb-10">
-                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="#">Contact Us</a>
+                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{ route('contact') }}">Contact Us</a>
                             </li>
                             <li class="g-my-10">
-                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="#">Sitemap</a>
+                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{ route('sitemap') }}">Sitemap</a>
                             </li>
                             <li class="g-my-10">
-                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="#">Terms & Conditions</a>
+                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{ route('terms_conditions') }}">Terms & Conditions</a>
                             </li>
                             <li class="g-my-10">
-                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="#">Privacy Policy</a>
+                                <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{ route('privacy_policy') }}">Privacy Policy</a>
                             </li>
                         </ul>
                     </div>

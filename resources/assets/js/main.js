@@ -1,6 +1,8 @@
 import Helper from './helper.js';
 import Errors from './classes/Errors';
 let errors = new Errors();
+import swal from 'sweetalert';
+
 
 // LOGIN
 $( "#login-form" ).submit(function( event ) {
@@ -139,6 +141,36 @@ $('#login-modal').on('shown.bs.modal', function (e) {
 
 $('#sign-up-modal').on('shown.bs.modal', function (e) {
     errors.clear();
+});
+
+/**
+ * Submit contact form
+ */
+$("#contact-form").validate({
+    submitHandler: function(form) {
+        Helper.startLoading();
+        errors.clear();
+        let data = Helper.getFormResults(form);
+
+        axios.post(base_api + '/contact', data)
+            .then(function (response) {
+                Helper.endLoading();
+                swal("Your message is sent", "We'll get back to you soon.", "success");
+                // Clear
+                $("#contact-form input").val("");
+                $("#contact-form textarea").val("");
+            })
+            .catch(function (error) {
+                Helper.endLoading();
+                errors.record(error.response.data.details);
+                errors.show();
+                swal("Oops something went wrong", error.response.data.message, "error");
+                console.log(errors);
+            });
+    },
+    errorPlacement: function(error, element) {
+        //error.appendTo( element.parent(".form-group"));
+    }
 });
 
 
