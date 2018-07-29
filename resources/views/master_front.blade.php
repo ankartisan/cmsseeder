@@ -216,6 +216,9 @@
 <script src="/themes/unify/assets/vendor/jquery-ui/ui/widgets/slider.js"></script>
 <script src="/themes/unify/assets/vendor/chosen/chosen.jquery.js"></script>
 <script src="/themes/unify/assets/vendor/slick-carousel/slick/slick.js"></script>
+<script src="/themes/unify/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+<script src="/themes/unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+<script src="/themes/unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
 <script src="/themes/unify/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
 <script src="/js/plugins/jquery-validate/jquery.validate.js"></script>
 <script src="/js/plugins/typeahead/typeahead.js"></script>
