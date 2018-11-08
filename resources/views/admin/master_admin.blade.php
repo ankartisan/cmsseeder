@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li>
-                        <a id="btn-logout" href>
+                        <a href="{{ route('logout) }}">
                             <i class="fa fa-sign-out"></i> Log out
                         </a>
                     </li>

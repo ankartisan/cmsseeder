@@ -8,18 +8,6 @@ function endLoading() {
     $("#loader").addClass("hidden");
 }
 
-// LOGOUT
-$("#btn-logout").on('click', function(evt) {
-    axios.post('/logout', {})
-        .then(function (response) {
-            window.location.href = '/';
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-});
-
-
 if(['admin.user','admin.users'].includes(window.route)) {
     require('./admin/user');
 }
