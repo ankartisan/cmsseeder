@@ -8,12 +8,6 @@
                         <h2 class="h2 g-color-black g-font-weight-600">Sign Up</h2>
                     </header>
 
-                    <a  id="btn-login-fb" class="btn btn-block u-btn-indigo g-color-white">
-                        <span class="fa fa-facebook"></span> Sign in with Facebook
-                    </a>
-                    <div class="u-divider u-divider-solid u-divider-center g-brd-gray-dark-v3 g-my-40">
-                        <i class="u-divider__icon g-bg-gray-dark-v3 g-color-white rounded-circle">OR</i>
-                    </div>
                     <!-- Form -->
                     <form id="sign-up-form">
                         {{ csrf_field() }}

@@ -8,12 +8,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <a  id="btn-login-fb" class="btn btn-block u-btn-indigo g-color-white">
-                    <span class="fa fa-facebook"></span> Sign Up With Facebook
-                </a>
-                <div class="u-divider u-divider-solid u-divider-center g-brd-gray-dark-v3 g-my-40">
-                    <i class="u-divider__icon g-bg-gray-dark-v3 g-color-white rounded-circle">OR</i>
-                </div>
                 <form id="sign-up-form">
                     {{ csrf_field() }}
                     <input id="on-success" type="hidden" name="on_success" value="">
