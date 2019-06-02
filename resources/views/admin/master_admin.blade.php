@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Required Meta Tags  -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Admin | CMS Seeder</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <link href="/themes/inspinia/css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +112,7 @@
     </div>
 </div>
 
-<script src="/js/bootstrap.js"></script>
+<script src="{{ mix('/js/bootstrap.js') }}"></script>
 <script src="/themes/inspinia/js/jquery-2.1.1.js"></script>
 <script src="/themes/inspinia/js/bootstrap.min.js"></script>
 <script src="/themes/inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -119,7 +125,8 @@
 <script>
     window.route = '{!! Route::current()->getName() !!}';
 </script>
-<script src="/admin/js/admin.js"></script>
+<!-- JS Custom -->
+<script src="{{ mix('admin/js/admin.js') }}"></script>
 @section('extrajavascript')
 @show
 

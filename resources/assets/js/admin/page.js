@@ -1,5 +1,5 @@
-import Helper from './../helper.js';
-import Errors from './../classes/Errors';
+import Helper from './../common/helper';
+import Errors from './../common/error';
 import swal from 'sweetalert';
 let errors = new Errors();
 
