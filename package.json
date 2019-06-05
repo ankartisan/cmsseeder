@@ -22,6 +22,7 @@
   "dependencies": {
     "bootstrap-datepicker": "^1.7.1",
     "ion-rangeslider": "^2.2.0",
+    "jquery-validation": "^1.19.0",
     "moment": "^2.18.1",
     "select2": "^4.0.3",
     "sweetalert": "^2.1.0"

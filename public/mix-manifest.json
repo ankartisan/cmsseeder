@@ -2,6 +2,8 @@
     "/js/bootstrap.js": "/js/bootstrap.js",
     "/css/app.css": "/css/app.css",
     "/admin/css/admin.css": "/admin/css/admin.css",
+    "/css/loader.css": "/css/loader.css",
     "/admin/js/admin.js": "/admin/js/admin.js",
-    "/js/app.js": "/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/js/inspinia.js": "/js/inspinia.js"
 }

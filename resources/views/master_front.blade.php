@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <!-- Required Meta Tags  -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <!-- Google lang -->
+    <meta name="google" value="notranslate">
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicon.ico">
-
     <!-- SEO -->
     @section('seo')
         <title>CMS Seeder</title>
@@ -20,8 +19,9 @@
         <meta property="og:description" content="CMS Seeder" />
         <meta property="og:url" content="https://cmsseeder.com" />
     @show
-
-<!-- CSS Global Compulsory -->
+    <!-- CMS Seeder CSS -->
+    <link rel="stylesheet" href="{{ mix('/css/loader.css') }}">
+    <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="/themes/unify/assets/vendor/bootstrap/bootstrap.min.css">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
@@ -49,10 +49,8 @@
     <link rel="stylesheet" href="/themes/unify/assets/css/custom.css">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <!-- Google lang -->
-    <meta name="google" value="notranslate">
 </head>
 <body class="{{Route::current()->getName()}}">
 
@@ -180,16 +178,13 @@
 
     <!-- COMPONENTS -->
     @include('components/loader')
-    @if(!in_array(Route::current()->getName(),['login','register']))
-        @include('modals/login')
-        @include('modals/signup')
-    @endif
+
 </main>
 </body>
 <script src="{{ mix('/js/bootstrap.js') }}"></script>
 <!-- JS Global Compulsory -->
-<script src="/themes/unify/assets/vendor/jquery/jquery.min.js"></script>
-<script src="/themes/unify/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+{{--<script src="/themes/unify/assets/vendor/jquery/jquery.min.js"></script>--}}
+{{--<script src="/themes/unify/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>--}}
 <script src="/themes/unify/assets/vendor/popper.min.js"></script>
 <script src="/themes/unify/assets/vendor/bootstrap/bootstrap.min.js"></script>
 <!-- JS Plugins -->
@@ -201,10 +196,9 @@
 <script src="/themes/unify/assets/vendor/chosen/chosen.jquery.js"></script>
 <script src="/themes/unify/assets/vendor/slick-carousel/slick/slick.js"></script>
 <script src="/themes/unify/assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
-<script src="/themes/unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+{{--<script src="/themes/unify/assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>--}}
 <script src="/themes/unify/assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
 <script src="/themes/unify/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
-<script src="/js/plugins/jquery-validate/jquery.validate.js"></script>
 <!-- JS Unify -->
 <script src="/themes/unify/assets/js/hs.core.js"></script>
 <script src="/themes/unify/assets/js/components/hs.header.js"></script>
@@ -223,6 +217,7 @@
 </script>
 
 <!-- JS Custom -->
+{{--<script src="{{ url('/js/lib/jquery-validate/jquery.validate.js') }}"></script>--}}
 <script src="{{ mix('/js/app.js') }}"></script>
 
 @section('extrajavascript')

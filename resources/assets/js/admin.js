@@ -1,13 +1,5 @@
 window.base_api = '/admin';
 
-function startLoading() {
-    $("#loader").removeClass("hidden");
-}
-
-function endLoading() {
-    $("#loader").addClass("hidden");
-}
-
 if(['admin.user','admin.users'].includes(window.route)) {
     require('./admin/user');
 }

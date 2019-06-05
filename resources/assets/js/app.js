@@ -4,7 +4,6 @@ let errors = new Errors();
 import swal from 'sweetalert';
 window.base_api = '';
 
-
 // LOGIN
 $( "#login-form" ).submit(function( event ) {
     Helper.startLoading();

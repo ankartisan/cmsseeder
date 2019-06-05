@@ -9,12 +9,15 @@
 
     <title>Admin | CMS Seeder</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link href="/themes/inspinia/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/themes/inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/themes/inspinia/css/animate.css" rel="stylesheet">
-    <link href="/themes/inspinia/css/style.css" rel="stylesheet">
-    <link href="/themes/inspinia/css/plugins/select2/select2.min.css" rel="stylesheet">
-    <link href="/admin/css/admin.css" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ mix('/css/loader.css') }}">
+    <link rel="stylesheet" href="{{ mix('/admin/css/admin.css') }}">
+    <link href="{{ url('/css/plugins/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url('/fonts/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ url('/css/plugins/animate/animate.css')}}" rel="stylesheet">
+    <link href="{{ url('/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
+    <link href="{{ url('/css/style.css')}}" rel="stylesheet">
+
 </head>
 <body class="pace-done">
 <div id="wrapper">
@@ -91,42 +94,25 @@
         </div>
     </div>
 </div>
-<div id="loader" class="loading-container hidden">
-    <div class="loading-inner">
-        <div class="loading-cell">
-            <div class="sk-spinner sk-spinner-circle">
-                <div class="sk-circle1 sk-circle"></div>
-                <div class="sk-circle2 sk-circle"></div>
-                <div class="sk-circle3 sk-circle"></div>
-                <div class="sk-circle4 sk-circle"></div>
-                <div class="sk-circle5 sk-circle"></div>
-                <div class="sk-circle6 sk-circle"></div>
-                <div class="sk-circle7 sk-circle"></div>
-                <div class="sk-circle8 sk-circle"></div>
-                <div class="sk-circle9 sk-circle"></div>
-                <div class="sk-circle10 sk-circle"></div>
-                <div class="sk-circle11 sk-circle"></div>
-                <div class="sk-circle12 sk-circle"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="{{ mix('/js/bootstrap.js') }}"></script>
-<script src="/themes/inspinia/js/jquery-2.1.1.js"></script>
-<script src="/themes/inspinia/js/bootstrap.min.js"></script>
-<script src="/themes/inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="/themes/inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/themes/inspinia/js/plugins/select2/select2.full.min.js"></script>
-<script src="/themes/inspinia/js/plugins/pace/pace.min.js"></script>
-<script src="/themes/inspinia/js/plugins/datapicker/bootstrap-datepicker.js"></script>
-<script src='/js/plugins/tinymce/js/tinymce/tinymce.min.js'></script>
-<script src="/themes/inspinia/js/inspinia.js"></script>
+<!-- COMPONENTS -->
+@include('components/loader')
+<!-- JS Globals-->
 <script>
     window.route = '{!! Route::current()->getName() !!}';
 </script>
-<!-- JS Custom -->
+<!-- JS -->
+<script src="{{ mix('/js/bootstrap.js') }}"></script>
+<script src="{{ url('/js/plugins/jquery/jquery-2.1.1.js') }}"></script>
+<script src="{{ url('/js/plugins/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ url('/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+<script src="{{ url('/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ url('/js/plugins/select2/select2.full.min.js') }}"></script>
+<script src="{{ url('/js/plugins/pace/pace.min.js') }}"></script>
+<script src="{{ url('/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ url('/js/plugins/tinymce/tinymce.min.js') }}" ></script>
+<script src="{{ url('/js/inspinia.js') }}"></script>
 <script src="{{ mix('admin/js/admin.js') }}"></script>
+<!-- Extra JS -->
 @section('extrajavascript')
 @show
 

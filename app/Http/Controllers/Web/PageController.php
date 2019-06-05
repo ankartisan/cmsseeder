@@ -20,7 +20,7 @@ class PageController extends Controller
 
     public function home(Request $request)
     {
-        return view('home');
+        return view('docs-ui-kit/index');
     }
 
     public function login(Request $request)
