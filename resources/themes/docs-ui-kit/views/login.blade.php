@@ -1,4 +1,8 @@
-@extends('master_front')
+@extends('master')
+@section('promo')
+    <section class="duik-promo bg-primary text-center py-11">
+    </section>
+@endsection
 @section('content')
     <section class="container g-py-50">
         <div class="row justify-content-center">

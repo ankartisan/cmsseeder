@@ -20,7 +20,7 @@ class PageController extends Controller
 
     public function home(Request $request)
     {
-        return view('docs-ui-kit/index');
+        return view('home');
     }
 
     public function login(Request $request)
@@ -43,16 +43,6 @@ class PageController extends Controller
         Mail::send(new ContactMail($request->all()));
 
         return $this->respond(["success" => 1]);
-    }
-
-    public function termsConditions(Request $request)
-    {
-        return view('terms_and_conditions');
-    }
-
-    public function privacyPolicy(Request $request)
-    {
-        return view('privacy_policy');
     }
 
     public function sitemap(Request $request)

@@ -1,4 +1,4 @@
-@extends('master_front')
+@extends('master')
 @section('content')
     <section class="g-bg-gray-light-v5 g-py-50">
         <div class="container">
@@ -26,12 +26,6 @@
                         </li>
                         <li>
                             <a href="{{ route('register') }}">Register</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('terms_conditions') }}">Terms & Conditions</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('privacy_policy') }}">Privacy Policy</a>
                         </li>
                     </ul>
                 </div>

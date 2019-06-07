@@ -1,4 +1,4 @@
-@extends('master_front')
+@extends('master')
 @section('content')
     <section class="container g-py-50">
         <div class="row justify-content-center">
