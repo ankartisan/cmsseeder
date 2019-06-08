@@ -1,13 +1,16 @@
 @extends('master')
+@section('promo')
+    <section class="duik-promo bg-primary text-center py-6">
+    </section>
+@endsection
 @section('content')
-    <section class="container g-py-50">
-        <div class="row justify-content-center">
+    <section class="container">
+        <div class="row justify-content-center py-10">
             <div class="col-sm-8 col-lg-5">
-                <div class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30">
+                <div class="">
                     <header class="text-center mb-4">
-                        <h2 class="h2 g-color-black g-font-weight-600">Sign Up</h2>
+                        <h2>Sign Up</h2>
                     </header>
-
                     <!-- Form -->
                     <form id="sign-up-form">
                         {{ csrf_field() }}
@@ -51,14 +54,17 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                                    <button type="submit" class="btn btn-primary px-5">Sign Up</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                     <!-- End Form -->
                     <footer class="text-center g-my-20">
-                        <p class="text-muted text-center"><small>Already have an account? <a class="btn btn-sm btn-white btn-block" href="{{ route('login') }}">Login</a></small> </p>
+                        <p class="text-muted text-center"><small>Already have an account?
+                        <p class="text-muted text-center">
+                            <a class="" href="{{ route('login') }}">Login</a></small> </p>
+                        </p>
                     </footer>
                 </div>
             </div>

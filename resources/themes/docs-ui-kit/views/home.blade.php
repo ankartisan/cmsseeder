@@ -7,7 +7,7 @@
                 <h2 class="d-flex align-items-center justify-content-center text-uppercase font-weight-bold small text-space-1 mb-3">
                     <span class="text-dark">Product By</span>
                     <img class="rounded-circle mx-2 mb-1" src="themes/docs-ui-kit/assets/img/hs.png" width="40" alt="Htmlstream">
-                    <a class="text-dark" href="https://htmlstream.com">Htmlstream</a>
+                    <a class="text-dark" href="https://htmlstream.com">Ankartisan</a>
                 </h2>
 
                 <p class="text-center mb-5">Docs UI Kit is beautiful Open Source Bootstrap 4 UI Kit under MIT license. <br> The UI Kit comes with 10 beautiful complete and functional pages  including lots of reusable and customizable UI Blocks. Every component crafted with love to speed up your workflow.</p>

@@ -72,51 +72,22 @@
                 <div class="collapse navbar-collapse my-3 my-lg-0" id="navbarCollapse">
                     <!-- Header Links -->
                     <ul class="navbar-nav mr-lg-auto ml-lg-2 ml-xl-4">
-                        <li class="js-scroll-nav nav-item mx-lg-1 mx-xl-2 mb-2 mb-lg-0">
-                            <a class="nav-link" href="#ui">UI Kit Components</a>
-                        </li>
-                        <li class="js-scroll-nav nav-item mx-lg-1 mx-xl-2 mb-2 mb-lg-0">
-                            <a class="nav-link" href="#demos">Example Pages</a>
+                        <li class="nav-item mx-lg-1 mx-xl-2 mb-2 mb-lg-0">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item mx-lg-1 mx-xl-2 mb-2 mb-lg-0">
-                            <a class="nav-link" href="https://htmlstream.com/preview/docs-ui-kit/documentation/">Doc</a>
+                            <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+                        </li>
+                        <li class="nav-item mx-lg-1 mx-xl-2 mb-2 mb-lg-0">
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
                     <!-- End Header Links -->
 
                     <!-- Header Links 2 -->
                     <ul class="navbar-nav align-items-lg-center">
-                        <li class="nav-item my-2 my-lg-0">
-                            <ul class="list-inline">
-                                <li class="list-inline-item mr-lg-0">
-                                    <a class="nav-link" target="_blank" href="https://github.com/htmlstreamofficial/">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item mr-lg-0">
-                                    <a class="nav-link" target="_blank" href="https://www.facebook.com/htmlstream">
-                                        <i class="fab fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item mr-lg-0">
-                                    <a class="nav-link" target="_blank" href="https://www.instagram.com/htmlstream">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item mr-lg-0">
-                                    <a class="nav-link" target="_blank" href="https://twitter.com/htmlstream">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="nav-link" target="_blank" href="https://dribbble.com/htmlstream">
-                                        <i class="fab fa-dribbble"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-item ml-lg-3 ml-xl-5 my-2 my-lg-0">
-                            <a class="btn btn-sm btn-light text-primary" href="https://htmlstream.com/templates/docs-ui-kit">
+                            <a class="btn btn-sm btn-light text-primary" href="https://github.com/ankaitzan/cmsseeder">
                                 <i class="fas fa-cloud-download-alt mr-1"></i> Download
                             </a>
                         </li>
@@ -136,11 +107,11 @@
         <div class="d-flex justify-content-center1 position-relative mh-35rem h-85vh py-11">
             <div class="align-self-center">
                 <h1 class="text-white mb-1">CMS Seeder</h1>
-                <p class="lead mb-5">Starter pack for your next CMS based on Laravel!</p>
+                <p class="lead mb-5">Starter pack for your next CMS project based on Laravel!</p>
                 <span class="js-scroll-nav">
-            <a class="btn btn-sm btn-light mr-2" href="#ui">Explore now</a>
+            <a class="btn btn-sm btn-light mr-2" href="https://github.com/ankaitzan/cmsseeder">Explore now</a>
           </span>
-                <a class="btn btn-sm btn-dark" href="https://github.com/htmlstreamofficial/docs-ui-kit" target="_blank"><i class="fab fa-github mr-1"></i> Star on Github</a>
+                <a class="btn btn-sm btn-dark" href="https://github.com/ankaitzan/cmsseeder" target="_blank"><i class="fab fa-github mr-1"></i> Star on Github</a>
             </div>
         </div>
     </div>
@@ -178,35 +149,7 @@
         <footer class="bg-dark pt-4">
             <div class="container">
                 <div class="text-center px-md-3 pt-11 mt-3 pb-5">
-                    <!-- Social Sharing -->
                     <h5 class="text-white font-weight-normal mb-4">Sharing is caring, support us by just sharing.</h5>
-
-                    <div class="d-flex justify-content-center">
-                        <!-- Facebook Share -->
-                        <div class="mr-3 mb-2 mb-md-0">
-                            <div class="fb-share-button demo-faceook-share"
-                                 data-href="http://facebook.com/htmlstream"
-                                 data-layout="button"
-                                 data-size="large"
-                                 data-mobile-iframe="true">
-                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2src=sdkpreparse">Share</a>
-                            </div>
-                        </div>
-                        <!-- End Facebook Share -->
-
-                        <!-- Google Plus -->
-                        <div class="mr-3 mb-2 mb-md-0">
-                            <div class="g-plus" data-action="share" data-annotation="bubble" data-height="52"></div>
-                        </div>
-                        <!-- End Google Plus -->
-
-                        <!-- Tweet -->
-                        <div class="mr-3">
-                            <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-size="large" data-text="Docs UI Kit is beautiful Open Source Bootstrap 4 UI Kit under MIT license." data-hashtags="DocsUIKit, Bootstrap, Freebies" data-related="htmlstream, freebies, bootstrap">@htmlstream</a>
-                        </div>
-                        <!-- End Tweet -->
-                    </div>
-                    <!-- End Social Sharing -->
                 </div>
 
                 <hr class="opacity-10 mb-0">
@@ -214,34 +157,13 @@
                 <!-- Copyright and Social Icons -->
                 <div class="row px-md-3 py-4">
                     <div class="col-md-8 text-center text-md-left mb-3 mb-md-0">
-                        <small class="text-white">&copy; 2019 <a class="text-white" href="https://htmlstream.com">Htmlstream</a>. Under MIT license.</small>
+                        <small class="text-white">&copy; 2019 <a class="text-white" href="https://htmlstream.com">CMS Seeder</a>. Under MIT license.</small>
                     </div>
-
-                    <div class="col-md-4 align-self-center">
-                        <ul class="list-inline text-center text-md-right mb-0">
-                            <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Facebook">
-                                <a class="text-white" target="_blank" href="https://www.facebook.com/htmlstream">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Github">
-                                <a class="text-white" target="_blank" href="https://github.com/htmlstreamofficial/">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Instagram">
-                                <a class="text-white" target="_blank" href="https://www.instagram.com/htmlstream">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Twitter">
-                                <a class="text-white" target="_blank" href="https://twitter.com/htmlstream">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item mx-2" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                                <a class="text-white" target="_blank" href="https://dribbble.com/htmlstream">
-                                    <i class="fab fa-dribbble"></i>
+                    <div class="col-md-4 text-md-right">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item mr-1 mr-xl-2">
+                                <a class="link-white-55" target="_blank" href="{{ route('sitemap') }}">
+                                    Sitemap
                                 </a>
                             </li>
                         </ul>
