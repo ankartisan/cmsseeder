@@ -8,6 +8,10 @@ slow down experienced developer.<br><br>
 It's founded out of frustration with WordPress customization and page builders. Read more about it in
 <a href="https://ankaitzan.com/arrivederci-wordpress/">this article</a>.
 
+## Release
+
+CMS Seeder is under development and there is no release date planed yet. 
+
 ## Learning CMS Seeder
 
 There is no learning curve for Laravel developer and that's the beauty about CMS Seeder.
