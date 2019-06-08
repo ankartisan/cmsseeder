@@ -185,7 +185,7 @@
 <!-- Components -->
 @include('components/loader')
 
-<script src="{{ mix('/js/bootstrap.js') }}"></script>
+<script src="{{ mix('/js/base.js') }}"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 
 <!-- JS Global Compulsory -->

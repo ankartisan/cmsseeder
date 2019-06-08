@@ -22,4 +22,3 @@ if(['admin.page','admin.pages'].includes(window.route)) {
 
 
 
-

@@ -16,7 +16,7 @@
     <link href="{{ url('/fonts/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{ url('/css/plugins/animate/animate.css')}}" rel="stylesheet">
     <link href="{{ url('/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
-    <link href="{{ url('/css/style.css')}}" rel="stylesheet">
+    <link href="{{ url('/css/theme.css')}}" rel="stylesheet">
 
 </head>
 <body class="pace-done">
@@ -101,7 +101,7 @@
     window.route = '{!! Route::current()->getName() !!}';
 </script>
 <!-- JS -->
-<script src="{{ mix('/js/bootstrap.js') }}"></script>
+<script src="{{ mix('/js/base.js') }}"></script>
 <script src="{{ url('/js/plugins/jquery/jquery-2.1.1.js') }}"></script>
 <script src="{{ url('/js/plugins/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ url('/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
@@ -110,8 +110,9 @@
 <script src="{{ url('/js/plugins/pace/pace.min.js') }}"></script>
 <script src="{{ url('/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
 <script src="{{ url('/js/plugins/tinymce/tinymce.min.js') }}" ></script>
-<script src="{{ url('/js/inspinia.js') }}"></script>
+<script src="{{ url('/js/theme.js') }}"></script>
 <script src="{{ mix('admin/js/admin.js') }}"></script>
+
 <!-- Extra JS -->
 @section('extrajavascript')
 @show
