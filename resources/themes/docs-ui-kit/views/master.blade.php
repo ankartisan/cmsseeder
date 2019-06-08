@@ -63,7 +63,7 @@
              data-onscroll-classes="bg-primary"
              data-offset-value="50">
             <div class="container">
-                <a class="navbar-brand" href="/"><img src="/themes/docs-ui-kit/assets/img/logo-light.png" alt="CMS Seeder" style="width: 150px;"></a>
+                <a class="navbar-brand" href="/">CMS Seeder</a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

@@ -21,6 +21,8 @@ mix.js('resources/assets/js/bootstrap.js', 'public/js')
 mix.copyDirectory('resources/assets/css', 'public/css');
 mix.copyDirectory('resources/assets/js/plugins', 'public/js/plugins');
 mix.copyDirectory('resources/assets/fonts', 'public/fonts');
+mix.copyDirectory('resources/assets/images', 'public/images');
+
 mix.copy('resources/assets/js/inspinia.js', 'public/js/inspinia.js');
 
 mix.copyDirectory('resources/themes', 'public/themes');
