@@ -109,4 +109,16 @@ $("#contact-form").validate({
     }
 });
 
+/**
+ * Change language
+ */
 
+$(".btn-language").on('click', function (evt) {
+    console.log(evt);
+    let lang = $(this).attr('data-lang');
+
+    let url = window.location.origin + '/' + lang + '/';
+    let path = window.location.pathname.substr(4);
+
+    window.location.replace(url + path);
+});
