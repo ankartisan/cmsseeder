@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
         $middlewareGroups = $this->getMiddlewareGroups();
 
         // If translation enabled
-        if(in_array('App\Http\Middleware\Language', $middlewareGroups['web'])) {
+        if(isset($middlewareGroups['web']) && in_array('App\Http\Middleware\Language', $middlewareGroups['web'])) {
             $locale = $this->app->request->segment(1);
 
             if(in_array($locale, ['sitemap.xml'])) {

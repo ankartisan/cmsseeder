@@ -80,6 +80,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('pages', 'Admin\PageController@store');
         Route::put('pages/{id}', 'Admin\PageController@update');
         Route::delete('pages/{id}', 'Admin\PageController@delete');
+
+        Route::get('/products/search', 'Admin\ProductController@search');
+        Route::get('/products/{id}', 'Admin\ProductController@show')->name('admin.product');
+        Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
+        Route::post('products', 'Admin\ProductController@store');
+        Route::put('products/{id}', 'Admin\ProductController@update');
+        Route::delete('products/{id}', 'Admin\ProductController@delete');
     });
 });
 
