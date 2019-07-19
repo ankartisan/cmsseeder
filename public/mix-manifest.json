@@ -4,6 +4,8 @@
     "/admin/css/admin.css": "/admin/css/admin.css",
     "/css/loader.css": "/css/loader.css",
     "/admin/js/admin.js": "/admin/js/admin.js",
+    "/js/ecommerce.js": "/js/ecommerce.js",
+    "/js/auth.js": "/js/auth.js",
     "/js/app.js": "/js/app.js",
     "/js/theme.js": "/js/theme.js"
 }

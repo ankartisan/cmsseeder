@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use App\Models\Job;
-use App\Models\User;
-use Boxt\Services\Payments\PaymentGateway;
+use App\Http\Controllers\ApiController;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PageController extends Controller
+class PageController extends ApiController
 {
 
     /*
@@ -20,17 +17,8 @@ class PageController extends Controller
 
     public function home(Request $request)
     {
-        return view('home');
-    }
-
-    public function login(Request $request)
-    {
-        return view('login');
-    }
-
-    public function register(Request $request)
-    {
-        return view('register');
+        $products = Product::all();
+        return view('home', ['products' => $products]);
     }
 
     public function contact(Request $request)

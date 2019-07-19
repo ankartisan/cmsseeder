@@ -7,9 +7,11 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\LoginFacebookRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\Request;
+use App\Http\Requests\UserRegistrationRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends ApiController
 {
@@ -46,34 +48,6 @@ class AuthController extends ApiController
         return redirect()->route('home');
     }
 
-    public function loginFacebook(LoginFacebookRequest $request)
-    {
-        $user = User::where(['email' => $request->get('email'), 'facebook_id' => $request->get('id')])->first();
-        // Login
-        if($user) {
-            Auth::login($user);
-            return $this->respond("Login successfully");
-        }
-        // Register & Login
-        $user = User::create(array_merge($request->all(),
-            ['facebook_id' => $request->get('id'),'password' => str_random(10), 'confirmed' => 1]));
-        $user->assignRole(Role::from('roles') ->whereIn('name', ['customer'])->first());
-        $user->save();
-
-        event(new UserRegistered($user));
-
-        Auth::login($user);
-
-        return $this->respond("Account created and login successfully");
-
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | VIEW
-    |--------------------------------------------------------------------------
-    */
-
     public function confirmation($confirmation_code)
     {
 
@@ -89,4 +63,5 @@ class AuthController extends ApiController
 
         return Redirect::route('login');
     }
+
 }
