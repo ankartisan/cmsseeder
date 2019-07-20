@@ -2,32 +2,32 @@
 <html lang="en">
 <head>
     <!-- Title -->
-    <title>{{ __('Hot Nuts | Fresh & Hot Nuts at Your Workplace') }}</title>
+    <title>{{ __('CMS Seeder | The most flexible CMS') }}</title>
 
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/themes/front/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
 
     @section('seo')
     <!--  Meta tags -->
-        <meta name="keywords" content="{{ __('office snacks, company catering, event snacks, office nuts') }}">
-        <meta name="description" content="{{ __('Providing healthy snacks for employees. Our vending machine will keep nuts fresh and hot and we will refill every week.') }}">
+        <meta name="keywords" content="{{ __('free cms, open source cms, flexible cms, small business cms, custom cms') }}">
+        <meta name="description" content="{{ __('The most flexible CMS for your small business') }}">
 
         <!-- Schema.org -->
-        <meta itemprop="name" content="{{ __('Providing hot & fresh nuts at your workplace') }}">
-        <meta itemprop="description" content="{{ __('Providing healthy snacks for employees. Our vending machine will keep nuts fresh and hot and we will refill every week.') }}">
+        <meta itemprop="name" content="{{ __('The most flexible CMS for your small business') }}">
+        <meta itemprop="description" content="{{ __('The most flexible CMS for your small business') }}">
         <meta itemprop="image" content="/images/img1.jpeg">
 
         <!-- Open Graph -->
-        <meta property="og:title" content="{{ __('Providing hot & fresh nuts at your workplace') }}">
+        <meta property="og:title" content="{{ __('The most flexible CMS for your small business') }}">
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://hotnuts.rs">
-        <meta property="og:image" content="/images/img1.jpeg">
-        <meta property="og:description" content="{{ __('Providing healthy snacks for employees. Our vending machine will keep nuts fresh and hot and we will refill every week.') }}">
-        <meta property="og:site_name" content="Hot Nuts">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+        <meta property="og:description" content="{{ __('The most flexible CMS for your small business') }}">
+        <meta property="og:site_name" content="CMS Seeder">
     @show
 
     <!-- Google Fonts -->

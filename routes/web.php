@@ -29,21 +29,27 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'Auth\AuthController@logout')->name('logout');
 });
 
-// CONTACT
-Route::get('/contact', 'Web\PageController@contact')->name('contact');
-Route::post('/contact', 'Web\PageController@contactSubmit')->name('contact.submit');
-// LEGAL
-Route::get('/terms-and-conditions', 'Web\PageController@termsConditions')->name('terms_conditions');
-Route::get('/privacy-policy', 'Web\PageController@privacyPolicy')->name('privacy_policy');
-// SITEMAP
-Route::get('/sitemap', 'Web\PageController@sitemap')->name('sitemap');
-Route::get('/sitemap.xml', 'Web\PageController@sitemapXML')->name('sitemap_xml');
-
-
 // E-COMMERCE
+Route::get('/products/search', 'Web\ProductController@search');
+Route::get('/products/{id}', 'Web\ProductController@show')->name('product');
+Route::get('/shop', 'Web\ProductController@index')->name('products');
+Route::get('/cart', 'Web\CartController@cart')->name('cart');
+Route::get('/checkout', 'Web\CartController@checkout')->name('checkout');
+
 Route::post('/cart/add/{id}', 'Web\CartController@add');
 Route::post('/cart/remove/{id}', 'Web\CartController@remove');
 
+// CONTACT
+Route::get('/contact', 'Web\PageController@contact')->name('contact');
+Route::post('/contact', 'Web\PageController@contactSubmit')->name('contact.submit');
+
+// LEGAL
+Route::get('/terms-and-conditions', 'Web\PageController@termsConditions')->name('terms_conditions');
+Route::get('/privacy-policy', 'Web\PageController@privacyPolicy')->name('privacy_policy');
+
+// SITEMAP
+Route::get('/sitemap', 'Web\PageController@sitemap')->name('sitemap');
+Route::get('/sitemap.xml', 'Web\PageController@sitemapXML')->name('sitemap_xml');
 
 // ADMIN
 Route::group(['prefix' => 'admin'], function () {

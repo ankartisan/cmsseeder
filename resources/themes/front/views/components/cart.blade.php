@@ -88,9 +88,9 @@
                 <span class="d-block">$78.99</span>
             </div>
             <div class="mb-2">
-                <a class="btn btn-sm btn-soft-primary disabled transition-3d-hover" href="../shop/shop-checkout.html">Review Bag and Checkout</a>
+                <a class="btn btn-sm btn-soft-primary transition-3d-hover" href="{{ route('cart') }}">Review Bag and Checkout</a>
             </div>
-            <p class="small mb-0"><a class="link-muted" href="javascript:;">Start Shopping</a></p>
+            <p class="small mb-0"><a class="link-muted" href="javascript:;">Continue Shopping</a></p>
         </div>
     </footer>
     <!-- End Footer -->

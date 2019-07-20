@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Cookie;
 
-
 class CartController extends ApiController
 {
     public function __construct()
@@ -61,5 +60,24 @@ class CartController extends ApiController
         return $this->respond(view('components/cart', ["cart" => $cart])->render());
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | VIEW
+    |--------------------------------------------------------------------------
+    */
+
+    public function cart(Request $request)
+    {
+        $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
+
+        return view('cart', ["cart" => $cart]);
+    }
+
+    public function checkout(Request $request)
+    {
+        $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
+
+        return view('checkout', ["cart" => $cart]);
+    }
 
 }

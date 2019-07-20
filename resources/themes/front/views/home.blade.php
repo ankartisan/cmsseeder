@@ -1,504 +1,644 @@
 @extends('master')
 @section('content')
-    <!-- Title Section -->
-    <div class="bg-light">
-        <div class="container py-5">
-            <div class="row align-items-sm-center">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <h1 class="h4 mb-0">Products grid</h1>
+    <!-- Hero Section -->
+    <div class="position-relative">
+        <!-- Main Slider -->
+        <div id="heroSlider" class="js-slick-carousel u-slick u-slick--equal-height bg-light"
+             data-fade="true"
+             data-infinite="true"
+             data-autoplay-speed="7000"
+             data-arrows-classes="d-none d-lg-inline-block u-slick__arrow u-slick__arrow--flat-white u-slick__arrow-centered--y shadow-soft rounded-circle"
+             data-arrow-left-classes="fas fa-arrow-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-5"
+             data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-5"
+             data-nav-for="#heroSliderNav">
+            <!-- Slide -->
+            <div class="js-slide">
+                <div class="container space-top-2 space-bottom-3">
+                    <div class="row align-items-lg-center">
+                        <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+                            <div class="mb-6">
+                                <h1 class="display-4 font-size-md-down-5 font-weight-semi-bold mb-4">Front original design cap</h1>
+                                <p>As well as being game-changers when it comes to technical innovation, Front has some of the bestselling cap in its locker.</p>
+                            </div>
+                            <a class="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$59 - Add to Cart</a>
+                            <a class="btn btn-icon btn-outline-primary rounded-circle" href="#" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="w-85 mx-auto">
+                                <img class="img-fluid" src="themes/front/assets/img/mockups/img5.png" alt="Image Description">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slide -->
+
+            <!-- Slide -->
+            <div class="js-slide">
+                <div class="container space-top-2 space-bottom-3">
+                    <div class="row align-items-lg-center">
+                        <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+                            <div class="mb-6">
+                                <h2 class="display-4 font-size-md-down-5 font-weight-semi-bold mb-4">Apple iPad Pro</h2>
+                                <p>It's all new, all screen, and all powerful. Completely redesigned and packed with our most advanced technology, it will make you rethink what iPad is capable of.</p>
+                            </div>
+                            <a class="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$799 - Add to Cart</a>
+                            <a class="btn btn-icon btn-outline-primary rounded-circle" href="#" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="w-85 mx-auto">
+                                <img class="img-fluid" src="themes/front/assets/img/mockups/img6.png" alt="Image Description">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slide -->
+
+            <!-- Slide -->
+            <div class="js-slide">
+                <div class="container space-top-2 space-bottom-3">
+                    <div class="row align-items-lg-center">
+                        <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+                            <div class="mb-6">
+                                <h3 class="display-4 font-size-md-down-5 font-weight-semi-bold mb-4">Celio hoodie</h3>
+                                <p>Founded in 1985, French label Celio channels 30 years of expertise into its contemporary menswear range. Expect fly style for a city or beach with its denim shorts, chinos and printed jersey.</p>
+                            </div>
+                            <a class="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$15 - Add to Cart</a>
+                            <a class="btn btn-icon btn-outline-primary rounded-circle" href="#" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="w-85 mx-auto">
+                                <img class="img-fluid" src="themes/front/assets/img/mockups/img1.png" alt="Image Description">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Slide -->
+        </div>
+        <!-- End Main Slider -->
+
+        <!-- Slider Nav -->
+        <div class="position-absolute bottom-0 w-100">
+            <div class="container space-bottom-1">
+                <div id="heroSliderNav" class="js-slick-carousel u-slick u-slick--transform-off max-width-27 mx-auto"
+                     data-slides-show="3"
+                     data-autoplay-speed="7000"
+                     data-infinite="true"
+                     data-is-thumbs="true"
+                     data-is-thumbs-progress="true"
+                     data-thumbs-progress-options='{
+                 "color": "#377dff",
+                 "width": 8
+               }'
+                     data-thumbs-progress-container=".js-slick-thumb-progress"
+                     data-nav-for="#heroSlider">
+                    <div class="js-slide p-1">
+                        <a class="js-slick-thumb-progress position-relative d-block u-avatar border rounded-circle p-1" href="javascript:;">
+                            <img class="img-fluid rounded-circle" src="themes/front/assets/img/100x100/img13.jpg" alt="Image Description">
+                        </a>
+                    </div>
+                    <div class="js-slide p-1">
+                        <a class="js-slick-thumb-progress position-relative d-block u-avatar border rounded-circle p-1" href="javascript:;">
+                            <img class="img-fluid rounded-circle" src="themes/front/assets/img/100x100/img14.jpg" alt="Image Description">
+                        </a>
+                    </div>
+                    <div class="js-slide p-1">
+                        <a class="js-slick-thumb-progress position-relative d-block u-avatar border rounded-circle p-1" href="javascript:;">
+                            <img class="img-fluid rounded-circle" src="themes/front/assets/img/100x100/img15.jpg" alt="Image Description">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Slider Nav -->
+    </div>
+    <!-- End Hero Section -->
+
+    <!-- Features Section -->
+    <div class="border-bottom">
+        <div id="featuresSVG" class="svg-preloader container space-2">
+            <div class="row">
+                <div class="col-md-4 mb-7 mb-md-0">
+                    <!-- Contacts -->
+                    <div class="media">
+                        <figure class="ie-height-56 w-100 max-width-8 mr-4">
+                            <img class="js-svg-injector" src="themes/front/assets/svg/icons/icon-4.svg" alt="SVG"
+                                 data-parent="#featuresSVG">
+                        </figure>
+                        <div class="media-body">
+                            <h4 class="h6 mb-1">24/7 Support</h4>
+                            <p class="font-size-1 mb-0">Contact us 24 hours a day, 7 days a week.</p>
+                        </div>
+                    </div>
+                    <!-- End Contacts -->
                 </div>
 
-                <div class="col-sm-6">
-                    <!-- Breadcrumb -->
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Products</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Grid</li>
-                        </ol>
-                    </nav>
-                    <!-- End Breadcrumb -->
+                <div class="col-md-4 mb-7 mb-md-0">
+                    <!-- Contacts -->
+                    <div class="media">
+                        <figure class="ie-height-56 w-100 max-width-8 mr-4">
+                            <img class="js-svg-injector" src="themes/front/assets/svg/icons/icon-64.svg" alt="SVG"
+                                 data-parent="#featuresSVG">
+                        </figure>
+                        <div class="media-body">
+                            <h4 class="h6 mb-1">30 Days return</h4>
+                            <p class="font-size-1 mb-0">We offer you a full refund within 30 days of purchase.</p>
+                        </div>
+                    </div>
+                    <!-- End Contacts -->
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Contacts -->
+                    <div class="media">
+                        <figure class="ie-height-56 w-100 max-width-8 mr-4">
+                            <img class="js-svg-injector" src="themes/front/assets/svg/icons/icon-65.svg" alt="SVG"
+                                 data-parent="#featuresSVG">
+                        </figure>
+                        <div class="media-body">
+                            <h4 class="h6 mb-1">Free shipping</h4>
+                            <p class="font-size-1 mb-0">Automatically receive free standard shipping on every order.</p>
+                        </div>
+                    </div>
+                    <!-- End Contacts -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Title Section -->
+    <!-- End Features Section -->
 
-    <!-- Products & Filters Section -->
-    <div class="container space-2 space-bottom-lg-3">
-        <div class="row">
-            <div class="col-lg-9">
-                <!-- Sorting -->
-                <div class="row align-items-center mb-5">
-                    <div class="col-lg-6 mb-3 mb-lg-0">
-                        <span class="text-secondary font-size-1 font-weight-normal ml-1">110 products</span>
-                    </div>
+    <!-- Categories Section -->
+    <div class="container space-2 space-lg-3">
+        <!-- Title -->
+        <div class="w-md-80 w-lg-40 text-center mx-md-auto mb-9">
+            <h2 class="h3 font-weight-medium">The better way to shop with Front top-products</h2>
+        </div>
+        <!-- End Title -->
 
-                    <div class="col-lg-6 align-self-lg-end text-lg-right">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <!-- Select -->
-                                <select class="js-select selectpicker dropdown-select"
-                                        data-size="10"
-                                        data-width="fit"
-                                        data-style="btn-soft-secondary btn-xs">
-                                    <option value="mostRecent" selected>Sort by</option>
-                                    <option value="newest">Newest first</option>
-                                    <option value="priceHighLow">Price (high - low)</option>
-                                    <option value="priceLowHigh">Price (low - high)</option>
-                                    <option value="topSellers">Top sellers</option>
-                                </select>
-                                <!-- End Select -->
-                            </li>
-                            <li class="list-inline-item">
-                                <!-- Select -->
-                                <select class="js-select selectpicker dropdown-select"
-                                        data-width="fit"
-                                        data-style="btn-soft-secondary btn-xs">
-                                    <option value="alphabeticalOrderSelect1" selected>A-to-Z</option>
-                                    <option value="alphabeticalOrderSelect2">Z-to-A</option>
-                                </select>
-                                <!-- End Select -->
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-xs btn-soft-secondary active" href="products-grid.html">
-                                    <span class="fas fa-th-large"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-xs btn-soft-secondary" href="products-list.html">
-                                    <span class="fas fa-list"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Sorting -->
-
-                <!-- Products -->
-                <div class="row mx-n2 mb-2">
-                    @foreach($products as $product)
-                    <div class="col-6 col-lg-4 px-2 mb-3">
-                        <!-- Product -->
-                        <div class="card text-center h-100">
-                            <div class="position-relative">
-                                <img class="card-img-top" src="/themes/front/assets/img/300x180/img3.jpg" alt="Image Description">
-
-                                <div class="position-absolute top-0 left-0 pt-3 pl-3">
-                                    <span class="badge badge-success badge-pill">New arrival</span>
-                                </div>
-                                <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                                    <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
-                                        <span class="fas fa-heart btn-icon__inner"></span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="card-body pt-4 px-4 pb-0">
-                                <div class="mb-2">
-                                    <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
-                                    <h3 class="font-size-1 font-weight-normal">
-                                        <a class="text-secondary" href="single-product.html">Herschel backpack in dark blue</a>
-                                    </h3>
-                                    <div class="d-block font-size-1">
-                                        <span class="font-weight-medium">$56.99</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-footer border-0 pt-0 pb-4 px-4">
-                                <div class="mb-3">
-                                    <a class="d-inline-flex align-items-center small" href="#">
-                                        <div class="text-warning mr-2">
-                                            <small class="far fa-star text-muted"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                        </div>
-                                        <span class="text-secondary">0</span>
-                                    </a>
-                                </div>
-                                <button type="button" data-product-id="{{ $product->id }}" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover btn-product-add">Add to Cart</button>
-                            </div>
+        <div class="row mb-5">
+            <div class="col-md-4 mb-5 mb-md-0">
+                <!-- Card -->
+                <div class="card d-block">
+                    <div class="card-body d-flex align-items-center p-0">
+                        <div class="w-65 border-right">
+                            <img class="img-fluid" src="themes/front/assets/img/380x400/img3.jpg" alt="Image Description">
                         </div>
-                        <!-- End Product -->
-                    </div>
-                    @endforeach
-                </div>
-                <!-- End Products -->
-
-                <div class="py-3"></div>
-
-                <!-- Pagination -->
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-between align-items-center">
-                        <li class="page-item ml-0">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo; Prev</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <div class="d-flex align-items-center">
-                                <span class="d-none d-sm-inline-block text-secondary">Page:</span>
-                                <select class="custom-select custom-select-sm w-auto mx-2">
-                                    <option value="quantity1">1</option>
-                                    <option value="quantity2">2</option>
-                                    <option value="quantity3">3</option>
-                                    <option value="quantity4">4</option>
-                                    <option value="quantity5">5</option>
-                                    <option value="quantity6">6</option>
-                                    <option value="quantity7">7</option>
-                                    <option value="quantity8">8</option>
-                                </select>
-                                <span class="d-none d-sm-inline-block text-secondary">of 8</span>
+                        <div class="w-35">
+                            <div class="border-bottom">
+                                <img class="img-fluid" src="themes/front/assets/img/380x360/img32.jpg" alt="Image Description">
                             </div>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">Next &raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Pagination -->
-
-                <!-- Divider -->
-                <div class="d-lg-none">
-                    <hr class="my-11">
+                            <img class="img-fluid" src="themes/front/assets/img/380x360/img33.jpg" alt="Image Description">
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-4">
+                        <h3 class="h5 mb-1">T-shirts</h3>
+                        <span class="d-block text-muted font-size-1 mb-3">Starting from $29.99</span>
+                        <a class="btn btn-sm btn-outline-primary btn-pill transition-3d-hover px-5" href="#">View All T-shirts</a>
+                    </div>
                 </div>
-                <!-- End Divider -->
+                <!-- End Card -->
             </div>
 
-            <!-- Filters -->
-            <div class="col-lg-3">
-                <form>
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Price</h4>
-
-                        <!-- Range Slider -->
-                        <input class="js-range-slider" type="text"
-                               data-extra-classes="u-range-slider u-range-slider-indicator u-range-slider-grid"
-                               data-type="double"
-                               data-grid="true"
-                               data-hide-from-to="false"
-                               data-prefix="$"
-                               data-min="0"
-                               data-max="500"
-                               data-from="25"
-                               data-to="475"
-                               data-result-min="#rangeSliderExample3MinResult"
-                               data-result-max="#rangeSliderExample3MaxResult">
-                        <div class="d-flex justify-content-between mt-4">
-                            <input type="text" class="form-control form-control-sm max-width-10" id="rangeSliderExample3MinResult">
-                            <input type="text" class="form-control form-control-sm max-width-10 mt-0" id="rangeSliderExample3MaxResult">
+            <div class="col-md-4 mb-5 mb-md-0">
+                <!-- Card -->
+                <div class="card d-block">
+                    <div class="card-body d-flex align-items-center p-0">
+                        <div class="w-65 border-right">
+                            <img class="img-fluid" src="themes/front/assets/img/380x400/img4.jpg" alt="Image Description">
                         </div>
-                        <!-- End Range Slider -->
+                        <div class="w-35">
+                            <div class="border-bottom">
+                                <img class="img-fluid" src="themes/front/assets/img/380x360/img34.jpg" alt="Image Description">
+                            </div>
+                            <img class="img-fluid" src="themes/front/assets/img/380x360/img35.jpg" alt="Image Description">
+                        </div>
                     </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Gender</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="genderMen" checked>
-                                <label class="custom-control-label text-lh-md" for="genderMen">Men</label>
-                            </div>
-                            <small>73</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="genderWomen" checked>
-                                <label class="custom-control-label text-lh-md" for="genderWomen">Women</label>
-                            </div>
-                            <small>51</small>
-                        </div>
-                        <!-- End Checkboxes -->
+                    <div class="card-footer text-center py-4">
+                        <h3 class="h5 mb-1">Tech covers</h3>
+                        <span class="d-block text-muted font-size-1 mb-3">Starting from $399.99</span>
+                        <a class="btn btn-sm btn-outline-primary btn-pill transition-3d-hover px-5" href="#">View All Tech covers</a>
                     </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Brand</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandAdidas">
-                                <label class="custom-control-label" for="brandAdidas">Adidas</label>
-                            </div>
-                            <small>16</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandNewBalance">
-                                <label class="custom-control-label" for="brandNewBalance">New Balance</label>
-                            </div>
-                            <small>8</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandNike">
-                                <label class="custom-control-label" for="brandNike">Nike</label>
-                            </div>
-                            <small>35</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandFredPerry">
-                                <label class="custom-control-label" for="brandFredPerry">Fred Perry</label>
-                            </div>
-                            <small>5</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandTnf">
-                                <label class="custom-control-label" for="brandTnf">The North Face</label>
-                            </div>
-                            <small>1</small>
-                        </div>
-                        <!-- End Checkboxes -->
-
-                        <!-- View More - Collapse -->
-                        <div class="collapse" id="collapseBrand">
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="brandGucci">
-                                    <label class="custom-control-label" for="brandGucci">Gucci</label>
-                                </div>
-                                <small>5</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="brandMango">
-                                    <label class="custom-control-label" for="brandMango">Mango</label>
-                                </div>
-                                <small>1</small>
-                            </div>
-                        </div>
-                        <!-- End View More - Collapse -->
-
-                        <!-- Link -->
-                        <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
-                            <span class="link-collapse__default">View more</span>
-                            <span class="link-collapse__active">View less</span>
-                            <span class="link__icon ml-1">
-                  <span class="link__icon-inner">+</span>
-                </span>
-                        </a>
-                        <!-- End Link -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Size</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeS" checked>
-                                <label class="custom-control-label" for="sizeS">S</label>
-                            </div>
-                            <small>27</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeM">
-                                <label class="custom-control-label" for="sizeM">M</label>
-                            </div>
-                            <small>18</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeL" checked>
-                                <label class="custom-control-label" for="sizeL">L</label>
-                            </div>
-                            <small>0</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeXL">
-                                <label class="custom-control-label" for="sizeXL">XL</label>
-                            </div>
-                            <small>1</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeXXL">
-                                <label class="custom-control-label" for="sizeXXL">XXL</label>
-                            </div>
-                            <small>2</small>
-                        </div>
-                        <!-- End Checkboxes -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Category</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryTshirt" checked>
-                                <label class="custom-control-label text-lh-md" for="categoryTshirt">T-shirt</label>
-                            </div>
-                            <small>73</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryShoes">
-                                <label class="custom-control-label text-lh-md" for="categoryShoes">Shoes</label>
-                            </div>
-                            <small>0</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryAccessories" checked>
-                                <label class="custom-control-label text-lh-md" for="categoryAccessories">Accessories</label>
-                            </div>
-                            <small>51</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryTops" checked>
-                                <label class="custom-control-label" for="categoryTops">Tops</label>
-                            </div>
-                            <small>5</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryBottom">
-                                <label class="custom-control-label" for="categoryBottom">Bottom</label>
-                            </div>
-                            <small>11</small>
-                        </div>
-                        <!-- End Checkboxes -->
-
-                        <!-- View More - Collapse -->
-                        <div class="collapse" id="collapseCategory">
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categoryShorts">
-                                    <label class="custom-control-label" for="categoryShorts">Shorts</label>
-                                </div>
-                                <small>5</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categoryHats">
-                                    <label class="custom-control-label" for="categoryHats">Hats</label>
-                                </div>
-                                <small>3</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorySocks">
-                                    <label class="custom-control-label" for="categorySocks">Socks</label>
-                                </div>
-                                <small>8</small>
-                            </div>
-                        </div>
-                        <!-- End View More - Collapse -->
-
-                        <!-- Link -->
-                        <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">
-                            <span class="link-collapse__default">View more</span>
-                            <span class="link-collapse__active">View less</span>
-                            <span class="link__icon ml-1">
-                  <span class="link__icon-inner">+</span>
-                </span>
-                        </a>
-                        <!-- End Link -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Rating</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating1">
-                                <label class="custom-control-label" for="rating1">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>3</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating2">
-                                <label class="custom-control-label" for="rating2">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>10</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating3">
-                                <label class="custom-control-label" for="rating3">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>34</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating4">
-                                <label class="custom-control-label" for="rating4">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>86</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating5">
-                                <label class="custom-control-label" for="rating5">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>102</small>
-                        </div>
-                        <!-- End Checkboxes -->
-                    </div>
-
-                    <button type="button" class="btn btn-sm btn-block btn-soft-secondary transition-3d-hover">Clear All</button>
-                </form>
+                </div>
+                <!-- End Card -->
             </div>
-            <!-- End Filters -->
+
+            <div class="col-md-4">
+                <!-- Card -->
+                <div class="card d-block">
+                    <div class="card-body d-flex align-items-center p-0">
+                        <div class="w-65 border-right">
+                            <img class="img-fluid" src="themes/front/assets/img/380x400/img5.jpg" alt="Image Description">
+                        </div>
+                        <div class="w-35">
+                            <div class="border-bottom">
+                                <img class="img-fluid" src="themes/front/assets/img/380x360/img36.jpg" alt="Image Description">
+                            </div>
+                            <img class="img-fluid" src="themes/front/assets/img/380x360/img37.jpg" alt="Image Description">
+                        </div>
+                    </div>
+                    <div class="card-footer text-center py-4">
+                        <h3 class="h5 mb-1">Caps</h3>
+                        <span class="d-block text-muted font-size-1 mb-3">Starting from $13.99</span>
+                        <a class="btn btn-sm btn-outline-primary btn-pill transition-3d-hover px-5" href="#">View All Caps</a>
+                    </div>
+                </div>
+                <!-- End Card -->
+            </div>
+        </div>
+
+        <div class="text-center">
+            <p class="small">Limited time only, while stocks last.</p>
         </div>
     </div>
-    <!-- End Products & Filters Section -->
+    <!-- End Categories Section -->
+
+    <!-- Products Section -->
+    <div class="container space-2 space-lg-3">
+        <!-- Title -->
+        <div class="w-md-80 w-lg-40 text-center mx-md-auto mb-9">
+            <h2 class="h3 font-weight-medium">What's trending</h2>
+        </div>
+        <!-- End Title -->
+
+        <!-- Products -->
+        <div class="row mx-n2 mx-sm-n3 mb-7">
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img3.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 left-0 pt-3 pl-3">
+                            <span class="badge badge-success badge-pill">New arrival</span>
+                        </div>
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
+                            <h3 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Herschel backpack in dark blue</a>
+                            </h3>
+                            <div class="d-block font-size-1">
+                                <span class="font-weight-medium">$56.99</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">0</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img12.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Clothing</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Front hoodie</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$91.88</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">40</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img4.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 left-0 pt-3 pl-3">
+                            <span class="badge badge-danger badge-pill">Sold out</span>
+                        </div>
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Herschel backpack in gray</a>
+                            </h4>
+                            <div class="d-block font-size-1">
+                                <span class="font-weight-medium">$29.99</span>
+                                <span class="text-secondary ml-1"><del>$33.99</del></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">125</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img6.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Clothing</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Front Originals adicolor t-shirt with trefoil logo</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$38.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                </div>
+                                <span class="text-secondary">9</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5 mb-lg-0">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img7.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Front mesh baseball cap with signature logo</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$8.88</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">31</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3 mb-3 mb-sm-5 mb-lg-0">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img11.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 left-0 pt-3 pl-3">
+                            <span class="badge badge-success badge-pill">New arrival</span>
+                        </div>
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Clothing</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Front Originals adicolor t-shirt in gray</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$24.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">0</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img9.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Clothing</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">COLLUSION Unisex mechanic print t-shirt</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$43.99</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                    <small class="far fa-star text-muted"></small>
+                                </div>
+                                <span class="text-secondary">0</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+
+            <div class="col-6 col-lg-3 px-2 px-sm-3">
+                <!-- Product -->
+                <div class="card text-center h-100">
+                    <div class="position-relative">
+                        <img class="card-img-top" src="themes/front/assets/img/300x180/img8.jpg" alt="Image Description">
+
+                        <div class="position-absolute top-0 right-0 pt-3 pr-3">
+                            <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                <span class="fas fa-heart btn-icon__inner"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body pt-4 px-4 pb-0">
+                        <div class="mb-2">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
+                            <h4 class="font-size-1 font-weight-normal">
+                                <a class="text-secondary" href="single-product.html">Billabong Walled snapback in green</a>
+                            </h4>
+                            <div class="d-block">
+                                <span class="font-weight-medium">$12.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer border-0 pt-0 pb-4 px-4">
+                        <div class="mb-3">
+                            <a class="d-inline-flex align-items-center small" href="#">
+                                <div class="text-warning mr-2">
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                    <small class="fas fa-star"></small>
+                                </div>
+                                <span class="text-secondary">2</span>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- End Product -->
+            </div>
+        </div>
+        <!-- End Products -->
+
+        <div class="text-center">
+            <a class="btn btn-primary btn-pill transition-3d-hover px-5" href="#">View Products</a>
+        </div>
+    </div>
+    <!-- End Products Section -->
 
     <!-- Subscribe Section -->
     <div class="bg-light">
@@ -535,32 +675,32 @@
         <div class="row justify-content-between text-center">
             <div class="col-4 col-lg-2 mb-5 mb-lg-0">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/hollister.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/hollister.svg" alt="Image Description">
                 </div>
             </div>
             <div class="col-4 col-lg-2 mb-5 mb-lg-0">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/levis.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/levis.svg" alt="Image Description">
                 </div>
             </div>
             <div class="col-4 col-lg-2 mb-5 mb-lg-0">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/new-balance.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/new-balance.svg" alt="Image Description">
                 </div>
             </div>
             <div class="col-4 col-lg-2">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/puma.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/puma.svg" alt="Image Description">
                 </div>
             </div>
             <div class="col-4 col-lg-2">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/nike.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/nike.svg" alt="Image Description">
                 </div>
             </div>
             <div class="col-4 col-lg-2">
                 <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/tnf.svg" alt="Image Description">
+                    <img class="u-clients" src="themes/front/assets/svg/clients-logo/tnf.svg" alt="Image Description">
                 </div>
             </div>
         </div>
