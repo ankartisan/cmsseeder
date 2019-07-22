@@ -44,12 +44,28 @@ $(document).on('click', '.btn-product-remove', function(){
         });
 });
 
+$(document).on('submit', '#create-order', function(event){
+    Helper.startLoading();
+    let data = Helper.getFormResults(this);
+
+    axios.post(base_api +'/order', data)
+        .then(function (response) {
+            console.log(response.data.data);
+            window.location.href = base_api;
+            Helper.endLoading();
+        })
+        .catch(function (error) {
+            Helper.endLoading();
+            errors.record(error.response.data.details);
+            errors.show();
+        });
+
+    event.preventDefault();
+
+});
+
 
 function initHSComponents () {
     // initialization of unfold component
-    console.log('usao');
-
-    // initialization of unfold component
     $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
-
 }

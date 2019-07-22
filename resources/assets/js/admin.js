@@ -24,5 +24,9 @@ if(['admin.product','admin.products'].includes(window.route)) {
     require('./admin/product');
 }
 
+if(['admin.order','admin.orders'].includes(window.route)) {
+    require('./admin/order');
+}
+
 
 

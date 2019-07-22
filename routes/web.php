@@ -35,6 +35,8 @@ Route::get('/products/{id}', 'Web\ProductController@show')->name('product');
 Route::get('/shop', 'Web\ProductController@index')->name('products');
 Route::get('/cart', 'Web\CartController@cart')->name('cart');
 Route::get('/checkout', 'Web\CartController@checkout')->name('checkout');
+Route::post('/order', 'Web\OrderController@create');
+
 
 Route::post('/cart/add/{id}', 'Web\CartController@add');
 Route::post('/cart/remove/{id}', 'Web\CartController@remove');
@@ -91,13 +93,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('pages', 'Admin\PageController@store');
         Route::put('pages/{id}', 'Admin\PageController@update');
         Route::delete('pages/{id}', 'Admin\PageController@delete');
-
+        // E-COMMERCE
         Route::get('/products/search', 'Admin\ProductController@search');
         Route::get('/products/{id}', 'Admin\ProductController@show')->name('admin.product');
         Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
         Route::post('products', 'Admin\ProductController@store');
         Route::put('products/{id}', 'Admin\ProductController@update');
         Route::delete('products/{id}', 'Admin\ProductController@delete');
+
+        Route::get('/orders/search', 'Admin\OrderController@search');
+        Route::get('/orders/{id}', 'Admin\OrderController@show')->name('admin.order');
+        Route::get('/orders', 'Admin\OrderController@index')->name('admin.orders');
+        Route::put('orders/{id}', 'Admin\OrderController@update');
+        Route::delete('orders/{id}', 'Admin\OrderController@delete');
     });
 });
 

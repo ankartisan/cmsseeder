@@ -132,7 +132,7 @@
             </div>
 
             <div class="col-lg-8 order-lg-1">
-                <form class="js-validate">
+                <form id="create-order" class="js-validate">
                     <div class="border-bottom pb-7 mb-7">
                         <!-- Title -->
                         <div class="mb-4">

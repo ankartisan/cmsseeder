@@ -54,6 +54,12 @@
                         <span class="nav-label">Products</span>
                     </a>
                 </li>
+                <li class="@if(Route::current()->getName() == 'admin.orders') active @endif">
+                    <a href="{{ route('admin.orders') }}">
+                        <i class="fa fa-line-chart" aria-hidden="true"></i>
+                        <span class="nav-label">Orders</span>
+                    </a>
+                </li>
                 <li class="@if(Route::current()->getName() == 'admin.categories') active @endif">
                     <a href="{{ route('admin.categories') }}">
                         <i class="fa fa-folder-open" aria-hidden="true"></i>
