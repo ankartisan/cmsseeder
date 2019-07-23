@@ -44,26 +44,27 @@ $(document).on('click', '.btn-product-remove', function(){
         });
 });
 
-$(document).on('submit', '#create-order', function(event){
-    Helper.startLoading();
-    let data = Helper.getFormResults(this);
+$("#create-order").validate({
+    submitHandler: function(form) {
+        Helper.startLoading();
+        errors.clear();
+        let data = Helper.getFormResults(form);
 
-    axios.post(base_api +'/order', data)
-        .then(function (response) {
-            console.log(response.data.data);
-            window.location.href = base_api;
-            Helper.endLoading();
-        })
-        .catch(function (error) {
-            Helper.endLoading();
-            errors.record(error.response.data.details);
-            errors.show();
-        });
-
-    event.preventDefault();
-
+        axios.post(base_api +'/order', data)
+            .then(function (response) {
+                console.log(response.data.data);
+                Helper.endLoading();
+            })
+            .catch(function (error) {
+                Helper.endLoading();
+                errors.record(error.response.data.details);
+                errors.show();
+            });
+    },
+    errorPlacement: function(error, element) {
+        error.appendTo( element.parent(".form-group"));
+    }
 });
-
 
 function initHSComponents () {
     // initialization of unfold component

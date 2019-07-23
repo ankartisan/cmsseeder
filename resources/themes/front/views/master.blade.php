@@ -658,6 +658,8 @@
 <!-- End Go to Top -->
 <script src="{{ mix('/js/base.js') }}"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/ecommerce.js') }}"></script>
+
 <script>
     window.route = '{!! Route::current()->getName() !!}';
     window.lang = '{!! Route::current()->getPrefix() !!}';
@@ -767,7 +769,6 @@
 
 </script>
 
-<script src="{{ mix('/js/ecommerce.js') }}"></script>
 
 </body>
 </html>
