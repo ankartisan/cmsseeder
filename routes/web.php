@@ -14,19 +14,19 @@
 Route::get('/', 'Web\PageController@home')->name('home');
 
 // AUTH
-Route::get('/login', 'Auth\LoginController@login')->name('login');
+Route::get('/login', 'Auth\LoginController@loginView')->name('login');
 Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
-Route::get('/register/confirmation/{code}', 'Auth\AuthController@confirmation')->name('confirmation');
+Route::get('/register/confirmation/{code}', 'Auth\ConfirmationController@confirmation')->name('confirmation');
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@resetPasswordForm')->name('password.reset');
 Route::get('/password/reset', 'Auth\ForgotPasswordController@linkRequestForm')->name('password.request');
 
-Route::post('login', 'Auth\AuthController@login');
+Route::post('login', 'Auth\LoginController@login');
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('logout', 'Auth\AuthController@logout')->name('logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 });
 
 // E-COMMERCE

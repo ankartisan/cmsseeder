@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class LoginController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
@@ -26,16 +28,40 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | AJAX
+    |--------------------------------------------------------------------------
+    */
+
+    public function login(LoginRequest $request)
+    {
+        $user = User::whereUsername($request->get('username'))->first();
+
+        if (!$this->attemptLogin($request)) {
+            return $this->setStatusCode(422)->respondWithError("Email or password are wrong");
+        }
+
+        if(!$user->confirmed) {
+            return $this->setStatusCode(422)->respondWithError("Account is not confirmed");
+        }
+
+        return $this->respond("Login successfully");
     }
 
     /*
@@ -44,7 +70,7 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     */
 
-    public function login(Request $request)
+    public function loginView(Request $request)
     {
         return view('auth/login');
     }
