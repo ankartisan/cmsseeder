@@ -13,21 +13,6 @@
 
 Route::get('/', 'Web\PageController@home')->name('home');
 
-// AUTH
-Route::get('/login', 'Auth\LoginController@loginView')->name('login');
-Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
-Route::get('/register/confirmation/{code}', 'Auth\ConfirmationController@confirmation')->name('confirmation');
-Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@resetPasswordForm')->name('password.reset');
-Route::get('/password/reset', 'Auth\ForgotPasswordController@linkRequestForm')->name('password.request');
-
-Route::post('login', 'Auth\LoginController@login');
-Route::post('register', 'Auth\RegisterController@register');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-});
 
 // E-COMMERCE
 Route::get('/products/search', 'Web\ProductController@search');
@@ -36,7 +21,6 @@ Route::get('/shop', 'Web\ProductController@index')->name('products');
 Route::get('/cart', 'Web\CartController@cart')->name('cart');
 Route::get('/checkout', 'Web\CartController@checkout')->name('checkout');
 Route::post('/order', 'Web\OrderController@create');
-
 
 Route::post('/cart/add/{id}', 'Web\CartController@add');
 Route::post('/cart/remove/{id}', 'Web\CartController@remove');
@@ -55,6 +39,23 @@ Route::get('/sitemap.xml', 'Web\PageController@sitemapXML')->name('sitemap_xml')
 
 // ADMIN
 Route::group(['prefix' => 'admin'], function () {
+    // AUTH
+    Route::get('/login', 'Auth\LoginController@loginView')->name('login');
+    Route::get('/register', 'Auth\RegisterController@registerView')->name('register');
+    Route::get('/register/confirmation/{code}', 'Auth\ConfirmationController@confirmation')->name('confirmation');
+    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@resetPasswordForm')->name('password.reset');
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@linkRequestForm')->name('password.request');
+
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+    });
+
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
     Route::group(['middleware' => 'admin'], function () {
         Route::get('/dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
 

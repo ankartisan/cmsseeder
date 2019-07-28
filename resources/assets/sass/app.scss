@@ -2,16 +2,13 @@
  * Global
  * ===================
  */
-#navbar-top {
-  z-index:100 !important;
-}
-
-.g-bg-main-light-v1 {
-  background-color: #262729;
-}
 
 .btn-cursor {
-  cursor:pointer;
+  cursor:pointer !important;
+}
+
+.hidden {
+  display:none !important;
 }
 
 

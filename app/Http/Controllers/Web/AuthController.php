@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Requests\UserLoginRequest;
-use App\Models\User;
+use App\Http\Requests\CustomerLoginRequest;
+use App\Models\Customer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends ApiController
+class AuthController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ class LoginController extends ApiController
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -41,7 +41,12 @@ class LoginController extends ApiController
 
     protected function guard()
     {
-        return Auth::guard('web');
+        return Auth::guard('customer');
+    }
+
+    protected function username()
+    {
+        return 'username';
     }
 
     /*
@@ -50,16 +55,12 @@ class LoginController extends ApiController
     |--------------------------------------------------------------------------
     */
 
-    public function login(UserLoginRequest $request)
+    public function login(CustomerLoginRequest $request)
     {
-        $user = User::whereEmail($request->get('email'))->first();
+        $customer = Customer::whereUsername($request->get('username'))->first();
 
         if (!$this->attemptLogin($request)) {
             return $this->setStatusCode(422)->respondWithError("Email or password are wrong");
-        }
-
-        if(!$user->confirmed) {
-            return $this->setStatusCode(422)->respondWithError("Account is not confirmed");
         }
 
         return $this->respond("Login successfully");

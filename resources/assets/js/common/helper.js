@@ -107,6 +107,38 @@ class Helper {
                         }
                     }
                     break;
+                case 'password':
+                    if(elem.value != ""){
+                        dots = elem.name.split(".");
+                        if(dots.length > 1) {
+                            var brackets = dots[0].search(/\[[0-9]\]/);
+                            if(brackets > -1) { // items[0].something
+                                var key = dots[0].substring(0,brackets); // items
+                                var index = dots[0][brackets + 1]; // 0
+                                if(!formParams.hasOwnProperty(key)) {
+                                    formParams[key] = [];
+                                }
+                                if(!formParams[key].hasOwnProperty(index)) {
+                                    formParams[key][index] = {};
+                                }
+                                formParams[key][index][dots[1]] = elem.value;
+                            } else {
+                                if(!formParams.hasOwnProperty(dots[0])) {
+                                    formParams[dots[0]] = {};
+                                }
+                                formParams[dots[0]][dots[1]] = elem.value
+                            }
+                        } else if(elem.name.slice(-2) === '[]') {
+                            let key = elem.name.substring(0,elem.name.length - 2);
+                            if(!formParams.hasOwnProperty(key)) {
+                                formParams[key] = [];
+                            }
+                            formParams[key].push(elem.value);
+                        } else {
+                            formParams[elem.name] = elem.value;
+                        }
+                    }
+                    break;
                 case 'number':
                     if(elem.value != ""){
                         dots = elem.name.split(".");

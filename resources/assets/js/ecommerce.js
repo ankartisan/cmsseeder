@@ -70,3 +70,20 @@ function initHSComponents () {
     // initialization of unfold component
     $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
 }
+// Toggle password container
+$(document).on('change', '#checkbox-create-account', function(event){
+        if($(this).is(':checked')) {
+            $('.password-container').removeClass('hidden');
+        } else {
+            $('.password-container').addClass('hidden');
+        }
+});
+
+// Toggle delivery address container
+$(document).on('change', '#checkbox-delivery-billing-address', function(event){
+    if($(this).is(':checked')) {
+        $('.delivery-address-container').addClass('hidden');
+    } else {
+        $('.delivery-address-container').removeClass('hidden');
+    }
+});

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class LoginRequest extends ApiRequest
+class UserLoginRequest extends ApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class LoginRequest extends ApiRequest
     public function rules(Request $request)
     {
         return [
-            'username' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ];
     }

@@ -23,7 +23,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'status_id',
         'cart_id',
         'hash',
@@ -33,6 +33,11 @@ class Order extends Model
     public function products()
     {
         return $this->hasMany(OrderProduct::class, 'order_id', 'id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 
     public function getStatusAttribute()

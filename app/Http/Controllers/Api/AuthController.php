@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserLoginRequest;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends ApiController
 {
-    public function login(LoginRequest $request)
+    public function login(UserLoginRequest $request)
     {
         $credentials = [
             'email' => $request->get('email'),

@@ -132,148 +132,380 @@
             </div>
 
             <div class="col-lg-8 order-lg-1">
-                <form id="create-order" class="js-validate">
-                    <div class="border-bottom pb-7 mb-7">
-                        <!-- Title -->
-                        <div class="mb-4">
-                            <h2 class="h4">Billing address</h2>
+                <!-- Basics Accordion -->
+                <div id="basicsAccordion">
+                    <!-- Card -->
+                    <div class="card mb-3">
+                        <div class="card-header card-collapse" id="basicsHeadingOne">
+                            <h5 class="mb-0">
+                                <button type="button" class="btn btn-link btn-block d-flex justify-content-between card-btn p-3"
+                                        data-toggle="collapse"
+                                        data-target="#basicsCollapseOne"
+                                        aria-expanded="true"
+                                        aria-controls="basicsCollapseOne">
+                                    Customer Information
+
+                                    <span class="card-btn-arrow">
+                                        <span class="fas fa-arrow-down small"></span>
+                                     </span>
+                                </button>
+                            </h5>
                         </div>
-                        <!-- End Title -->
+                        <div id="basicsCollapseOne" class="collapse show"
+                             aria-labelledby="basicsHeadingOne"
+                             data-parent="#basicsAccordion">
+                            <div class="card-body">
+                                <form id="create-order" class="js-validate">
+                                    <div class="border-bottom pb-7 mb-7">
+                                        <!-- Billing Form -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label for="first_name" class="form-label">
+                                                        First name
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input id="first_name" type="text" class="form-control" name="customer.first_name" required data-msg="Please enter your first name." />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
 
-                        <!-- Billing Form -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label for="first_name" class="form-label">
-                                        First name
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input id="first_name" type="text" class="form-control" name="first_name" required data-msg="Please enter your frist name." />
-                                </div>
-                                <!-- End Input -->
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Last name
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" class="form-control" name="customer.last_name" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="w-100"></div>
+
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Email address
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="email" class="form-control"  name="customer.email" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Phone
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="number" class="form-control" placeholder="0631234567" name="customer.phone" aria-label="0631234567" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="w-100"></div>
+
+                                            <div class="col-md-8">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Street address
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" class="form-control" name="billing.street_address" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Apt, suite, etc.
+                                                    </label>
+                                                    <input type="text" name="billing.apt" class="form-control" />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        City
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" class="form-control" name="billing.city" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="w-100"></div>
+
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-4">
+                                                    <label class="form-label">
+                                                        Country
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <select class="form-control custom-select" name="billing.country_id" required >
+                                                        <option value="">Select country</option>
+
+                                                    </select>
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-4">
+                                                    <label class="form-label">
+                                                        Postcode/Zip
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="text" class="form-control" name="billing.postcode" required />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="js-form-message">
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center text-muted mb-4">
+                                                        <input type="checkbox" class="custom-control-input" id="checkbox-delivery-billing-address"
+                                                               name="delivery_billing_address" checked >
+                                                        <label class="custom-control-label" for="checkbox-delivery-billing-address">
+                                                            <small>Delivery address same as billing address</small>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row delivery-address-container hidden">
+                                            <!-- Delivery address -->
+                                                <div class="col-12">
+                                                    <div class="mb-4">
+                                                        <h3 class="h6">Delivery address</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100"></div>
+                                                <div class="col-md-6">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label for="first_name" class="form-label">
+                                                            First name
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="delivery.first_name" required data-msg="Please enter your first name." />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label class="form-label">
+                                                            Last name
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="delivery.last_name" required />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="w-100"></div>
+                                                <div class="col-md-8">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label class="form-label">
+                                                            Street address
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="delivery.street_address" required />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label class="form-label">
+                                                            Apt, suite, etc.
+                                                        </label>
+                                                        <input type="text" name="delivery.apt" class="form-control" />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label class="form-label">
+                                                            City
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="delivery.city" required />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="w-100"></div>
+                                                <div class="col-md-6">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-4">
+                                                        <label class="form-label">
+                                                            Country
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <select class="form-control custom-select" name="delivery.country_id" required >
+                                                            <option value="">Select country</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-4">
+                                                        <label class="form-label">
+                                                            Postcode/Zip
+                                                            <span class="text-danger">*</span>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="delivery.postcode" required />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="js-form-message">
+                                                    <div class="custom-control custom-checkbox d-flex align-items-center text-muted mb-2">
+                                                        <input type="checkbox" class="custom-control-input" id="checkbox-create-account" name="create_account" >
+                                                        <label class="custom-control-label" for="checkbox-create-account">
+                                                            <small>Create account</small>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row password-container hidden">
+                                            <div class="w-100"></div>
+                                            <div class="col-md-6">
+                                                <div class="js-form-message mb-2">
+                                                    <label class="form-label">
+                                                        Password
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <input type="password" class="form-control" name="customer.password" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="js-form-message mb-2">
+                                                    <label class="form-label">
+                                                        Repeat Password
+                                                    </label>
+                                                    <input type="password" name="customer.password_repeat" class="form-control" required/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Billing Form -->
+                                    </div>
+                                    <!-- Place Order -->
+                                    <div class="mb-7">
+                                        <!-- Button -->
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <a href="{{ route('cart') }}"><small class="fas fa-arrow-left mr-2"></small> Return to cart</a>
+                                            <button type="submit" class="btn btn-primary btn-sm-wide btn-pill transition-3d-hover">Place order</button>
+                                        </div>
+                                        <!-- End Button -->
+                                    </div>
+                                    <!-- Place Order -->
+                                </form>
+
                             </div>
-
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        Last name
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" name="last_name" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="w-100"></div>
-
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        Email address
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="email" class="form-control" name="email" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        Phone
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="number" class="form-control" placeholder="0631234567" aria-label="0631234567" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="w-100"></div>
-
-                            <div class="col-md-8">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        Street address
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" name="street_address" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="col-md-4">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        Apt, suite, etc.
-                                    </label>
-                                    <input type="text" name="apt" class="form-control" />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="col-md-12">
-                                <!-- Input -->
-                                <div class="js-form-message mb-6">
-                                    <label class="form-label">
-                                        City
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" name="city" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="w-100"></div>
-
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-4">
-                                    <label class="form-label">
-                                        Country
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <select class="form-control custom-select" required >
-                                        <option value="">Select country</option>
-
-                                    </select>
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="col-md-6">
-                                <!-- Input -->
-                                <div class="js-form-message mb-4">
-                                    <label class="form-label">
-                                        Postcode/Zip
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="text" class="form-control" name="postcode" required />
-                                </div>
-                                <!-- End Input -->
-                            </div>
-
-                            <div class="w-100"></div>
                         </div>
-                        <!-- End Billing Form -->
                     </div>
+                    <!-- End Card -->
 
-                    <!-- Place Order -->
-                    <div class="mb-7">
-                        <!-- Button -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('cart') }}"><small class="fas fa-arrow-left mr-2"></small> Return to cart</a>
-                            <button type="submit" class="btn btn-primary btn-sm-wide btn-pill transition-3d-hover">Place order</button>
+                    <!-- Card -->
+                    <div class="card mb-3">
+                        <div class="card-header card-collapse" id="basicsHeadingTwo">
+                            <h5 class="mb-0">
+                                <button type="button" class="btn btn-link btn-block d-flex justify-content-between card-btn collapsed p-3"
+                                        data-toggle="collapse"
+                                        data-target="#basicsCollapseTwo"
+                                        aria-expanded="false"
+                                        aria-controls="basicsCollapseTwo">
+                                    I already have an account
+
+                                    <span class="card-btn-arrow">
+                                        <span class="fas fa-arrow-down small"></span>
+                                        </span>
+                                </button>
+                            </h5>
                         </div>
-                        <!-- End Button -->
+                        <div id="basicsCollapseTwo" class="collapse"
+                             aria-labelledby="basicsHeadingTwo"
+                             data-parent="#basicsAccordion">
+                            <div class="card-body">
+                                <!-- Form -->
+                                <form class="js-validate w-md-50 mx-md-auto">
+                                    <!-- Title -->
+                                    <div class="mb-4 text-center">
+                                        <h2 class="h3 text-primary font-weight-normal mb-0">Welcome <span class="font-weight-semi-bold">back</span></h2>
+                                        <p>Login to finish your order.</p>
+                                    </div>
+                                    <!-- End Title -->
+
+                                    <!-- Form Group -->
+                                    <div class="js-form-message form-group">
+                                        <label class="form-label" for="signinSrEmailExample1">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="signinSrEmailExample1" placeholder="Email address" aria-label="Email address" required
+                                               data-msg="Please enter a valid email address."
+                                               data-error-class="u-has-error"
+                                               data-success-class="u-has-success">
+                                    </div>
+                                    <!-- End Form Group -->
+
+                                    <!-- Form Group -->
+                                    <div class="js-form-message form-group">
+                                        <label class="form-label" for="signinSrPasswordExample1">
+                                            <span class="d-flex justify-content-between align-items-center">
+                                              Password
+                                            </span>
+                                        </label>
+                                        <input type="password" class="form-control" name="password" id="signinSrPasswordExample1" placeholder="********" aria-label="********" required
+                                               data-msg="Your password is invalid. Please try again."
+                                               data-error-class="u-has-error"
+                                               data-success-class="u-has-success">
+                                    </div>
+                                    <!-- End Form Group -->
+
+                                    <!-- Button -->
+                                    <div class="row align-items-center mb-5">
+                                        <div class="col-6">
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <button type="submit" class="btn btn-primary transition-3d-hover">Login</button>
+                                        </div>
+                                    </div>
+                                    <!-- End Button -->
+                                </form>
+                                <!-- End Form -->
+                            </div>
+                        </div>
                     </div>
-                    <!-- Place Order -->
-                </form>
+                    <!-- End Card -->
+                </div>
+                <!-- End Basics Accordion -->
+
+
+
+
+
+
             </div>
         </div>
     </div>
