@@ -257,7 +257,9 @@
                                                     </label>
                                                     <select class="form-control custom-select" name="billing.country_id" required >
                                                         <option value="">Select country</option>
-
+                                                        @foreach($countries as $country)
+                                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <!-- End Input -->

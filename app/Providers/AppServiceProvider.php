@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
         
         View::share('cart', isset($cart) ? $cart : null);
 
-
     }
 
     /**

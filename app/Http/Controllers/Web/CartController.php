@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Transformers\CartTransformer;
 use App\Models\Cart;
 use App\Models\CartProduct;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Cookie;
@@ -77,7 +78,9 @@ class CartController extends ApiController
     {
         $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
 
-        return view('checkout', ["cart" => $cart]);
+        $countries = Country::all();
+
+        return view('checkout', ["cart" => $cart, "countries" => $countries]);
     }
 
 }
