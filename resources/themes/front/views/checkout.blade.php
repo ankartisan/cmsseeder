@@ -282,7 +282,7 @@
                                                 <div class="js-form-message">
                                                     <div class="custom-control custom-checkbox d-flex align-items-center text-muted mb-4">
                                                         <input type="checkbox" class="custom-control-input" id="checkbox-delivery-billing-address"
-                                                               name="delivery_billing_address" checked >
+                                                               name="delivery_billing_address" value="1" checked >
                                                         <label class="custom-control-label" for="checkbox-delivery-billing-address">
                                                             <small>Delivery address same as billing address</small>
                                                         </label>

@@ -51,11 +51,6 @@ class Customer extends Model implements AuthenticatableContract,AuthorizableCont
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function setUsernameAttribute($value)
-    {
-        $this->attributes['username'] = $value ? $value : $this->first_name." ".$this->last_name;
-    }
-
     /*
     |--------------------------------------------------------------------------
     | DOMAIN METHODS
