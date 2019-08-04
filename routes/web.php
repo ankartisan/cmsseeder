@@ -13,6 +13,9 @@
 
 Route::get('/', 'Web\PageController@home')->name('home');
 
+// AUTH
+Route::get('/login', 'Web\AuthController@loginView')->name('login');
+//Route::post('/login', 'Web\AuthController@login');
 
 // E-COMMERCE
 Route::get('/products/search', 'Web\ProductController@search');

@@ -384,7 +384,7 @@
                                             <div class="col-12">
                                                 <div class="js-form-message">
                                                     <div class="custom-control custom-checkbox d-flex align-items-center text-muted mb-2">
-                                                        <input type="checkbox" class="custom-control-input" id="checkbox-create-account" name="create_account" >
+                                                        <input type="checkbox" class="custom-control-input" value="1" id="checkbox-create-account" name="create_account" >
                                                         <label class="custom-control-label" for="checkbox-create-account">
                                                             <small>Create account</small>
                                                         </label>

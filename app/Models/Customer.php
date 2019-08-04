@@ -3,22 +3,13 @@
 namespace App\Models;
 
 use App\Mail\UserResetPasswordMail;
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Auth\Passwords\CanResetPassword as ResetPassword;
 
-
-class Customer extends Model implements AuthenticatableContract,AuthorizableContract,CanResetPasswordContract
+class Customer extends Model
 {
-    use Authenticatable, Authorizable, HasRoles, ResetPassword, Notifiable;
+    const TYPE_PERSON = 1;
+    const TYPE_COMPANY = 2;
 
     /**
      * The database table used by the model.
@@ -32,24 +23,8 @@ class Customer extends Model implements AuthenticatableContract,AuthorizableCont
      *
      * @var array
      */
-    protected $fillable = ['username', 'first_name', 'last_name', 'email', 'password'];
+    protected $fillable = ['type_id', 'account_id', 'company_name', 'first_name', 'last_name', 'email', 'company_tax_number', 'company_registration_number'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
-
-    /*
-    |--------------------------------------------------------------------------
-    | MUTATORS
-    |--------------------------------------------------------------------------
-    */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
 
     /*
     |--------------------------------------------------------------------------

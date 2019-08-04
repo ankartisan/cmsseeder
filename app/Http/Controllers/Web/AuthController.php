@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\CustomerLoginRequest;
+use App\Models\Account;
 use App\Models\Customer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class AuthController extends ApiController
 
     public function login(CustomerLoginRequest $request)
     {
-        $customer = Customer::whereUsername($request->get('username'))->first();
+        $customer = Account::whereUsername($request->get('username'))->first();
 
         if (!$this->attemptLogin($request)) {
             return $this->setStatusCode(422)->respondWithError("Email or password are wrong");
