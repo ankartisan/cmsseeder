@@ -51,5 +51,10 @@ class Account extends Model implements AuthenticatableContract,AuthorizableContr
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'account_id', 'id')->first();
+    }
+
 
 }

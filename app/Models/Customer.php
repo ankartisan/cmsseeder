@@ -26,6 +26,31 @@ class Customer extends Model
     protected $fillable = ['type_id', 'account_id', 'company_name', 'first_name', 'last_name', 'email', 'company_tax_number', 'company_registration_number'];
 
 
+    public function addresses()
+    {
+        return $this->hasManyThrough(Address::class, CustomerAddress::class, 'customer_id', 'id');
+    }
+
+    public function billingAddress()
+    {
+        return $this->addresses()->whereIn('type_id', [Address::TYPE_BILLING, Address::TYPE_BILLING_DELIVERY])->first();
+    }
+
+    public function deliveryAddress()
+    {
+        return $this->addresses()->whereIn('type_id', [Address::TYPE_DELIVERY, Address::TYPE_BILLING_DELIVERY])->first();
+    }
+
+    public function address()
+    {
+        return $this->addresses()->where('type_id', Address::TYPE_BILLING_DELIVERY)->first();
+    }
+
+    public function isDeliveryBillingAddress()
+    {
+        return $this->addresses()->whereIn('type_id', [Address::TYPE_BILLING_DELIVERY])->first() ? True : False;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | DOMAIN METHODS

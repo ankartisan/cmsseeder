@@ -158,6 +158,9 @@
                                 <form id="create-order" class="js-validate">
                                     <div class="border-bottom pb-7 mb-7">
                                         <!-- Billing Form -->
+                                        @if($customer)
+                                            <input type="hidden" name="customer_id" value="{{ $customer->id }}"  />
+                                        @endif
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <!-- Input -->
@@ -166,7 +169,8 @@
                                                         First name
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input id="first_name" type="text" class="form-control" name="customer.first_name" required data-msg="Please enter your first name." />
+                                                    <input id="first_name" type="text" class="form-control"  name="customer.first_name"
+                                                           required data-msg="Please enter your first name." value="@if($customer){{ $customer->first_name }}@endif" />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -178,7 +182,8 @@
                                                         Last name
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" name="customer.last_name" required />
+                                                    <input type="text" class="form-control" name="customer.last_name" required
+                                                            value="@if($customer){{ $customer->last_name }}@endif" />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -192,7 +197,7 @@
                                                         Email address
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="email" class="form-control"  name="customer.email" required />
+                                                    <input type="email" class="form-control" value="@if($customer){{ $customer->email }}@endif"  name="customer.email" required />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -218,7 +223,8 @@
                                                         Street address
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" name="billing.street_address" required />
+                                                    <input type="text" class="form-control" name="billing.address" required
+                                                            value="@if($customer){{ $customer->billingAddress()->address }}@endif"/>
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -229,7 +235,8 @@
                                                     <label class="form-label">
                                                         Apt, suite, etc.
                                                     </label>
-                                                    <input type="text" name="billing.apt" class="form-control" />
+                                                    <input type="text" name="billing.apt" value="@if($customer){{ $customer->billingAddress()->apt }}@endif"
+                                                           class="form-control" />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -241,7 +248,8 @@
                                                         City
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" name="billing.city" required />
+                                                    <input type="text" class="form-control" value="@if($customer){{ $customer->billingAddress()->city }}@endif"
+                                                           name="billing.city" required />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -258,7 +266,8 @@
                                                     <select class="form-control custom-select" name="billing.country_id" required >
                                                         <option value="">Select country</option>
                                                         @foreach($countries as $country)
-                                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                            <option value="{{ $country->id }}" @if($customer) @if($customer->billingAddress()->country_id == $country->id) selected @endif @endif
+                                                            >{{ $country->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -272,7 +281,8 @@
                                                         Postcode/Zip
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="text" class="form-control" name="billing.postcode" required />
+                                                    <input type="text" class="form-control" name="billing.zip" required
+                                                           value="@if($customer){{ $customer->billingAddress()->zip }}@endif" />
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
@@ -282,7 +292,7 @@
                                                 <div class="js-form-message">
                                                     <div class="custom-control custom-checkbox d-flex align-items-center text-muted mb-4">
                                                         <input type="checkbox" class="custom-control-input" id="checkbox-delivery-billing-address"
-                                                               name="delivery_billing_address" value="1" checked >
+                                                               name="delivery_billing_address" value="1" @if($customer) @if($customer->isDeliveryBillingAddress()) checked @endif @else checked @endif >
                                                         <label class="custom-control-label" for="checkbox-delivery-billing-address">
                                                             <small>Delivery address same as billing address</small>
                                                         </label>
@@ -305,7 +315,8 @@
                                                             First name
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" class="form-control" name="delivery.first_name" required data-msg="Please enter your first name." />
+                                                        <input type="text" class="form-control" name="delivery.first_name" required data-msg="Please enter your first name."
+                                                                value="@if($customer){{ $customer->deliveryAddress()->first_name }}@endif"/>
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
@@ -316,7 +327,8 @@
                                                             Last name
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" class="form-control" name="delivery.last_name" required />
+                                                        <input type="text" class="form-control" name="delivery.last_name"  required
+                                                                value="@if($customer){{ $customer->deliveryAddress()->last_name }}@endif" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
@@ -328,7 +340,8 @@
                                                             Street address
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" class="form-control" name="delivery.street_address" required />
+                                                        <input type="text" class="form-control" name="delivery.address" required
+                                                                value="@if($customer){{ $customer->deliveryAddress()->address }}@endif" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
@@ -338,7 +351,8 @@
                                                         <label class="form-label">
                                                             Apt, suite, etc.
                                                         </label>
-                                                        <input type="text" name="delivery.apt" class="form-control" />
+                                                        <input type="text" name="delivery.apt" class="form-control"
+                                                               value="@if($customer){{ $customer->deliveryAddress()->apt }}@endif" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
@@ -349,7 +363,8 @@
                                                             City
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" class="form-control" name="delivery.city" required />
+                                                        <input type="text" class="form-control" name="delivery.city" required
+                                                               value="@if($customer){{ $customer->deliveryAddress()->city }}@endif" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
@@ -363,7 +378,9 @@
                                                         </label>
                                                         <select class="form-control custom-select" name="delivery.country_id" required >
                                                             <option value="">Select country</option>
-
+                                                            @foreach($countries as $country)
+                                                                <option value="{{ $country->id }}" @if($customer) @if($customer->deliveryAddress()->country_id == $country->id) selected @endif @endif>{{ $country->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <!-- End Input -->
@@ -375,11 +392,13 @@
                                                             Postcode/Zip
                                                             <span class="text-danger">*</span>
                                                         </label>
-                                                        <input type="text" class="form-control" name="delivery.postcode" required />
+                                                        <input type="text" class="form-control" name="delivery.zip" required
+                                                               value="@if($customer){{ $customer->deliveryAddress()->zip }}@endif" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>
                                         </div>
+                                        @if(!$customer)
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="js-form-message">
@@ -392,6 +411,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                         <div class="row password-container hidden">
                                             <div class="w-100"></div>
                                             <div class="col-md-6">
@@ -430,8 +450,8 @@
                         </div>
                     </div>
                     <!-- End Card -->
-
                     <!-- Card -->
+                    @if(!$customer)
                     <div class="card mb-3">
                         <div class="card-header card-collapse" id="basicsHeadingTwo">
                             <h5 class="mb-0">
@@ -453,7 +473,7 @@
                              data-parent="#basicsAccordion">
                             <div class="card-body">
                                 <!-- Form -->
-                                <form class="js-validate w-md-50 mx-md-auto">
+                                <form id="login-order" class="js-validate w-md-50 mx-md-auto">
                                     <!-- Title -->
                                     <div class="mb-4 text-center">
                                         <h2 class="h3 text-primary font-weight-normal mb-0">Welcome <span class="font-weight-semi-bold">back</span></h2>
@@ -463,8 +483,8 @@
 
                                     <!-- Form Group -->
                                     <div class="js-form-message form-group">
-                                        <label class="form-label" for="signinSrEmailExample1">Email address</label>
-                                        <input type="email" class="form-control" name="email" id="signinSrEmailExample1" placeholder="Email address" aria-label="Email address" required
+                                        <label class="form-label" for="login-email">Email address</label>
+                                        <input type="email" class="form-control" name="username" id="login-email" placeholder="Email address" aria-label="Email address" required
                                                data-msg="Please enter a valid email address."
                                                data-error-class="u-has-error"
                                                data-success-class="u-has-success">
@@ -473,17 +493,21 @@
 
                                     <!-- Form Group -->
                                     <div class="js-form-message form-group">
-                                        <label class="form-label" for="signinSrPasswordExample1">
+                                        <label class="form-label" for="login-password">
                                             <span class="d-flex justify-content-between align-items-center">
                                               Password
                                             </span>
                                         </label>
-                                        <input type="password" class="form-control" name="password" id="signinSrPasswordExample1" placeholder="********" aria-label="********" required
+                                        <input type="password" class="form-control" name="password" id="login-password" placeholder="********" aria-label="********" required
                                                data-msg="Your password is invalid. Please try again."
                                                data-error-class="u-has-error"
                                                data-success-class="u-has-success">
                                     </div>
                                     <!-- End Form Group -->
+
+                                    <div class="form-group" data-error="message">
+                                        <p class="text-danger center error-content"></p>
+                                    </div>
 
                                     <!-- Button -->
                                     <div class="row align-items-center mb-5">
@@ -499,15 +523,10 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <!-- End Card -->
                 </div>
                 <!-- End Basics Accordion -->
-
-
-
-
-
-
             </div>
         </div>
     </div>

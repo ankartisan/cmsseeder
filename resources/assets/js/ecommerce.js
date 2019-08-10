@@ -4,10 +4,12 @@ let errors = new Errors();
 import swal from 'sweetalert';
 window.base_api = '';
 
-/**
+/***************
  * E-commerce
+ ***************/
+/**
+ * Add product to cart
  */
-
 $(".btn-product-add").on('click', function (evt) {
     Helper.startLoading();
     let product_id = $(this).attr('data-product-id');
@@ -25,7 +27,9 @@ $(".btn-product-add").on('click', function (evt) {
             console.log(error);
         });
 });
-
+/**
+ * Remove product from cart
+ */
 $(document).on('click', '.btn-product-remove', function(){
     Helper.startLoading();
     let cart_product_id = $(this).attr('data-cart-product-id');
@@ -43,7 +47,9 @@ $(document).on('click', '.btn-product-remove', function(){
             console.log(error);
         });
 });
-
+/**
+ * Create order without account or create new one
+ */
 $("#create-order").validate({
     submitHandler: function(form) {
         Helper.startLoading();
@@ -58,6 +64,31 @@ $("#create-order").validate({
             .catch(function (error) {
                 Helper.endLoading();
                 errors.record(error.response.data.details);
+                errors.show();
+            });
+    },
+    errorPlacement: function(error, element) {
+        error.appendTo( element.parent(".form-group"));
+    }
+});
+/**
+ * Login and refresh page to refill data
+ */
+$("#login-order").validate({
+    submitHandler: function(form) {
+        Helper.startLoading();
+        errors.clear();
+        let data = Helper.getFormResults(form);
+
+        axios.post(base_api +'/login', data)
+            .then(function (response) {
+                console.log(response.data.data);
+                Helper.endLoading();
+                location.reload();
+            })
+            .catch(function (error) {
+                Helper.endLoading();
+                errors.record(error.response.data);
                 errors.show();
             });
     },

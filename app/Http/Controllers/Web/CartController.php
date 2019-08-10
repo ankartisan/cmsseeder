@@ -9,6 +9,7 @@ use App\Models\CartProduct;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
 class CartController extends ApiController
@@ -78,9 +79,13 @@ class CartController extends ApiController
     {
         $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
 
+        $customer = Auth::guard('customer')->user() ? Auth::guard('customer')->user()->customer() : null;
+
         $countries = Country::all();
 
-        return view('checkout', ["cart" => $cart, "countries" => $countries]);
+        //var_dump($customer->billingAddress()); die();
+
+        return view('checkout', ["cart" => $cart, "countries" => $countries, "customer" => $customer]);
     }
 
 }

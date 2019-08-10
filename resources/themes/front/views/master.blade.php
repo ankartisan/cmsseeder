@@ -258,23 +258,67 @@
                     <!-- End Shopping Cart -->
 
                     <!-- Account Login -->
-                    {{--<li class="list-inline-item">--}}
-                        {{--<!-- Account Sidebar Toggle Button -->--}}
-                        {{--<a id="sidebarNavToggler" class="btn btn-xs btn-icon btn-text-secondary" href="javascript:;" role="button"--}}
-                           {{--aria-controls="sidebarContent"--}}
-                           {{--aria-haspopup="true"--}}
-                           {{--aria-expanded="false"--}}
-                           {{--data-unfold-event="click"--}}
-                           {{--data-unfold-hide-on-scroll="false"--}}
-                           {{--data-unfold-target="#sidebarContent"--}}
-                           {{--data-unfold-type="css-animation"--}}
-                           {{--data-unfold-animation-in="fadeInRight"--}}
-                           {{--data-unfold-animation-out="fadeOutRight"--}}
-                           {{--data-unfold-duration="500">--}}
-                            {{--<span class="fas fa-user-circle btn-icon__inner font-size-1"></span>--}}
-                        {{--</a>--}}
-                        {{--<!-- End Account Sidebar Toggle Button -->--}}
-                    {{--</li>--}}
+                    @if(\Illuminate\Support\Facades\Auth::guard('customer')->user())
+                    <li class="list-inline-item">
+                        <!-- Account Sidebar Toggle Button -->
+                        <a id="sidebarNavToggler" class="btn btn-xs btn-icon btn-text-secondary" href="javascript:;" role="button"
+                           aria-controls="sidebarAccount"
+                           aria-haspopup="true"
+                           aria-expanded="false"
+                           data-unfold-event="click"
+                           data-unfold-hide-on-scroll="false"
+                           data-unfold-target="#sidebarAccount"
+                           data-unfold-type="css-animation"
+                           data-unfold-animation-in="fadeInRight"
+                           data-unfold-animation-out="fadeOutRight"
+                           data-unfold-duration="500">
+                            <span class="fas fa-user-circle btn-icon__inner font-size-1"></span>
+                        </a>
+                        <!-- End Account Sidebar Toggle Button -->
+
+
+
+                        <aside id="sidebarAccount" class="u-sidebar" aria-labelledby="sidebarNavToggler">
+                            <div class="u-sidebar__scroller">
+                                <div class="u-sidebar__container">
+                                    <div class="u-sidebar__cart-footer-offset">
+                                        <!-- Header -->
+                                        <header class="card-header bg-light py-3 px-5">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h3 class="h6 mb-0">Account</h3>
+
+                                                <button type="button" class="close"
+                                                aria-controls="sidebarAccount"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                data-unfold-event="click"
+                                                data-unfold-hide-on-scroll="false"
+                                                data-unfold-target="#sidebarAccount"
+                                                data-unfold-type="css-animation"
+                                                data-unfold-animation-in="fadeInRight"
+                                                data-unfold-animation-out="fadeOutRight"
+                                                data-unfold-duration="500">
+                                                <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                        </header>
+                                        <!-- End Header -->
+
+                                        <div class="js-scrollbar u-sidebar__body">
+                                            <div class="u-sidebar__content">
+                                                <!-- Body -->
+                                                    Account
+                                                <!-- End Body -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Content -->
+                        </aside>
+                        <!-- End Account Sidebar Navigation -->
+                    </li>
+                    @endif
                     <!-- End Account Login -->
                 </ul>
             </div>
