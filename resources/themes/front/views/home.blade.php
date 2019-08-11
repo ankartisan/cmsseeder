@@ -176,7 +176,7 @@
     <!-- End Features Section -->
 
     <!-- Categories Section -->
-    <div class="container space-2 space-lg-3">
+    <div class="container space-2 space-lg-2">
         <!-- Title -->
         <div class="w-md-80 w-lg-40 text-center mx-md-auto mb-9">
             <h2 class="h3 font-weight-medium">The better way to shop with Front top-products</h2>
@@ -261,7 +261,7 @@
     <!-- End Categories Section -->
 
     <!-- Products Section -->
-    <div class="container space-2 space-lg-3">
+    <div class="container space-2 space-lg-2">
         <!-- Title -->
         <div class="w-md-80 w-lg-40 text-center mx-md-auto mb-9">
             <h2 class="h3 font-weight-medium">What's trending</h2>

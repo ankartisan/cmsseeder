@@ -22,19 +22,19 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="h6 mb-0">Your Shopping Cart</h3>
 
-                        {{--<button type="button" class="close"--}}
-                                {{--aria-controls="sidebarContent"--}}
-                                {{--aria-haspopup="true"--}}
-                                {{--aria-expanded="false"--}}
-                                {{--data-unfold-event="click"--}}
-                                {{--data-unfold-hide-on-scroll="false"--}}
-                                {{--data-unfold-target="#sidebarContent"--}}
-                                {{--data-unfold-type="css-animation"--}}
-                                {{--data-unfold-animation-in="fadeInRight"--}}
-                                {{--data-unfold-animation-out="fadeOutRight"--}}
-                                {{--data-unfold-duration="500">--}}
-                            {{--<span aria-hidden="true">×</span>--}}
-                        {{--</button>--}}
+                        <button type="button" class="close"
+                                aria-controls="sidebarContent"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                data-unfold-event="click"
+                                data-unfold-hide-on-scroll="false"
+                                data-unfold-target="#sidebarContent"
+                                data-unfold-type="css-animation"
+                                data-unfold-animation-in="fadeInRight"
+                                data-unfold-animation-out="fadeOutRight"
+                                data-unfold-duration="500">
+                            <span aria-hidden="true">×</span>
+                        </button>
                     </div>
                 </header>
                 <!-- End Header -->

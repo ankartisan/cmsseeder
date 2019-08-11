@@ -5,16 +5,15 @@
         <div class="container py-5">
             <div class="row align-items-sm-center">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    <h1 class="h4 mb-0">Products grid</h1>
+                    <h1 class="h4 mb-0">Shop</h1>
                 </div>
 
                 <div class="col-sm-6">
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-no-gutter justify-content-sm-end mb-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Products</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Grid</li>
+                            <li class="breadcrumb-item"><a href="{{ route('products') }}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
                         </ol>
                     </nav>
                     <!-- End Breadcrumb -->
@@ -51,140 +50,6 @@
                             <input type="text" class="form-control form-control-sm max-width-10 mt-0" id="rangeSliderExample3MaxResult">
                         </div>
                         <!-- End Range Slider -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Gender</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="genderMen" checked>
-                                <label class="custom-control-label text-lh-md" for="genderMen">Men</label>
-                            </div>
-                            <small>73</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="genderWomen" checked>
-                                <label class="custom-control-label text-lh-md" for="genderWomen">Women</label>
-                            </div>
-                            <small>51</small>
-                        </div>
-                        <!-- End Checkboxes -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Brand</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandAdidas">
-                                <label class="custom-control-label" for="brandAdidas">Adidas</label>
-                            </div>
-                            <small>16</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandNewBalance">
-                                <label class="custom-control-label" for="brandNewBalance">New Balance</label>
-                            </div>
-                            <small>8</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandNike">
-                                <label class="custom-control-label" for="brandNike">Nike</label>
-                            </div>
-                            <small>35</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandFredPerry">
-                                <label class="custom-control-label" for="brandFredPerry">Fred Perry</label>
-                            </div>
-                            <small>5</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="brandTnf">
-                                <label class="custom-control-label" for="brandTnf">The North Face</label>
-                            </div>
-                            <small>1</small>
-                        </div>
-                        <!-- End Checkboxes -->
-
-                        <!-- View More - Collapse -->
-                        <div class="collapse" id="collapseBrand">
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="brandGucci">
-                                    <label class="custom-control-label" for="brandGucci">Gucci</label>
-                                </div>
-                                <small>5</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="brandMango">
-                                    <label class="custom-control-label" for="brandMango">Mango</label>
-                                </div>
-                                <small>1</small>
-                            </div>
-                        </div>
-                        <!-- End View More - Collapse -->
-
-                        <!-- Link -->
-                        <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseBrand" role="button" aria-expanded="false" aria-controls="collapseBrand">
-                            <span class="link-collapse__default">View more</span>
-                            <span class="link-collapse__active">View less</span>
-                            <span class="link__icon ml-1">
-                  <span class="link__icon-inner">+</span>
-                </span>
-                        </a>
-                        <!-- End Link -->
-                    </div>
-
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Size</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeS" checked>
-                                <label class="custom-control-label" for="sizeS">S</label>
-                            </div>
-                            <small>27</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeM">
-                                <label class="custom-control-label" for="sizeM">M</label>
-                            </div>
-                            <small>18</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeL" checked>
-                                <label class="custom-control-label" for="sizeL">L</label>
-                            </div>
-                            <small>0</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeXL">
-                                <label class="custom-control-label" for="sizeXL">XL</label>
-                            </div>
-                            <small>1</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="sizeXXL">
-                                <label class="custom-control-label" for="sizeXXL">XXL</label>
-                            </div>
-                            <small>2</small>
-                        </div>
-                        <!-- End Checkboxes -->
                     </div>
 
                     <div class="border-bottom pb-4 mb-4">
@@ -265,88 +130,6 @@
                         <!-- End Link -->
                     </div>
 
-                    <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Rating</h4>
-
-                        <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating1">
-                                <label class="custom-control-label" for="rating1">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>3</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating2">
-                                <label class="custom-control-label" for="rating2">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>10</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating3">
-                                <label class="custom-control-label" for="rating3">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>34</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating4">
-                                <label class="custom-control-label" for="rating4">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="far fa-star text-muted"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>86</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="rating5">
-                                <label class="custom-control-label" for="rating5">
-                    <span class="d-block text-warning">
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                      <span class="fas fa-star"></span>
-                    </span>
-                                </label>
-                            </div>
-                            <small>102</small>
-                        </div>
-                        <!-- End Checkboxes -->
-                    </div>
-
                     <button type="button" class="btn btn-sm btn-block btn-soft-secondary transition-3d-hover">Clear All</button>
                 </form>
             </div>
@@ -373,26 +156,6 @@
                                     <option value="topSellers">Top sellers</option>
                                 </select>
                                 <!-- End Select -->
-                            </li>
-                            <li class="list-inline-item">
-                                <!-- Select -->
-                                <select class="js-select selectpicker dropdown-select"
-                                        data-width="fit"
-                                        data-style="btn-soft-secondary btn-xs">
-                                    <option value="alphabeticalOrderSelect1" selected>A-to-Z</option>
-                                    <option value="alphabeticalOrderSelect2">Z-to-A</option>
-                                </select>
-                                <!-- End Select -->
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-xs btn-soft-secondary active" href="products-grid.html">
-                                    <span class="fas fa-th-large"></span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn btn-xs btn-soft-secondary" href="products-list.html">
-                                    <span class="fas fa-list"></span>
-                                </a>
                             </li>
                         </ul>
                     </div>
@@ -450,70 +213,4 @@
     </div>
     <!-- End Products & Filters Section -->
 
-    <!-- Subscribe Section -->
-    <div class="bg-light">
-        <div class="container space-2">
-            <div class="row justify-content-center">
-                <div class="col-md-9 col-lg-6">
-                    <!-- Title -->
-                    <div class="text-center mb-4">
-                        <h2 class="h1 font-weight-medium">Stay in the know</h2>
-                        <p>Get special offers on the latest developments from Front.</p>
-                    </div>
-                    <!-- End Title -->
-
-                    <!-- Subscribe Form -->
-                    <form class="js-validate js-form-message w-lg-85 mx-lg-auto">
-                        <label class="sr-only" for="subscribeSrEmail">Email address</label>
-                        <div class="input-group input-group-pill">
-                            <input type="email" class="form-control" name="email" id="subscribeSrEmail" placeholder="Email address" aria-label="Email address" aria-describedby="subscribeButton" required
-                                   data-msg="Please enter a valid email address.">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary btn-sm-wide" id="subscribeButton">Join</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- End Subscribe Form -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Subscribe Section -->
-
-    <!-- Clients Section -->
-    <div class="container space-2">
-        <div class="row justify-content-between text-center">
-            <div class="col-4 col-lg-2 mb-5 mb-lg-0">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/hollister.svg" alt="Image Description">
-                </div>
-            </div>
-            <div class="col-4 col-lg-2 mb-5 mb-lg-0">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/levis.svg" alt="Image Description">
-                </div>
-            </div>
-            <div class="col-4 col-lg-2 mb-5 mb-lg-0">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/new-balance.svg" alt="Image Description">
-                </div>
-            </div>
-            <div class="col-4 col-lg-2">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/puma.svg" alt="Image Description">
-                </div>
-            </div>
-            <div class="col-4 col-lg-2">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/nike.svg" alt="Image Description">
-                </div>
-            </div>
-            <div class="col-4 col-lg-2">
-                <div class="mx-4">
-                    <img class="u-clients" src="/themes/front/assets/svg/clients-logo/tnf.svg" alt="Image Description">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Clients Section -->
 @stop
