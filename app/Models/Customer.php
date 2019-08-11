@@ -23,7 +23,8 @@ class Customer extends Model
      *
      * @var array
      */
-    protected $fillable = ['type_id', 'account_id', 'company_name', 'first_name', 'last_name', 'email', 'company_tax_number', 'company_registration_number'];
+    protected $fillable = ['type_id', 'account_id', 'company_name', 'first_name', 'last_name', 'email', 'company_tax_number',
+                           'company_registration_number', 'phone_country_code', 'phone_number'];
 
 
     public function addresses()

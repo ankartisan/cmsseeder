@@ -209,7 +209,19 @@
                                                         Phone
                                                         <span class="text-danger">*</span>
                                                     </label>
-                                                    <input type="number" class="form-control" placeholder="0631234567" name="customer.phone" aria-label="0631234567" required />
+                                                    <div class="input-group">
+                                                        <div id="dribbleProfileLabel" class="input-group-prepend">
+                                                            <select class="form-control custom-select" name="customer.phone_country_code" required >
+                                                                <option value="">Country code</option>
+                                                                @foreach($countries as $country)
+                                                                    <option value="{{ $country->dial_code }}" @if($customer) @if($customer->phone_country_code == $country->dial_code) selected @endif @endif
+                                                                    >{{ $country->code }} ( {{ $country->dial_code }} )</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <input type="number" class="form-control" placeholder="0631234567" name="customer.phone_number" aria-label="0631234567" required
+                                                               value="@if($customer){{ $customer->phone_number }}@endif" />
+                                                    </div>
                                                 </div>
                                                 <!-- End Input -->
                                             </div>
