@@ -49,6 +49,10 @@ class CartController extends ApiController
         $cartProduct = CartProduct::create(['cart_id' => $cart->id, 'product_id' => $product->id, 'quantity' => 1]);
         $cartProduct->save();
 
+        // Update cart price
+        $cart->updatePrice();
+        $cart->save();
+
         return $this->respond(view('components/cart', ["cart" => $cart])->render());
     }
 
@@ -58,6 +62,10 @@ class CartController extends ApiController
         $cart_product->delete();
 
         $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
+
+        // Update cart price
+        $cart->updatePrice();
+        $cart->save();
 
         return $this->respond(view('components/cart', ["cart" => $cart])->render());
     }

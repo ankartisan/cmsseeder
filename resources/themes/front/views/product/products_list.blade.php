@@ -18,29 +18,17 @@
 
                 <div class="card-body pt-4 px-4 pb-0">
                     <div class="mb-2">
-                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Accessories</a>
+                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Category</a>
                         <h3 class="font-size-1 font-weight-normal">
-                            <a class="text-secondary" href="single-product.html">Herschel backpack in dark blue</a>
+                            <a class="text-secondary" href="single-product.html">{{ $product->description }}</a>
                         </h3>
                         <div class="d-block font-size-1">
-                            <span class="font-weight-medium">$56.99</span>
+                            <span class="font-weight-medium">${{ $product->price }}</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer border-0 pt-0 pb-4 px-4">
-                    <div class="mb-3">
-                        <a class="d-inline-flex align-items-center small" href="#">
-                            <div class="text-warning mr-2">
-                                <small class="far fa-star text-muted"></small>
-                                <small class="far fa-star text-muted"></small>
-                                <small class="far fa-star text-muted"></small>
-                                <small class="far fa-star text-muted"></small>
-                                <small class="far fa-star text-muted"></small>
-                            </div>
-                            <span class="text-secondary">0</span>
-                        </a>
-                    </div>
                     <button type="button" data-product-id="{{ $product->id }}" class="btn btn-sm btn-outline-primary btn-sm-wide btn-pill transition-3d-hover btn-product-add">Add to Cart</button>
                 </div>
             </div>

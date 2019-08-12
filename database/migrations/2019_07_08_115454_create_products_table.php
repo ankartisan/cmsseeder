@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->text('name');
             $table->text('description')->nullable();
             $table->integer('status_id');
+            $table->decimal('price')->nullable();
+            $table->decimal('discount_price')->nullable();
             $table->timestamps();
         });
     }

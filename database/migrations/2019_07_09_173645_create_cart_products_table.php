@@ -17,7 +17,8 @@ class CreateCartProductsTable extends Migration
             $table->increments('id');
             $table->integer('cart_id');
             $table->integer('product_id');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(1);
+            $table->decimal('price')->default(0);
             $table->timestamps();
         });
     }

@@ -10,14 +10,13 @@
     <title>Admin | CMS Seeder</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ mix('/css/loader.css') }}">
-    <link rel="stylesheet" href="{{ mix('/admin/css/admin.css') }}">
     <link href="{{ url('/css/plugins/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ url('/fonts/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{ url('/css/plugins/animate/animate.css')}}" rel="stylesheet">
     <link href="{{ url('/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
     <link href="{{ url('/css/theme.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ mix('/css/loader.css') }}">
+    <link rel="stylesheet" href="{{ mix('/admin/css/admin.css') }}">
 </head>
 <body class="pace-done">
 <div id="wrapper">

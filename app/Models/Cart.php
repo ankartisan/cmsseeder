@@ -36,4 +36,11 @@ class Cart extends Model
         return $this->hasMany(CartProduct::class, 'cart_id', 'id');
     }
 
+    public function updatePrice()
+    {
+        $this->price = $this->products()->get()->reduce(function ($carry, $item) {
+            return $carry + ($item->product->price * $item->quantity);
+        }, 0);
+    }
+
 }

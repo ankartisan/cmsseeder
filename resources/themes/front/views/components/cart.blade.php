@@ -85,7 +85,7 @@
         <div class="card-footer text-center p-5">
             <div class="mb-3">
                 <span class="d-block font-weight-semi-bold">Order Total</span>
-                <span class="d-block">$78.99</span>
+                <span class="d-block">${{ $cart->price }}</span>
             </div>
             <div class="mb-2">
                 <a class="btn btn-sm btn-soft-primary transition-3d-hover" href="{{ route('cart') }}">Review Bag and Checkout</a>
