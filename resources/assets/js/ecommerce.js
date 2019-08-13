@@ -5,8 +5,9 @@ import swal from 'sweetalert';
 window.base_api = '';
 
 /***************
- * E-commerce
+ * Cart container
  ***************/
+
 /**
  * Add product to cart
  */
@@ -47,6 +48,16 @@ $(document).on('click', '.btn-product-remove', function(){
             console.log(error);
         });
 });
+
+function initHSComponents () {
+    // initialization of unfold component
+    $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
+}
+
+/***************
+ * Checkout page
+ ***************/
+
 /**
  * Create order without account or create new one
  */
@@ -97,11 +108,10 @@ $("#login-order").validate({
     }
 });
 
-function initHSComponents () {
-    // initialization of unfold component
-    $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
-}
-// Toggle password container
+
+/**
+ *  Toggle password container
+ */
 $(document).on('change', '#checkbox-create-account', function(event){
         if($(this).is(':checked')) {
             $('.password-container').removeClass('hidden');
@@ -109,12 +119,72 @@ $(document).on('change', '#checkbox-create-account', function(event){
             $('.password-container').addClass('hidden');
         }
 });
-
-// Toggle delivery address container
+/**
+ *  Toggle delivery address container
+ */
 $(document).on('change', '#checkbox-delivery-billing-address', function(event){
     if($(this).is(':checked')) {
         $('.delivery-address-container').addClass('hidden');
     } else {
         $('.delivery-address-container').removeClass('hidden');
     }
+});
+
+/***************
+ * Cart review page
+ ***************/
+
+/**
+ * Remove product from cart
+ */
+$(document).on('click', '.cart-product-remove', function(){
+    Helper.startLoading();
+    let cart_product_id = $(this).attr('data-cart-product-id');
+    let remove_id = $(this).attr('data-remove-id');
+
+    axios.post(base_api + '/cart/remove/' + cart_product_id)
+        .then(function (response) {
+            console.log(response);
+            // Update sidebar cart
+            $('.cart-container').html(response.data.cart_container_html);
+            initHSComponents();
+            // Update order summary
+            $('.order-summary-container').html(response.data.order_summary_container_html);
+            // Remove container
+            $('#'+remove_id).remove();
+            Helper.endLoading();
+
+        })
+        .catch(function (error) {
+            Helper.endLoading();
+            //swal("Oops something went wrong", error.response.data.message, "error");
+            console.log(error);
+        });
+});
+
+/**
+ * Update cart product
+ */
+$(document).on('change', '.cart-product-update', function(){
+    Helper.startLoading();
+    let cart_product_id = $(this).attr('data-cart-product-id');
+    let quantity = $(this).val();
+
+    axios.post(base_api + '/cart/update/' + cart_product_id, { quantity: quantity })
+        .then(function (response) {
+            console.log(response);
+            // Update sidebar cart
+            $('.cart-container').html(response.data.cart_container_html);
+            initHSComponents();
+            // Update order summary
+            $('.order-summary-container').html(response.data.order_summary_container_html);
+
+            Helper.endLoading();
+
+        })
+        .catch(function (error) {
+            Helper.endLoading();
+            //swal("Oops something went wrong", error.response.data.message, "error");
+            console.log(error);
+        });
 });

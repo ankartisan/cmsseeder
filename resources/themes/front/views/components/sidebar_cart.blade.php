@@ -57,9 +57,7 @@
                                                 </button>
                                             </div>
                                             <span class="d-block font-size-1">{!! $cartProduct->product->description !!}</span>
-                                            <span class="d-block text-primary font-weight-semi-bold">$56.99</span>
-                                            <small class="d-block text-muted">Color: Red</small>
-                                            <small class="d-block text-muted">Size: 8 Medium</small>
+                                            <span class="d-block text-primary font-weight-semi-bold">${{$cartProduct->product->price}}</span>
                                             <small class="d-block text-muted">Quantity: 1</small>
                                         </div>
                                     </div>
@@ -67,10 +65,12 @@
                                 @endforeach
                             </div>
                         @else
-                            <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
-                                         <span class="fas fa-shopping-basket btn-icon__inner"></span>
-                                        </span>
-                            <span class="d-block">Your Cart is Empty</span>
+                            <div class="card-body p-5 text-center">
+                                <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+                                     <span class="fas fa-shopping-basket btn-icon__inner"></span>
+                                </span>
+                                <span class="d-block">Your Cart is Empty</span>
+                            </div>
                         @endif
                     <!-- End Body -->
                     </div>
@@ -81,6 +81,7 @@
     <!-- End Content -->
 
     <!-- Footer -->
+    @if($cart)
     <footer class="u-sidebar__footer u-sidebar__footer--cart">
         <div class="card-footer text-center p-5">
             <div class="mb-3">
@@ -93,6 +94,7 @@
             <p class="small mb-0"><a class="link-muted" href="javascript:;">Continue Shopping</a></p>
         </div>
     </footer>
+    @endif
     <!-- End Footer -->
 </aside>
 <!-- End Account Sidebar Navigation -->

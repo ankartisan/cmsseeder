@@ -109,7 +109,7 @@
 
                     <!-- Shopping Cart -->
                     <li class="list-inline-item cart-container">
-                        @include('components/cart')
+                        @include('components/sidebar_cart')
                     </li>
                     <!-- End Shopping Cart -->
 
@@ -257,7 +257,7 @@
                 </div>
 
                 <div class="col-6 col-md-4 col-lg-2 mb-7 mb-md-0">
-                    <h3 class="h6 text-white">Hot Nuts</h3>
+                    <h3 class="h6 text-white">Front</h3>
 
                     <!-- List Group -->
                     <ul class="list-group list-group-transparent list-group-white list-group-flush list-group-borderless mb-0">

@@ -53,7 +53,7 @@ class CartController extends ApiController
         $cart->updatePrice();
         $cart->save();
 
-        return $this->respond(view('components/cart', ["cart" => $cart])->render());
+        return $this->respond(view('components/sidebar_cart', ["cart" => $cart])->render());
     }
 
     public function remove(Request $request, $cart_product_id)
@@ -67,7 +67,31 @@ class CartController extends ApiController
         $cart->updatePrice();
         $cart->save();
 
-        return $this->respond(view('components/cart', ["cart" => $cart])->render());
+        $response = [
+            "cart_container_html" => view('components/sidebar_cart', ["cart" => $cart])->render(),
+            "order_summary_container_html" => view('components/order_summary', ["cart" => $cart])->render(),
+        ];
+
+        return $this->respond($response);
+    }
+
+    public function update(Request $request, $cart_product_id) {
+
+        $cart_product = CartProduct::find($cart_product_id);
+        $cart_product->update($request->all());
+
+        $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
+
+        // Update cart price
+        $cart->updatePrice();
+        $cart->save();
+
+        $response = [
+            "cart_container_html" => view('components/sidebar_cart', ["cart" => $cart])->render(),
+            "order_summary_container_html" => view('components/order_summary', ["cart" => $cart])->render(),
+        ];
+
+        return $this->respond($response);
     }
 
     /*

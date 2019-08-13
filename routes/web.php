@@ -27,6 +27,7 @@ Route::post('/order', 'Web\OrderController@create');
 
 Route::post('/cart/add/{id}', 'Web\CartController@add');
 Route::post('/cart/remove/{id}', 'Web\CartController@remove');
+Route::post('/cart/update/{id}', 'Web\CartController@update');
 
 // CONTACT
 Route::get('/contact', 'Web\PageController@contact')->name('contact');
