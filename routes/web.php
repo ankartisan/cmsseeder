@@ -24,6 +24,7 @@ Route::get('/shop', 'Web\ProductController@index')->name('products');
 Route::get('/cart', 'Web\CartController@cart')->name('cart');
 Route::get('/checkout', 'Web\CartController@checkout')->name('checkout');
 Route::post('/order', 'Web\OrderController@create');
+Route::get('/order/completed', 'Web\OrderController@completed')->name('order.completed');
 
 Route::post('/cart/add/{id}', 'Web\CartController@add');
 Route::post('/cart/remove/{id}', 'Web\CartController@remove');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\ApiController;
+use App\Http\Transformers\CartProductTransformer;
 use App\Http\Transformers\CartTransformer;
 use App\Models\Cart;
 use App\Models\CartProduct;
@@ -37,8 +38,7 @@ class CartController extends ApiController
 
             $cart_hash = md5(uniqid(rand(), true));
 
-            $cart = Cart::create(['hash' => $cart_hash]);
-            $cart->save();
+            Cart::create(['hash' => $cart_hash]);
 
             Cookie::queue('cs_cart_hash', $cart_hash, 360);
             $cart = Cart::where(['hash' => $cart_hash])->first();
@@ -46,8 +46,7 @@ class CartController extends ApiController
         }
 
         // Add product to cart
-        $cartProduct = CartProduct::create(['cart_id' => $cart->id, 'product_id' => $product->id, 'quantity' => 1]);
-        $cartProduct->save();
+        CartProduct::create(['cart_id' => $cart->id, 'product_id' => $product->id, 'quantity' => 1, 'price' => $product->price]);
 
         // Update cart price
         $cart->updatePrice();
@@ -70,12 +69,16 @@ class CartController extends ApiController
         $response = [
             "cart_container_html" => view('components/sidebar_cart', ["cart" => $cart])->render(),
             "order_summary_container_html" => view('components/order_summary', ["cart" => $cart])->render(),
+            "cart_products_count" => count($cart->products)
         ];
 
         return $this->respond($response);
     }
 
     public function update(Request $request, $cart_product_id) {
+
+        $this->setTransformer(new CartProductTransformer());
+
 
         $cart_product = CartProduct::find($cart_product_id);
         $cart_product->update($request->all());
@@ -89,6 +92,7 @@ class CartController extends ApiController
         $response = [
             "cart_container_html" => view('components/sidebar_cart', ["cart" => $cart])->render(),
             "order_summary_container_html" => view('components/order_summary', ["cart" => $cart])->render(),
+            "cart_product" => $this->setTransformer(new CartProductTransformer())->transformItem($cart_product)['data']
         ];
 
         return $this->respond($response);
@@ -114,8 +118,6 @@ class CartController extends ApiController
         $customer = Auth::guard('customer')->user() ? Auth::guard('customer')->user()->customer() : null;
 
         $countries = Country::all();
-
-        //var_dump($customer->billingAddress()); die();
 
         return view('checkout', ["cart" => $cart, "countries" => $countries, "customer" => $customer]);
     }

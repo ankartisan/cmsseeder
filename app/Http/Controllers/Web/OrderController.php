@@ -68,6 +68,7 @@ class OrderController extends ApiController
             $entity->save();
 
             DB::commit();
+
             return $this->respond(["message" => "Order created successfully", "data" => $entity->id]);
         } catch(\Exception $e) {
 
@@ -77,6 +78,17 @@ class OrderController extends ApiController
 
         }
 
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | VIEW
+    |--------------------------------------------------------------------------
+    */
+
+    public function completed(Request $request)
+    {
+        return view('order_completed');
     }
 
 }

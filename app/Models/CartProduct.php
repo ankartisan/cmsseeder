@@ -24,7 +24,8 @@ class CartProduct extends Model
     protected $fillable = [
         'cart_id',
         'product_id',
-        'quantity'
+        'quantity',
+        'price'
     ];
 
     public function cart()
@@ -39,7 +40,7 @@ class CartProduct extends Model
 
     public function getTotalPriceAttribute()
     {
-        return $this->product->price * $this->quantity;
+        return $this->price * $this->quantity;
     }
 
 }

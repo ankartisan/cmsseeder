@@ -7,7 +7,7 @@
                 <!-- Title -->
                 <div class="d-flex justify-content-between align-items-end border-bottom pb-3 mb-7">
                     <h1 class="h4 mb-0">Shopping cart</h1>
-                    <span>{{ count($cart->products) }} items</span>
+                    <span> <span id="cart-products-count">{{ count($cart->products) }}</span> items</span>
                 </div>
                 <!-- End Title -->
 
@@ -30,18 +30,7 @@
                             </div>
 
                             <div class="col-5 col-md-3 offset-md-1">
-                                <select class="custom-select custom-select-sm w-auto mb-3 cart-product-update" data-cart-product-id="{{ $cartProduct->id }}">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
+                                <input type="number" class="form-control cart-product-update mb-3" value="{{ $cartProduct->quantity }}" data-cart-product-id="{{ $cartProduct->id }}" />
 
                                 <a class="d-block text-secondary font-size-1 mb-1 cart-product-remove btn-cursor"  data-cart-product-id="{{ $cartProduct->id }}"
                                     data-remove-id="container-cart-product-{{ $cartProduct->id }}">
@@ -50,7 +39,7 @@
                                 </a>
                             </div>
                             <div class="col-6 col-md-2 text-md-right">
-                                <span class="font-weight-medium">${{ $cartProduct->total_price }}</span>
+                                <span class="font-weight-medium">$ <span id="cart-product-{{$cartProduct->id}}-price">{{ $cartProduct->total_price }}</span></span>
                             </div>
                         </div>
                     </div>
@@ -67,7 +56,7 @@
             <div class="col-lg-4">
                 <div class="pl-lg-4 order-summary-container">
                     <!-- Order Summary -->
-                    @include('components/order_summary')
+                    @include('components/order_summary', [ 'show_products' => false ])
                     <!-- End Order Summary -->
                 </div>
             </div>

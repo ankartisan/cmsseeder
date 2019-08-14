@@ -70,6 +70,7 @@ $("#create-order").validate({
         axios.post(base_api +'/order', data)
             .then(function (response) {
                 console.log(response.data.data);
+                window.location.href = '/order/completed';
                 Helper.endLoading();
             })
             .catch(function (error) {
@@ -138,7 +139,6 @@ $(document).on('change', '#checkbox-delivery-billing-address', function(event){
  * Remove product from cart
  */
 $(document).on('click', '.cart-product-remove', function(){
-    Helper.startLoading();
     let cart_product_id = $(this).attr('data-cart-product-id');
     let remove_id = $(this).attr('data-remove-id');
 
@@ -152,11 +152,11 @@ $(document).on('click', '.cart-product-remove', function(){
             $('.order-summary-container').html(response.data.order_summary_container_html);
             // Remove container
             $('#'+remove_id).remove();
-            Helper.endLoading();
+            // Update cart products items
+            $('#cart-products-count').html(response.data.cart_products_count);
 
         })
         .catch(function (error) {
-            Helper.endLoading();
             //swal("Oops something went wrong", error.response.data.message, "error");
             console.log(error);
         });
@@ -166,7 +166,6 @@ $(document).on('click', '.cart-product-remove', function(){
  * Update cart product
  */
 $(document).on('change', '.cart-product-update', function(){
-    Helper.startLoading();
     let cart_product_id = $(this).attr('data-cart-product-id');
     let quantity = $(this).val();
 
@@ -178,12 +177,12 @@ $(document).on('change', '.cart-product-update', function(){
             initHSComponents();
             // Update order summary
             $('.order-summary-container').html(response.data.order_summary_container_html);
+            // Update product price
+            $('#cart-product-' + cart_product_id +'-price').html(response.data.cart_product.total_price);
 
-            Helper.endLoading();
 
         })
         .catch(function (error) {
-            Helper.endLoading();
             //swal("Oops something went wrong", error.response.data.message, "error");
             console.log(error);
         });
