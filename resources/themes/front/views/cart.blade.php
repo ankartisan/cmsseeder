@@ -56,7 +56,7 @@
             <div class="col-lg-4">
                 <div class="pl-lg-4 order-summary-container">
                     <!-- Order Summary -->
-                    @include('components/order_summary', [ 'show_products' => false ])
+                    @include('components/order_summary')
                     <!-- End Order Summary -->
                 </div>
             </div>

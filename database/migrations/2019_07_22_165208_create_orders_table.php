@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->text('hash');
             $table->decimal('price')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+    use SoftDeletes;
+
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
 
@@ -30,6 +33,13 @@ class Product extends Model
         'price',
         'discount_price'
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
 
     public function seo()
