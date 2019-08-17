@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Asset;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -21,7 +22,11 @@ class CategoryController extends ApiController
     public function store(Request $request)
     {
         $entity = Category::create($request->all());
-        $entity->save();
+
+        // Update assets
+        if($request->get('assets')) {
+            Asset::whereIn('id', $request->get('assets'))->update(['entity_id' => $entity->id]);
+        }
 
         return $this->respond(["message" => "Category created successfully", "data" => $entity->id]);
     }
@@ -68,7 +73,9 @@ class CategoryController extends ApiController
     {
         $entity = $id == "new" ? new Category() : Category::find($id);
 
-        return view('admin/category/category_show', ["entity" => $entity]);
+        $categories = Category::all();
+
+        return view('admin/category/category_show', ["entity" => $entity, "categories" => $categories]);
     }
 
 }

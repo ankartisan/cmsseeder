@@ -19,6 +19,13 @@
     margin-bottom:0 !important;
 }
 
+.list-style-none {
+    list-style: none;
+}
+
+.p-l-0 {
+    padding-left:0;
+}
 
 /**
  Page Header
@@ -67,4 +74,23 @@
 
 .avatar-file-box {
     width:271px;
+}
+
+/**
+ * Entity assets container
+ */
+
+.entity-image-container {
+    height: 150px !important;
+    background-size: cover;
+}
+
+.entity-image-name {
+    height: 60px;
+    word-break: break-all;
+}
+
+.entity-image-actions {
+    padding: 10px;
+    background-color: #f8f8f8;
 }

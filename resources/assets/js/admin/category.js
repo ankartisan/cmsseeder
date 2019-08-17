@@ -33,7 +33,7 @@ $(document).on('submit', '#update-category', function(event){
         axios.post(base_api +'/categories', data)
             .then(function (response) {
                 var entity_id = response.data.data;
-                window.location.href = base_api + '/categories/'+entity_id;
+                //window.location.href = base_api + '/categories/'+entity_id;
                 Helper.endLoading();
             })
             .catch(function (error) {
@@ -151,3 +151,80 @@ $(document).on('click', 'ul.pagination a', function(event){
 
     event.preventDefault();
 });
+
+/**
+ * Open upload dialog
+ */
+$("#btn-photo-upload").on('click', function(evt) {
+    $("#input-photo-upload").click();
+});
+
+/**
+ * Upload asset
+ */
+$("#input-photo-upload").on('change', function(evt) {
+    let files = evt.target.files;
+    let formData = new FormData();
+    formData.append('file',files[0]);
+    formData.append('entity_type',$(this).attr("data-entity-type"));
+    formData.append('return',"assets_container");
+
+    let entity_id = ($(this).attr("data-entity-id") === 'new') ? 0 : $(this).attr("data-entity-id");
+    formData.append('entity_id', entity_id);
+
+    let config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+
+    Helper.startLoading();
+    axios.post(base_api + '/assets/upload', formData, config)
+        .then(response => {
+
+            $('.assets-container').html(response.data);
+
+            Helper.endLoading();
+        }).catch(function (error) {
+        console.log(error);
+        Helper.endLoading();
+    })
+});
+
+/**
+ * Delete asset
+ */
+$(document).on('click', '.btn-asset-delete', function(event){
+    let entity_id = $(this).attr("data-entity-id");
+
+    Helper.startLoading();
+    axios.delete(base_api + '/assets/' + entity_id)
+        .then(response => {
+
+            $("#container-asset-"+entity_id).remove();
+
+            Helper.endLoading();
+        }).catch(function (error) {
+        console.log(error);
+        Helper.endLoading();
+    });
+});
+
+/**
+ * Update asset
+ */
+$(document).on('change', '.chb-asset-featured-update', function(event){
+    let entity_id = $(this).attr("data-entity-id");
+
+    let data = { featured: $(this).is(':checked')};
+
+    axios.put(base_api + '/assets/' + entity_id, data)
+        .then(response => {
+
+
+        }).catch(function (error) {
+        console.log(error);
+    });
+});
+
+

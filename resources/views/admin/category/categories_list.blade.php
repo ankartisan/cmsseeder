@@ -5,6 +5,7 @@
             <th> <span class="cursor-pointer sort" data-sort="id"> ID <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="name"> Name <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="slug"> Slug <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="parent_id"> Parent <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="created_at"> Created <i class="fa fa-sort" aria-hidden="true"></i> </span>  </th>
             <th></th>
         </tr>
@@ -17,6 +18,7 @@
                 </td>
                 <td>{{ $entity->name }}</td>
                 <td>{{ $entity->slug }}</td>
+                <td>{{ $entity->parent ? $entity->parent->name : "" }}</td>
                 <td>
                     {{ $entity->created_at->toFormattedDateString() }}
                 </td>

@@ -51,39 +51,42 @@
                             </div>
                             <p class="text-danger text-left error-content"></p>
                         </div>
-                        {{--<div class="form-group" data-error="category_id">--}}
-                            {{--<label class="col-sm-12 text-muted">Category</label>--}}
-                            {{--<div class="col-sm-12">--}}
-                                {{--<select class="form-control" name="category_id">--}}
-                                    {{--<option value="">Select category</option>--}}
-                                    {{--@foreach($categories as $category)--}}
-                                        {{--<option value="{{ $category->id }}"--}}
-                                                {{--@if($entity->category_id == $category->id ) selected @endif>{{ $category->name }}</option>--}}
-                                    {{--@endforeach--}}
-                                {{--</select>--}}
-                                {{--<p class="text-danger text-left error-content"></p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        <div class="form-group" data-error="category_id">
+                            <label class="col-sm-12 text-muted">Category</label>
+                            <div class="col-sm-12">
+                                <ul class="list-style-none p-l-0">
+                                @foreach($categories as $category)
+                                    <li>
+                                        <input id="category-{{ $category->id }}" type="checkbox" name="categories[]" /> <label for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                        @if($category->subcategories)
+                                            <ul class="list-style-none">
+                                            @foreach($category->subcategories as $subcategory)
+                                                <li><input id="category-{{ $subcategory->id }}" type="checkbox" name="categories[]" />
+                                                    <label for="category-{{ $subcategory->id }}">{{ $subcategory->name }}</label></li>
+                                            @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                                </ul>
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Images</h2>
                         <div class="form-group">
-                            <label class="col-sm-12 text-muted">Featured Image</label>
-                            <div class="col-sm-10 animated fadeInRight">
-                                <div class="row m-b-md">
-                                    <div class="col-xs-12">
-                                        @if($entity->id)
-                                            <a id="btn-photo-upload" class="btn btn-success" > Upload Photo</a>
-                                        @else
-                                            <a  class="btn btn-success" disabled="" > Upload Photo</a><br>
-                                            <small class="text-warning">Save post to upload photos</small>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 post-image">
-                                        @if($entity->image)
-                                            @include('admin/components/post_featured_image',['file' => $entity->image])
-                                        @endif
-                                    </div>
-                                </div>
+                            <div class="col-sm-12 assets-container">
+                                @include('admin/components/assets_container', ['assets' => $entity->assets])
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <a id="btn-photo-upload" class="btn btn-success" > Upload</a>
                             </div>
                         </div>
                     </div>
@@ -122,7 +125,8 @@
                 </div>
             </form>
             <form class="hidden" enctype="multipart/form-data">
-                <input id="input-photo-upload" data-entity-id="@if($entity->id){{$entity->id}}@else{{ 'new' }}@endif" type="file" name="file" />
+                <input id="input-photo-upload" data-entity-id="@if($entity->id){{$entity->id}}@else{{ 'new' }}@endif" type="file" name="file"
+                       data-entity-type="{{ \App\Models\Product::class }}"/>
             </form>
         </div>
     </div>

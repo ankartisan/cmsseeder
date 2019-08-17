@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Asset;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -21,6 +23,10 @@ class ProductController extends ApiController
 
         if($request->has('seo')) {
             $entity->manageSeo($request);
+        }
+
+        if($request->get('assets')) {
+            Asset::whereIn('id', $request->get('assets'))->update(['entity_id' => $entity->id]);
         }
 
         return $this->respond(["message" => "Product created successfully", "data" => $entity->id]);
@@ -71,7 +77,9 @@ class ProductController extends ApiController
     {
         $entity = $id == "new" ? new Product() : Product::find($id);
 
-        return view('admin/product/product_show', ["entity" => $entity]);
+        $categories = Category::where('parent_id', null)->get();
+
+        return view('admin/product/product_show', ["entity" => $entity, "categories" => $categories]);
     }
 
 

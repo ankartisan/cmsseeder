@@ -26,8 +26,24 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'parent_id'
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'entity_id', 'id')->where(["entity_type" => self::class]);
+    }
+
+    public function subcategories()
+    {
+        return $this->hasMany(Category::class, 'parent_id', 'id');
+    }
 
     public static function search($request)
     {

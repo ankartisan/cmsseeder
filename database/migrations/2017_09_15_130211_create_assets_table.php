@@ -16,7 +16,8 @@ class CreateAssetsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('path');
-            $table->string('type');
+            $table->string('type')->nullable();
+            $table->boolean('featured')->nullable();
             $table->integer('entity_id');
             $table->string('entity_type');
             $table->timestamps();

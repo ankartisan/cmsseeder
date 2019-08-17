@@ -88,6 +88,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('categories/{id}', 'Admin\CategoryController@delete');
 
         Route::post('/assets/upload', 'Admin\AssetController@upload');
+        Route::put('/assets/{id}', 'Admin\AssetController@update');
         Route::get('/assets/search', 'Admin\AssetController@search');
         Route::get('/assets/{id}', 'Admin\AssetController@show')->name('admin.asset');
         Route::get('/assets', 'Admin\AssetController@index')->name('admin.assets');

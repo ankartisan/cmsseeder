@@ -31,6 +31,37 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="form-group" data-error="parent_id">
+                            <label class="col-sm-12 text-muted">Parent</label>
+                            <div class="col-sm-12">
+                                <select class="form-control" name="parent_id">
+                                    <option value="" >Select Category</option>
+                                    @foreach($categories as $category)
+                                        @if($entity->id and $entity->id == $category->id) @continue @endif
+                                         <option value="{{ $category->id }}"
+                                                    @if($entity->parent_id == $category->id) selected @endif>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Images</h2>
+                        <div class="form-group">
+                            <div class="col-sm-12 assets-container">
+                                @include('admin/components/assets_container', ['assets' => $entity->assets])
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <a id="btn-photo-upload" class="btn btn-success" > Upload</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -45,6 +76,10 @@
                         @endif
                     </div>
                 </div>
+            </form>
+            <form class="hidden" enctype="multipart/form-data">
+                <input id="input-photo-upload" data-entity-id="@if($entity->id){{$entity->id}}@else{{ 'new' }}@endif" type="file" name="file"
+                       data-entity-type="{{ \App\Models\Category::class }}"/>
             </form>
         </div>
     </div>

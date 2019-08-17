@@ -47,15 +47,29 @@ class AssetController extends ApiController
         $newFile = new Asset([
             'name' => $filename,
             'path' => $key,
-            'entity_id' => 0,
-            'entity_type' => 0,
-            'type' => 0,
-            'featured' => 0
+            'entity_id' => $request->get('entity_id') ? $request->get('entity_id') : 0,
+            'entity_type' => $request->get('entity_type') ? $request->get('entity_type') : 0,
+            'type' => $request->get('type') ? $request->get('type') : null,
+            'featured' => $request->get('featured') ? $request->get('featured') : null
         ]);
 
         $newFile->save();
 
+        if($request->get('return') == "assets_container") {
+            $assets = Asset::where(["entity_type" => $request->get('entity_type'), "entity_id" => $request->get('entity_id')])->get();
+            return $this->respond(view('admin/components/assets_container', ["assets" => $assets])->render());
+        }
+
         return $this->respond(["data" => $newFile->url]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $asset = Asset::find($id);
+
+        $asset->update(["featured" =>  $request->get('featured')]);
+
+        return $this->respond($asset);
     }
 
     /*

@@ -28,7 +28,8 @@ class Asset extends Model
         'path',
         'entity_id',
         'entity_type',
-        'type'
+        'type',
+        'featured'
     ];
 
     public function entity()
