@@ -52,6 +52,11 @@ class Product extends Model
         return $this->hasMany(Asset::class, 'entity_id', 'id')->where(["entity_type" => self::class]);
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories');
+    }
+
     public function getStatusAttribute()
     {
         $statuses = [
@@ -60,6 +65,11 @@ class Product extends Model
         ];
 
         return $statuses[$this->status_id];
+    }
+
+    public function hasCategory($id)
+    {
+        return in_array($id, $this->categories->pluck('id')->toArray());
     }
 
     public function manageSeo($request)

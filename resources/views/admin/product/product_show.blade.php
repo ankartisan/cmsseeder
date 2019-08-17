@@ -53,16 +53,17 @@
                         </div>
                         <div class="form-group" data-error="category_id">
                             <label class="col-sm-12 text-muted">Category</label>
-                            <div class="col-sm-12">
+                             <div class="col-sm-12">
                                 <ul class="list-style-none p-l-0">
                                 @foreach($categories as $category)
                                     <li>
-                                        <input id="category-{{ $category->id }}" type="checkbox" name="categories[]" /> <label for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                        <input id="category-{{ $category->id }}" value="{{ $category->id }}" @if($entity->hasCategory($category->id)) checked @endif type="checkbox" name="categories[]" />
+                                        <label class="font-weight-600" for="category-{{ $category->id }}">{{ $category->name }}</label>
                                         @if($category->subcategories)
                                             <ul class="list-style-none">
                                             @foreach($category->subcategories as $subcategory)
-                                                <li><input id="category-{{ $subcategory->id }}" type="checkbox" name="categories[]" />
-                                                    <label for="category-{{ $subcategory->id }}">{{ $subcategory->name }}</label></li>
+                                                <li><input id="category-{{ $subcategory->id }}" type="checkbox" value="{{ $subcategory->id }}" @if($entity->hasCategory($subcategory->id)) checked @endif name="categories[]" />
+                                                    <label class="font-weight-600" for="category-{{ $subcategory->id }}">{{ $subcategory->name }}</label></li>
                                             @endforeach
                                             </ul>
                                         @endif

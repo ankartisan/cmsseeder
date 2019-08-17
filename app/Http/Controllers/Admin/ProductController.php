@@ -42,6 +42,8 @@ class ProductController extends ApiController
             $entity->manageSeo($request);
         }
 
+        $entity->categories()->sync($request->get('categories'));
+
         return $this->respond(["message" => "Product updated successfully"]);
     }
 
