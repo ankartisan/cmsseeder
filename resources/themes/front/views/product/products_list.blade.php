@@ -1,3 +1,28 @@
+<!-- Sorting -->
+<div class="row align-items-center mb-5">
+    <div class="col-lg-6 mb-3 mb-lg-0">
+        <span class="text-secondary font-size-1 font-weight-normal ml-1">{{ $products->total() }} products</span>
+    </div>
+
+    <div class="col-lg-6 align-self-lg-end text-lg-right">
+        <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+                <!-- Select -->
+                <select class="js-select selectpicker dropdown-select product-sort"
+                        data-size="10"
+                        data-width="fit"
+                        data-style="btn-soft-secondary btn-xs">
+                    <option value="" selected>Sort by</option>
+                    <option value="created_at|desc">Newest first</option>
+                    <option value="price|desc">Price (high - low)</option>
+                    <option value="price|asc">Price (low - high)</option>
+                </select>
+                <!-- End Select -->
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- End Sorting -->
 <div class="row mx-n2 mb-2">
     @foreach($products as $product)
         <div class="col-6 col-lg-4 px-2 mb-3">
@@ -36,3 +61,52 @@
         </div>
     @endforeach
 </div>
+<div class="py-3"></div>
+
+{{-- PAGINATION --}}
+@if($products->lastPage() > 1)
+    <nav aria-label="...">
+        <ul class="pagination">
+            @if($products->currentPage() > 1)
+                <li class="page-item">
+                    <a class="page-link" data-page="1" href="#" tabindex="-1">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">First</span>
+                    </a>
+                </li>
+            @endif
+            @if($products->currentPage() > 1)
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ $products->currentPage() - 1 }}" href="#">
+                        <span aria-hidden="true">‹</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            @endif
+            @for($i = 1; $i <= $products->lastPage(); $i ++)
+                <li class="page-item @if($products->currentPage() == $i) active @endif">
+                    <a class="page-link" data-page="{{ $i }}" href>{{ $i }}</a>
+                </li>
+            @endfor
+            @if($products->currentPage() < $products->lastPage())
+                <li class="page-item">
+                    <a class="page-link" data-page="{{ $products->currentPage() + 1 }}" href="#" aria-label="Next">
+                        <span aria-hidden="true">›</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            @endif
+            <li class="page-item">
+                <a class="page-link" data-page="{{ $products->lastPage() }}" aria-label="Next">
+                    <span aria-hidden="true">»</span>
+                    <span class="sr-only">Last</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+@endif
+<!-- Divider -->
+<div class="d-lg-none">
+    <hr class="my-11">
+</div>
+<!-- End Divider -->

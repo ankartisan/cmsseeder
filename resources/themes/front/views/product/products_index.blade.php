@@ -28,7 +28,14 @@
         <div class="row">
             <!-- Filters -->
             <div class="col-lg-3">
-                <form>
+                <form id="product-search-form">
+                    <input type="hidden" name="page" />
+                    <input type="hidden" name="sort" />
+                    <input type="hidden" name="order" />
+                    <div class="border-bottom pb-4 mb-4">
+                        <h4 class="h6 mb-3">Name</h4>
+                        <input type="text" name="search" class="form-control form-control-sm" placeholder="Product name"/>
+                    </div>
                     <div class="border-bottom pb-4 mb-4">
                         <h4 class="h6 mb-3">Price</h4>
 
@@ -43,171 +50,47 @@
                                data-max="500"
                                data-from="25"
                                data-to="475"
-                               data-result-min="#rangeSliderExample3MinResult"
-                               data-result-max="#rangeSliderExample3MaxResult">
+                               data-result-min="#rangeSliderMinResult"
+                               data-result-max="#rangeSliderMaxResult"
+                               data-submit-on-change="1">
                         <div class="d-flex justify-content-between mt-4">
-                            <input type="text" class="form-control form-control-sm max-width-10" id="rangeSliderExample3MinResult">
-                            <input type="text" class="form-control form-control-sm max-width-10 mt-0" id="rangeSliderExample3MaxResult">
+                            <input type="text" name="price_from" data-submit-on-change="1" class="form-control form-control-sm max-width-10" id="rangeSliderMinResult">
+                            <input type="text" name="price_to" data-submit-on-change="1" class="form-control form-control-sm max-width-10 mt-0" id="rangeSliderMaxResult">
                         </div>
                         <!-- End Range Slider -->
                     </div>
 
-                    <div class="border-bottom pb-4 mb-4">
+                    <div class="pb-4 mb-4">
                         <h4 class="h6 mb-3">Category</h4>
 
                         <!-- Checkboxes -->
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryTshirt" checked>
-                                <label class="custom-control-label text-lh-md" for="categoryTshirt">T-shirt</label>
+                        @foreach($categories as $category)
+                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" value="{{ $category->id }}" class="custom-control-input" name="categories[]" data-submit-on-change="1" id="category-{{ $category->id }}">
+                                    <label class="custom-control-label text-lh-md" for="category-{{ $category->id }}">{{ $category->name }}</label>
+                                </div>
+                                <small></small>
                             </div>
-                            <small>73</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryShoes">
-                                <label class="custom-control-label text-lh-md" for="categoryShoes">Shoes</label>
-                            </div>
-                            <small>0</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryAccessories" checked>
-                                <label class="custom-control-label text-lh-md" for="categoryAccessories">Accessories</label>
-                            </div>
-                            <small>51</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryTops" checked>
-                                <label class="custom-control-label" for="categoryTops">Tops</label>
-                            </div>
-                            <small>5</small>
-                        </div>
-                        <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="categoryBottom">
-                                <label class="custom-control-label" for="categoryBottom">Bottom</label>
-                            </div>
-                            <small>11</small>
-                        </div>
+                            @foreach($category->subcategories as $subcategory)
+                                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
+                                    <div class="custom-control custom-checkbox ml-3">
+                                        <input type="checkbox" value="{{ $subcategory->id }}" class="custom-control-input" name="categories[]" data-submit-on-change="1" id="category-{{ $subcategory->id }}">
+                                        <label class="custom-control-label text-lh-md" for="category-{{ $subcategory->id }}">{{ $subcategory->name }}</label>
+                                    </div>
+                                    <small></small>
+                                </div>
+                            @endforeach
+                        @endforeach
                         <!-- End Checkboxes -->
-
-                        <!-- View More - Collapse -->
-                        <div class="collapse" id="collapseCategory">
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categoryShorts">
-                                    <label class="custom-control-label" for="categoryShorts">Shorts</label>
-                                </div>
-                                <small>5</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categoryHats">
-                                    <label class="custom-control-label" for="categoryHats">Hats</label>
-                                </div>
-                                <small>3</small>
-                            </div>
-                            <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-1">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="categorySocks">
-                                    <label class="custom-control-label" for="categorySocks">Socks</label>
-                                </div>
-                                <small>8</small>
-                            </div>
-                        </div>
-                        <!-- End View More - Collapse -->
-
-                        <!-- Link -->
-                        <a class="link link-collapse small font-size-1" data-toggle="collapse" href="#collapseCategory" role="button" aria-expanded="false" aria-controls="collapseCategory">
-                            <span class="link-collapse__default">View more</span>
-                            <span class="link-collapse__active">View less</span>
-                            <span class="link__icon ml-1">
-                  <span class="link__icon-inner">+</span>
-                </span>
-                        </a>
-                        <!-- End Link -->
                     </div>
-
-                    <button type="button" class="btn btn-sm btn-block btn-soft-secondary transition-3d-hover">Clear All</button>
                 </form>
             </div>
             <!-- End Filters -->
-            <div class="col-lg-9">
-                <!-- Sorting -->
-                <div class="row align-items-center mb-5">
-                    <div class="col-lg-6 mb-3 mb-lg-0">
-                        <span class="text-secondary font-size-1 font-weight-normal ml-1">110 products</span>
-                    </div>
-
-                    <div class="col-lg-6 align-self-lg-end text-lg-right">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <!-- Select -->
-                                <select class="js-select selectpicker dropdown-select"
-                                        data-size="10"
-                                        data-width="fit"
-                                        data-style="btn-soft-secondary btn-xs">
-                                    <option value="mostRecent" selected>Sort by</option>
-                                    <option value="newest">Newest first</option>
-                                    <option value="priceHighLow">Price (high - low)</option>
-                                    <option value="priceLowHigh">Price (low - high)</option>
-                                    <option value="topSellers">Top sellers</option>
-                                </select>
-                                <!-- End Select -->
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Sorting -->
-
-                <!-- Products -->
+            <div class="col-lg-9 list-container">
+                    <!-- Products -->
                     @include('product/products_list')
-                <!-- End Products -->
-
-                <div class="py-3"></div>
-
-                <!-- Pagination -->
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-between align-items-center">
-                        <li class="page-item ml-0">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo; Prev</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <div class="d-flex align-items-center">
-                                <span class="d-none d-sm-inline-block text-secondary">Page:</span>
-                                <select class="custom-select custom-select-sm w-auto mx-2">
-                                    <option value="quantity1">1</option>
-                                    <option value="quantity2">2</option>
-                                    <option value="quantity3">3</option>
-                                    <option value="quantity4">4</option>
-                                    <option value="quantity5">5</option>
-                                    <option value="quantity6">6</option>
-                                    <option value="quantity7">7</option>
-                                    <option value="quantity8">8</option>
-                                </select>
-                                <span class="d-none d-sm-inline-block text-secondary">of 8</span>
-                            </div>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">Next &raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Pagination -->
-
-                <!-- Divider -->
-                <div class="d-lg-none">
-                    <hr class="my-11">
-                </div>
-                <!-- End Divider -->
+                    <!-- End Products -->
             </div>
         </div>
     </div>

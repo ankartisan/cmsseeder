@@ -341,9 +341,6 @@
 <script src="/themes/front/assets/js/components/hs.chart-pie.js"></script>
 <script src="/themes/front/assets/js/components/hs.svg-injector.js"></script>
 <script src="/themes/front/assets/js/components/hs.go-to.js"></script>
-
-
-
 <!-- JS Plugins Init. -->
 <script>
     $(window).on('load', function () {
@@ -410,7 +407,5 @@
     });
 
 </script>
-
-
 </body>
 </html>

@@ -101,6 +101,19 @@ class Product extends Model
             });
         }
 
+        if($request->has('price_from'))  {
+            $query->where('products.price', '>=', $request->get('price_from'));
+        }
+
+        if($request->has('price_to'))  {
+            $query->where('products.price', '<=', $request->get('price_to'));
+        }
+
+        if($request->has('categories')) {
+            $query->leftJoin('product_categories', 'products.id', '=', 'product_categories.product_id');
+            $query->whereIn('product_categories.category_id', explode(",",$request->get('categories')));
+        }
+
         if($request->has('sort')) {
             $query->orderBy('products.'.$request->get('sort'), $request->get('order'));
         } else {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class ProductController extends ApiController
     {
         $products = Product::search($request);
 
-        return view('product/products_index', ["products" => $products]);
+        $categories = Category::where('parent_id', null)->get();
+
+        return view('product/products_index', ["products" => $products, "categories" => $categories]);
     }
 
     public function search(Request $request)

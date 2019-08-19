@@ -20,7 +20,7 @@ Route::post('/login', 'Web\AuthController@login');
 // E-COMMERCE
 Route::get('/products/search', 'Web\ProductController@search');
 Route::get('/products/{id}', 'Web\ProductController@show')->name('product');
-Route::get('/shop', 'Web\ProductController@index')->name('products');
+Route::get('/products', 'Web\ProductController@index')->name('products');
 Route::get('/cart', 'Web\CartController@cart')->name('cart');
 Route::get('/checkout', 'Web\CartController@checkout')->name('checkout');
 Route::post('/order', 'Web\OrderController@create');

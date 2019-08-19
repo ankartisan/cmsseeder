@@ -187,3 +187,102 @@ $(document).on('change', '.cart-product-update', function(){
             console.log(error);
         });
 });
+
+/***************
+ * Products search page
+ ***************/
+$(document).ready(function() {
+
+    /**
+     * Search
+     */
+    let inputTypingTimer;
+    $('#product-search-form input[name="search"]').on('keyup', function () {
+        clearTimeout(inputTypingTimer);
+        inputTypingTimer = setTimeout(function() {
+            submitSearchForm({reset_pagination: true});
+        },300);
+    });
+    $('#product-search-form input[name="search"]').on('keydown', function () {
+        clearTimeout(inputTypingTimer);
+    });
+
+    $(document).on('change', '#product-search-form input[data-submit-on-change="1"]', function(event){
+        clearTimeout(inputTypingTimer);
+        inputTypingTimer = setTimeout(function() {
+            submitSearchForm({reset_pagination: true});
+        },300);
+
+    });
+
+    $("#product-search-form").submit(function( event ) {
+        Helper.startLoading();
+        let data = Helper.getFormResults(this);
+        let query = Helper.encodeQueryData(data);
+
+        window.history.pushState("ajax", "Search", base_api + '/products?'+query);
+
+        axios.get(base_api + '/products/search?'+query)
+            .then(function (response) {
+                $('.list-container').html(response.data);
+                $.HSCore.components.HSSelectPicker.init('.js-select');
+                Helper.endLoading();
+            })
+            .catch(function (error) {
+                Helper.endLoading();
+            });
+
+        event.preventDefault();
+
+    });
+
+    function submitSearchForm(options = {}) {
+
+        if(options.reset_pagination) {
+            updatePage(1);
+        }
+
+        $( "#product-search-form").submit();
+    }
+
+    /**
+     * Sorting
+     */
+
+    $(document).on('change', 'select.product-sort', function(event){
+        let sort = 'created_at';
+        let order = 'asc';
+
+        let value = $(this).val();
+
+        if(value !== "") {
+            let arr = value.split("|");
+            sort = arr[0];
+            order = arr[1];
+        }
+
+        $("#product-search-form input[name='sort']").val(sort);
+        $("#product-search-form input[name='order']").val(order);
+
+        submitSearchForm();
+    });
+
+
+    /**
+     * Pagination
+     */
+
+    function updatePage(page) {
+        $("#product-search-form input[name='page']").val(page);
+    }
+
+    $(document).on('click', 'ul.pagination a', function(event){
+        updatePage($(this).attr('data-page'));
+        submitSearchForm();
+
+        event.preventDefault();
+    });
+});
+
+
+
