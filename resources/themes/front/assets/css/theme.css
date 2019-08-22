@@ -23283,3 +23283,9 @@ label.btn {
 /*------------------------------------
   File for your custom SCSS style
 ------------------------------------*/
+
+.product-image-container {
+  height: 200px !important;
+  background-size: cover;
+  background-position: center;
+}

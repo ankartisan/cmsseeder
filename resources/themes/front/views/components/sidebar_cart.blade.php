@@ -52,9 +52,6 @@
                                         <div class="media-body">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <span class="d-block font-weight-semi-bold">{{ $cartProduct->product->name }}</span>
-                                                <button type="button" class="close btn-product-remove" aria-label="Close" data-cart-product-id="{{ $cartProduct->id }}">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
                                             </div>
                                             <span class="d-block font-size-1">{!! $cartProduct->product->description !!}</span>
                                             <span class="d-block text-primary font-weight-semi-bold">${{$cartProduct->product->price}}</span>
@@ -91,7 +88,18 @@
             <div class="mb-2">
                 <a class="btn btn-sm btn-soft-primary transition-3d-hover" href="{{ route('cart') }}">Review Bag and Checkout</a>
             </div>
-            <p class="small mb-0"><a class="link-muted" href="javascript:;">Continue Shopping</a></p>
+            <p class="small mb-0"><a class="link-muted" href="javascript:;"
+                                     aria-controls="sidebarContent"
+                                     aria-haspopup="true"
+                                     aria-expanded="false"
+                                     data-unfold-event="click"
+                                     data-unfold-hide-on-scroll="false"
+                                     data-unfold-target="#sidebarContent"
+                                     data-unfold-type="css-animation"
+                                     data-unfold-animation-in="fadeInRight"
+                                     data-unfold-animation-out="fadeOutRight"
+                                     data-unfold-duration="500">Continue Shopping</a>
+            </p>
         </div>
     </footer>
     @endif

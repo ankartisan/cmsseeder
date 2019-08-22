@@ -29,21 +29,22 @@
             <!-- Product -->
             <div class="card text-center h-100">
                 <div class="position-relative">
-                    <img class="card-img-top" src="/themes/front/assets/img/300x180/img3.jpg" alt="Image Description">
+                    @if($product->image)
+                        <div class="image product-image-container" style="background-image: url('{{ $product->image->url }}')"></div>
+                    @else
+                        <div class="image product-image-container" style="background-image: url('https://via.placeholder.com/200')"></div>
+                    @endif
 
-                    <div class="position-absolute top-0 left-0 pt-3 pl-3">
-                        <span class="badge badge-success badge-pill">New arrival</span>
-                    </div>
-                    <div class="position-absolute top-0 right-0 pt-3 pr-3">
-                        <button type="button" class="btn btn-sm btn-icon btn-outline-secondary rounded-circle" data-toggle="tooltip" data-placement="top" title="Save for later">
-                            <span class="fas fa-heart btn-icon__inner"></span>
-                        </button>
-                    </div>
+                    <div class="position-absolute top-0 left-0 pt-3 pl-3"></div>
+
+                    <div class="position-absolute top-0 right-0 pt-3 pr-3"></div>
                 </div>
 
                 <div class="card-body pt-4 px-4 pb-0">
                     <div class="mb-2">
-                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">Category</a>
+                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">
+                            {{ $product->category ? $product->category->name : "" }}
+                        </a>
                         <h3 class="font-size-1 font-weight-normal">
                             <a class="text-secondary" href="single-product.html">{{ $product->description }}</a>
                         </h3>

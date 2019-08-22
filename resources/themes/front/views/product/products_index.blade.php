@@ -33,7 +33,7 @@
                     <input type="hidden" name="sort" />
                     <input type="hidden" name="order" />
                     <div class="border-bottom pb-4 mb-4">
-                        <h4 class="h6 mb-3">Name</h4>
+                        <h4 class="h6 mb-3">Search</h4>
                         <input type="text" name="search" class="form-control form-control-sm" placeholder="Product name"/>
                     </div>
                     <div class="border-bottom pb-4 mb-4">

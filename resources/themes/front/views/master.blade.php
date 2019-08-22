@@ -38,6 +38,7 @@
 
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="/themes/front/assets/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/themes/front/assets/vendor/custombox/dist/custombox.min.css">
     <link rel="stylesheet" href="/themes/front/assets/vendor/animate.css/animate.min.css">
     <link rel="stylesheet" href="/themes/front/assets/vendor/hs-megamenu/src/hs.megamenu.css">
     <link rel="stylesheet" href="/themes/front/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
@@ -49,7 +50,6 @@
     <link rel="stylesheet" href="/themes/front/assets/vendor/dzsparallaxer/dzsparallaxer.css">
     <link rel="stylesheet" href="/themes/front/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="/themes/front/assets/vendor/ion-rangeslider/css/ion.rangeSlider.css">
-
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="/themes/front/assets/css/theme.css">
@@ -327,6 +327,8 @@
 <script src="/themes/front/assets/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
 <script src="/themes/front/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <script src="/themes/front/assets/vendor/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="/themes/front/assets/vendor/custombox/dist/custombox.min.js"></script>
+<script src="/themes/front/assets/vendor/custombox/dist/custombox.legacy.min.js"></script>
 <!-- JS Front -->
 <script src="/themes/front/assets/js/hs.core.js"></script>
 <script src="/themes/front/assets/js/components/hs.header.js"></script>
@@ -341,6 +343,8 @@
 <script src="/themes/front/assets/js/components/hs.chart-pie.js"></script>
 <script src="/themes/front/assets/js/components/hs.svg-injector.js"></script>
 <script src="/themes/front/assets/js/components/hs.go-to.js"></script>
+<script src="/themes/front/assets/js/components/hs.modal-window.js"></script>
+
 <!-- JS Plugins Init. -->
 <script>
     $(window).on('load', function () {
@@ -393,6 +397,12 @@
 
         // initialization of forms
         $.HSCore.components.HSRangeSlider.init('.js-range-slider');
+
+        // initialization of autonomous popups
+        $.HSCore.components.HSModalWindow.init('[data-modal-target]', '.js-modal-window', {
+            autonomous: true
+        });
+
     });
 
     $(window).on('resize', function () {

@@ -19,6 +19,19 @@ $(".btn-product-add").on('click', function (evt) {
         .then(function (response) {
             $('.cart-container').html(response.data);
             initHSComponents();
+
+            swal({
+                title: "Successfully added",
+                type: "success",
+                text: "Product is added to your cart. You wish to continue shopping or review your cart?",
+                icon: "success",
+                buttons: ["Continue Shopping", "Review Cart"]
+            }).then((reviewCart) => {
+                   if(reviewCart) {
+                       window.location.href = '/cart'
+                   }
+             });
+
             Helper.endLoading();
 
         })
@@ -44,7 +57,6 @@ $(document).on('click', '.btn-product-remove', function(){
         })
         .catch(function (error) {
             Helper.endLoading();
-            //swal("Oops something went wrong", error.response.data.message, "error");
             console.log(error);
         });
 });

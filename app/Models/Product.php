@@ -67,6 +67,20 @@ class Product extends Model
         return $statuses[$this->status_id];
     }
 
+    public function getCategoryAttribute()
+    {
+        return $this->categories() ? $this->categories()->first() : null;
+    }
+
+    public function getImageAttribute()
+    {
+        $image = $this->assets()->where('featured', 1)->first();
+
+        if($image) return $image;
+
+        return $this->assets() ?  $this->assets()->first() : null;
+    }
+
     public function hasCategory($id)
     {
         return in_array($id, $this->categories->pluck('id')->toArray());
