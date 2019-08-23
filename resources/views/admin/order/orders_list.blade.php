@@ -3,7 +3,10 @@
         <thead>
         <tr>
             <th> <span class="cursor-pointer sort" data-sort="id"> ID <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
-            <th> <span class="cursor-pointer sort" data-sort="status_id"> Status <i class="fa fa-sort" aria-hidden="true"></i></span> </th>
+            <th> <span class="cursor-pointer sort" data-sort="number"> Number <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="first_name"> Customer <i class="fa fa-sort" aria-hidden="true"></i></span> </th>
+            <th> <span class="cursor-pointer sort" data-sort="created_at"> Date <i class="fa fa-sort" aria-hidden="true"></i></span> </th>
+            <th> <span class="cursor-pointer sort" data-sort="price"> Total <i class="fa fa-sort" aria-hidden="true"></i></span> </th>
             <th></th>
         </tr>
         </thead>
@@ -13,9 +16,20 @@
                 <td>
                     {{ $entity->id }}
                 </td>
-                <td>{{ $entity->status }}</td>
+                <td>
+                    {{ $entity->number }}
+                </td>
+                <td>
+                    {{ $entity->customer ? $entity->customer->name : '' }}
+                </td>
+                <td>
+                    {{ $entity->created_at->toFormattedDateString() }}
+                </td>
+                <td>
+                    ${{ $entity->price }}
+                </td>
                 <td class="action">
-                    <a href="{{ route('admin.order', ['id' => $entity->id]) }}" class="btn btn-outline btn-sm btn-success">Edit</a>
+                    <a href="{{ route('admin.order', ['id' => $entity->id]) }}" class="btn btn-outline btn-sm btn-success">View</a>
                 </td>
             </tr>
         @endforeach

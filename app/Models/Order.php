@@ -26,13 +26,13 @@ class Order extends Model
         'customer_id',
         'status_id',
         'cart_id',
-        'hash',
+        'number',
         'price'
     ];
 
-    public function products()
+    public function cart()
     {
-        return $this->hasMany(OrderProduct::class, 'order_id', 'id');
+        return $this->belongsTo(Cart::class);
     }
 
     public function customer()
@@ -48,17 +48,28 @@ class Order extends Model
 
         return $statuses[$this->status_id];
     }
+    /**
+     *  Generate unique reference number
+     */
+    public function generateUniqueNumber()
+    {
+        return time() . $this->customer->id . $this->id;
+    }
 
     public static function search($request)
     {
         $query = (new Order())->newQuery();
         $query->select('orders.*');
+        $query->leftJoin('customers', 'customers.id', '=', 'orders.customer_id');
 
         if($request->has('search')) {
             $search = $request->get('search');
 
             $query->where(function ($query) use ($search) {
                 $query->where('orders.id', 'LIKE', '%'.$search.'%');
+                $query->orWhere('orders.number', 'LIKE', '%'.$search.'%');
+                $query->orWhere('customers.first_name', 'LIKE', '%'.$search.'%');
+                $query->orWhere('customers.last_name', 'LIKE', '%'.$search.'%');
             });
         }
 

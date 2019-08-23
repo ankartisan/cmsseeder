@@ -14,15 +14,65 @@
                 @endif
                 <div class="row">
                     <div class="col-sm-9">
-
-                    </div>
-                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-sm-2">Order Number</label>
+                            <div class="col-sm-3" >
+                                <span>{{ $entity->number }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Date</label>
+                            <div class="col-sm-3" >
+                                <span>{{ $entity->created_at->toFormattedDateString() }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Customer</label>
+                            <div class="col-sm-3" >
+                                <span>{{ $entity->customer->name }}</span><br>
+                                <span>{{ $entity->customer->email }}</span><br>
+                                <span>{{ $entity->customer->phone }}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label class="col-sm-2">Summary</label>
+                            <div class="col-sm-6" >
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($entity->cart->products as $key => $cartProduct)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $cartProduct->product->name }}</td>
+                                        <td>{{ $cartProduct->quantity }}</td>
+                                        <td>${{ $cartProduct->total_price }}</td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Total</label>
+                            <div class="col-sm-3" >
+                                <span>${{ $entity->price }}</span>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="form-group" data-error="status">
-                            <label class="col-sm-12 text-muted">Status</label>
-                            <div class="col-sm-12">
+                            <label class="col-sm-2 text-muted">Status</label>
+                            <div class="col-sm-3">
                                 <select class="form-control" name="status_id">
                                     <option value="{{ \App\Models\Order::STATUS_CREATED }}"
-                                            @if($entity->status_id == \App\Models\Order::STATUS_CREATED) selected @endif>Draft</option>
+                                            @if($entity->status_id == \App\Models\Order::STATUS_CREATED) selected @endif>Created</option>
                                 </select>
                             </div>
                             <p class="text-danger text-left error-content"></p>

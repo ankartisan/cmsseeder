@@ -62,9 +62,9 @@ class OrderController extends ApiController
                 }
             }
 
-
             // Create order
-            $entity = Order::create(['customer_id' => $customer->id, 'cart_id' => $cart->id, 'price' => $cart->price, 'hash' => md5(uniqid(rand(), true))]);
+            $entity = Order::create(['customer_id' => $customer->id, 'cart_id' => $cart->id, 'price' => $cart->price]);
+            $entity->update(['number' => $entity->generateUniqueNumber()]);
             $entity->save();
 
             DB::commit();

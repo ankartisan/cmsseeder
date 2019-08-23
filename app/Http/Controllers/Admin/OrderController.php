@@ -55,7 +55,7 @@ class OrderController extends ApiController
     {
         $entity = Order::find($id);
 
-        return view('admin/order/orders_show', ["entity" => $entity]);
+        return view('admin/order/order_show', ["entity" => $entity]);
     }
 
 

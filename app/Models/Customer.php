@@ -58,6 +58,16 @@ class Customer extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getNameAttribute()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    public function getPhoneAttribute()
+    {
+        return $this->phone_country_code . '' . $this->phone_number;
+    }
+
     /**
      * Send the password reset notification.
      *
