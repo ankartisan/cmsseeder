@@ -297,4 +297,54 @@ $(document).ready(function() {
 });
 
 
+/*****************
+ * Product single page
+ ****************/
+
+$("#product-add-to-cart").submit(function( event ) {
+    let data = Helper.getFormResults(this);
+
+    let product_id = $(this).attr('data-product-id');
+
+    axios.post(base_api + '/cart/add/' + data['product_id'], data)
+        .then(function (response) {
+            $('.cart-container').html(response.data);
+            initHSComponents();
+
+            swal({
+                title: "Successfully added",
+                type: "success",
+                text: "Product is added to your cart. You wish to continue shopping or review your cart?",
+                icon: "success",
+                buttons: ["Continue Shopping", "Review Cart"]
+            }).then((reviewCart) => {
+                if(reviewCart) {
+                    window.location.href = '/cart'
+                }
+            });
+
+        })
+        .catch(function (error) {
+            Helper.endLoading();
+            //swal("Oops something went wrong", error.response.data.message, "error");
+            console.log(error);
+        });
+
+    event.preventDefault();
+});
+
+/**
+ * Decrement product quantity
+ */
+$(document).on('click', '#product-quantity-decrement', function(){
+    let quantity_input = $("#product-add-to-cart input[name='quantity']");
+    quantity_input.val(parseInt(quantity_input.val()) - 1)
+});
+/**
+ * Increment product quantity
+ */
+$(document).on('click', '#product-quantity-increment', function(){
+    let quantity_input = $("#product-add-to-cart input[name='quantity']");
+    quantity_input.val(parseInt(quantity_input.val()) + 1)
+});
 
