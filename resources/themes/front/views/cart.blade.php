@@ -18,7 +18,11 @@
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <div class="media">
                                     <div class="max-width-15 w-100 mr-3">
-                                        <img class="img-fluid" src="themes/front/assets/img/320x320/img2.jpg" alt="Image Description">
+                                        @if($cartProduct->product->image)
+                                            <img class="img-fluid" src="{{ $cartProduct->product->image->url }}" alt="">
+                                        @else
+                                            <img class="img-fluid" src="https://via.placeholder.com/200" alt="">
+                                        @endif
                                     </div>
                                     <div class="media-body">
                                         <h2 class="h6">{{ $cartProduct->product->name }}</h2>

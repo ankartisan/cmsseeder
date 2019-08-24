@@ -5,6 +5,17 @@ import swal from 'sweetalert';
 window.base_api = '';
 
 /***************
+ * Main search
+ ***************/
+
+$("#main-search").submit(function( event ) {
+    let data = Helper.getFormResults(this);
+    let query = Helper.encodeQueryData(data);
+    window.location.href = '/products?'+query;
+    event.preventDefault();
+});
+
+/***************
  * Cart container
  ***************/
 

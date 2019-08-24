@@ -31,6 +31,13 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="form-group" data-error="description">
+                            <label class="col-sm-12 text-muted">Description</label>
+                            <div class="col-sm-12">
+                                <textarea name="description" class="form-control" rows="10">{!! $entity->description !!}</textarea>
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
                         <div class="form-group" data-error="parent_id">
                             <label class="col-sm-12 text-muted">Parent</label>
                             <div class="col-sm-12">

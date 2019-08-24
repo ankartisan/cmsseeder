@@ -31,7 +31,8 @@ class Product extends Model
         'description',
         'status_id',
         'price',
-        'discount_price'
+        'discount_price',
+        'featured'
     ];
 
     /**

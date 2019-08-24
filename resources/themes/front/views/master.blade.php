@@ -74,10 +74,10 @@
                 <!-- End Close Button -->
 
                 <!-- Input -->
-                <form class="js-focus-state input-group">
-                    <input type="search" class="form-control" placeholder="Search Front" aria-label="Search Front">
+                <form id="main-search" class="js-focus-state input-group">
+                    <input type="search" class="form-control" name="search" placeholder="Search Front" aria-label="Search">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </form>
                 <!-- End Input -->
@@ -247,7 +247,7 @@
             <div class="row justify-content-lg-between">
                 <div class="col-lg-4 d-flex align-items-start flex-column mb-7 mb-lg-0">
                     <!-- Logo -->
-                    <a class="d-flex align-items-center mb-lg-auto" href="https://hotnuts.rs/en" aria-label="Hot Nuts">
+                    <a class="d-flex align-items-center mb-lg-auto" href="{{ route('home') }}" aria-label="Front">
                         <span class="brand brand-primary">Front</span>
                         {{--<img src="" class="logo-img">--}}
                     </a>

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('status_id');
             $table->decimal('price')->nullable();
             $table->decimal('discount_price')->nullable();
+            $table->boolean('featured')->nullable();
             $table->timestamps();
         });
     }

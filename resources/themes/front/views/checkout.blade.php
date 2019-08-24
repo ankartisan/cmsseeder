@@ -17,7 +17,11 @@
                                 <div class="border-bottom pb-4 mb-4">
                                     <div class="media">
                                         <div class="position-relative max-width-10 w-100 mr-3">
-                                            <img class="img-fluid" src="/themes/front/assets/img/320x320/img2.jpg" alt="Image Description">
+                                            @if($cartProduct->product->image)
+                                                <img class="img-fluid" src="{{ $cartProduct->product->image->url }}" alt="">
+                                            @else
+                                                <img class="img-fluid" src="https://via.placeholder.com/100" alt="">
+                                            @endif
                                             <span class="badge badge-sm badge-primary badge-pos rounded-circle">{{ $cartProduct->quantity }}</span>
                                         </div>
                                         <div class="media-body">

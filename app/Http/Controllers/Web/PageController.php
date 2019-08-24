@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,13 @@ class PageController extends ApiController
 
     public function home(Request $request)
     {
-        $products = Product::all();
-        return view('home', ['products' => $products]);
+        $featuredProducts = Product::where('featured', 1)->get();
+
+        $categories = Category::all()->take(3);
+
+        $products = Product::all()->take(8);
+
+        return view('home', ['featuredProducts' => $featuredProducts, 'categories' => $categories, 'products' => $products]);
     }
 
     public function contact(Request $request)

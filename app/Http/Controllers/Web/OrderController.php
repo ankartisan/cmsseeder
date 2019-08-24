@@ -67,9 +67,12 @@ class OrderController extends ApiController
             $entity->update(['number' => $entity->generateUniqueNumber()]);
             $entity->save();
 
+            // Destroy cart cookie
+            $cookie = Cookie::forget('cs_cart_hash');
+
             DB::commit();
 
-            return $this->respond(["message" => "Order created successfully", "data" => $entity->id]);
+            return $this->respond(["message" => "Order created successfully", "data" => $entity->id])->withCookie($cookie);
         } catch(\Exception $e) {
 
             DB::rollBack();

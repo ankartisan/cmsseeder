@@ -29,6 +29,8 @@ class ProductController extends ApiController
             Asset::whereIn('id', $request->get('assets'))->update(['entity_id' => $entity->id]);
         }
 
+        $entity->categories()->sync($request->get('categories'));
+
         return $this->respond(["message" => "Product created successfully", "data" => $entity->id]);
     }
 

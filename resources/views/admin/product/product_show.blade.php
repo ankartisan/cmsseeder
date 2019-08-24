@@ -37,6 +37,13 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="row form-group">
+                            <label class="col-sm-12 text-muted">Flags</label>
+                            <div class="col-sm-3 col-xs-12">
+                                <input id="featured" type="checkbox" data-include-empty="1" name="featured" @if($entity->featured) checked @endif value="1" />
+                                <label for="featured">Featured</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group" data-error="status">

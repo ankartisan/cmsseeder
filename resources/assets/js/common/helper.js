@@ -43,7 +43,8 @@ class Helper {
                     }
                     break;
                 case 'checkbox':
-                    if (elem.checked) {
+                    let include_empty = elem.attributes.getNamedItem('data-include-empty');
+                    if (elem.checked || include_empty) {
                         dots = elem.name.split(".");
                         if(dots.length > 1) {
                             var brackets = dots[0].search(/\[[0-9]\]/);
@@ -70,7 +71,7 @@ class Helper {
                             }
                             formParams[key].push(elem.value);
                         } else {
-                            formParams[elem.name] = elem.value;
+                            formParams[elem.name] = elem.checked ? elem.value : '';
                         }
 
                     }

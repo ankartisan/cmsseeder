@@ -47,7 +47,11 @@
                                 @foreach($cart->products as $cartProduct)
                                     <div class="media">
                                         <div class="u-avatar mr-3">
-                                            <img class="img-fluid rounded mCS_img_loaded" src="/themes/front/assets/img/100x100/img14.jpg" alt="Image Description">
+                                            @if($cartProduct->product->image)
+                                                <img class="img-fluid rounded mCS_img_loaded" src="{{ $cartProduct->product->image->url }}" alt="">
+                                            @else
+                                                <img class="img-fluid rounded mCS_img_loaded" src="https://via.placeholder.com/100" alt="">
+                                            @endif
                                         </div>
                                         <div class="media-body">
                                             <div class="d-flex justify-content-between align-items-center">
