@@ -127,6 +127,18 @@
                                                 <!-- End Input -->
                                             </div>
 
+                                            <div class="col-md-12">
+                                                <!-- Input -->
+                                                <div class="js-form-message mb-6">
+                                                    <label class="form-label">
+                                                        Company name
+                                                    </label>
+                                                    <input type="text" class="form-control" value="@if($customer){{ $customer->billingAddress()->company_name }}@endif"
+                                                           name="billing.company_name" />
+                                                </div>
+                                                <!-- End Input -->
+                                            </div>
+
                                             <div class="w-100"></div>
 
                                             <div class="col-md-6">
@@ -280,6 +292,17 @@
                                                         </label>
                                                         <input type="text" class="form-control" name="delivery.last_name"  required
                                                                 value="@if($customer){{ $customer->deliveryAddress()->last_name }}@endif" />
+                                                    </div>
+                                                    <!-- End Input -->
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <!-- Input -->
+                                                    <div class="js-form-message mb-6">
+                                                        <label class="form-label">
+                                                            Company name
+                                                        </label>
+                                                        <input type="text" class="form-control" value="@if($customer){{ $customer->deliveryAddress()->company_name }}@endif"
+                                                               name="delivery.company_name" />
                                                     </div>
                                                     <!-- End Input -->
                                                 </div>

@@ -17,6 +17,7 @@ class CreateAddressesTable extends Migration
             $table->increments('id');
             $table->string('first_name')->nullable(); // used for delivery address
             $table->string('last_name')->nullable(); // used for delivery address
+            $table->string('company_name')->nullable(); // used for delivery address
             $table->string('address')->nullable();
             $table->string('apt')->nullable();
             $table->string('zip')->nullable();

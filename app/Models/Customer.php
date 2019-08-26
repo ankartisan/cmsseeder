@@ -47,16 +47,16 @@ class Customer extends Model
         return $this->addresses()->where('type_id', Address::TYPE_BILLING_DELIVERY)->first();
     }
 
-    public function isDeliveryBillingAddress()
-    {
-        return $this->addresses()->whereIn('type_id', [Address::TYPE_BILLING_DELIVERY])->first() ? True : False;
-    }
-
     /*
     |--------------------------------------------------------------------------
     | DOMAIN METHODS
     |--------------------------------------------------------------------------
     */
+
+    public function getIsDeliveryBillingAddressAttribute()
+    {
+        return $this->addresses()->whereIn('type_id', [Address::TYPE_BILLING_DELIVERY])->first() ? true : false;
+    }
 
     public function getNameAttribute()
     {

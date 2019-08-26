@@ -34,6 +34,37 @@
                                 <span>{{ $entity->customer->phone }}</span>
                             </div>
                         </div>
+                        @if($entity->customer->is_delivery_billing_address)
+                            <div class="form-group">
+                                <label class="col-sm-2">Billing & Delivery Address</label>
+                                <div class="col-sm-3" >
+                                    <span>{{ $entity->customer->address()->address }} {{ $entity->customer->address()->apt }}</span><br>
+                                    <span>{{ $entity->customer->address()->city }} {{ $entity->customer->address()->zip }}</span><br>
+                                    <span>{{ $entity->customer->address()->country->name }}</span>
+                                </div>
+                            </div>
+                        @else
+                            @if($entity->customer->billingAddress())
+                            <div class="form-group">
+                                <label class="col-sm-2">Billing Address</label>
+                                <div class="col-sm-3" >
+                                    <span>{{ $entity->customer->billingAddress()->address }} {{ $entity->customer->billingAddress()->apt }}</span><br>
+                                    <span>{{ $entity->customer->billingAddress()->city }} {{ $entity->customer->billingAddress()->zip }}</span><br>
+                                    <span>{{ $entity->customer->billingAddress()->country->name }}</span>
+                                </div>
+                            </div>
+                            @endif
+                            @if($entity->customer->deliveryAddress())
+                            <div class="form-group">
+                                <label class="col-sm-2">Delivery Address</label>
+                                <div class="col-sm-3" >
+                                    <span>{{ $entity->customer->deliveryAddress()->address }} {{ $entity->customer->deliveryAddress()->apt }}</span><br>
+                                    <span>{{ $entity->customer->deliveryAddress()->city }} {{ $entity->customer->deliveryAddress()->zip }}</span><br>
+                                    <span>{{ $entity->customer->deliveryAddress()->country->name }}</span>
+                                </div>
+                            </div>
+                            @endif
+                        @endif
                         <hr>
                         <div class="form-group">
                             <label class="col-sm-2">Summary</label>

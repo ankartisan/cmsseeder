@@ -14,7 +14,7 @@ class Address extends Model
 
     public $guarded = ['id'];
 
-    protected $fillable = ['first_name', 'last_name', 'address', 'apt', 'zip', 'city', 'state_id', 'country_id', 'type_id', 'note'];
+    protected $fillable = ['first_name', 'last_name', 'company_name', 'address', 'apt', 'zip', 'city', 'state_id', 'country_id', 'type_id', 'note'];
 
     public function country()
     {

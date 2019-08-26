@@ -59,6 +59,12 @@ class OrderController extends ApiController
                 if($request->get('delivery_billing_address')) { // Billing and delivery address are the same
                     $address = Address::create(array_merge($request->get('billing'),['type_id' => Address::TYPE_BILLING_DELIVERY]));
                     CustomerAddress::create(['customer_id' => $customer->id, 'address_id' => $address->id]);
+                } else { // Billing and delivery address are different
+                    $billingAddress = Address::create(array_merge($request->get('billing'),['type_id' => Address::TYPE_BILLING]));
+                    CustomerAddress::create(['customer_id' => $customer->id, 'address_id' => $billingAddress->id]);
+
+                    $deliveryAddress = Address::create(array_merge($request->get('delivery'),['type_id' => Address::TYPE_DELIVERY]));
+                    CustomerAddress::create(['customer_id' => $customer->id, 'address_id' => $deliveryAddress->id]);
                 }
             }
 
