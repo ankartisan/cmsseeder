@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->decimal('discount_price')->nullable();
             $table->boolean('featured')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
