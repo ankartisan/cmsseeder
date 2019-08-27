@@ -18,17 +18,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $encrypter = app(Encrypter::class);
-
 
         Schema::defaultStringLength(191);
 
-        // CART
-        if(Cookie::get('cs_cart_hash')) {
-            $cart = Cart::where(['hash' => $encrypter->decrypt(Cookie::get('cs_cart_hash'))])->first();
+        if(env('APP_KEY')) {
+            $encrypter = app(Encrypter::class);
+
+            // CART
+            if(Cookie::get('cs_cart_hash')) {
+                $cart = Cart::where(['hash' => $encrypter->decrypt(Cookie::get('cs_cart_hash'))])->first();
+            }
+
+            View::share('cart', isset($cart) ? $cart : null);
         }
-        
-        View::share('cart', isset($cart) ? $cart : null);
 
     }
 
