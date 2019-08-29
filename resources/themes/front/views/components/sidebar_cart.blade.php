@@ -58,8 +58,8 @@
                                                 <span class="d-block font-weight-semi-bold">{{ $cartProduct->product->name }}</span>
                                             </div>
                                             <span class="d-block font-size-1">{!! $cartProduct->product->description !!}</span>
-                                            <span class="d-block text-primary font-weight-semi-bold">${{$cartProduct->product->price}}</span>
-                                            <small class="d-block text-muted">Quantity: 1</small>
+                                            <span class="d-block text-primary font-weight-semi-bold">{{ format_price($cartProduct->product->price) }}</span>
+                                            <small class="d-block text-muted">Quantity: {{ $cartProduct->quantity }}</small>
                                         </div>
                                     </div>
                                     <hr>
@@ -87,7 +87,7 @@
         <div class="card-footer text-center p-5">
             <div class="mb-3">
                 <span class="d-block font-weight-semi-bold">Order Total</span>
-                <span class="d-block">${{ $cart->price }}</span>
+                <span class="d-block">{{ format_price($cart->price) }}</span>
             </div>
             <div class="mb-2">
                 <a class="btn btn-sm btn-soft-primary transition-3d-hover" href="{{ route('cart') }}">Review Bag and Checkout</a>

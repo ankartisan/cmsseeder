@@ -84,7 +84,7 @@
                 <!-- Price -->
                 <div class="mb-5">
                     <h2 class="font-size-1 text-secondary font-weight-medium mb-0">Price:</h2>
-                    <span class="font-size-2 font-weight-medium">${{ $product->price }}</span>
+                    <span class="font-size-2 font-weight-medium">{{ format_price($product->price) }}</span>
                 </div>
                 <!-- End Price -->
 

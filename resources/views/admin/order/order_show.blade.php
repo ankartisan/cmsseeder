@@ -84,7 +84,7 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $cartProduct->product->name }}</td>
                                         <td>{{ $cartProduct->quantity }}</td>
-                                        <td>${{ $cartProduct->total_price }}</td>
+                                        <td>{{ format_price($cartProduct->total_price) }}</td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <label class="col-sm-2">Total</label>
                             <div class="col-sm-3" >
-                                <span>${{ $entity->price }}</span>
+                                <span>{{ format_price($entity->price) }}</span>
                             </div>
                         </div>
                         <hr>

@@ -28,7 +28,7 @@
                                             <h2 class="h6">{{ $cartProduct->product->name }}</h2>
                                             <div class="text-secondary font-size-1">
                                                 <span>Price:</span>
-                                                <span>${{ $cartProduct->total_price }}</span>
+                                                <span>{{ format_price($cartProduct->total_price) }}</span>
                                              </div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                             <div class="media align-items-center mb-3">
                                 <h3 class="text-secondary font-size-1 font-weight-normal mb-0 mr-3">Item subtotal ( {{ count($cart->products) }} )</h3>
                                 <div class="media-body text-right">
-                                    <span class="font-weight-medium">${{ $cart->price }}</span>
+                                    <span class="font-weight-medium">{{ format_price($cart->price) }}</span>
                                 </div>
                             </div>
 
@@ -62,7 +62,7 @@
                         <div class="media align-items-center mb-4">
                             <h4 class="text-secondary font-size-1 font-weight-normal mb-0 mr-3">Total</h4>
                             <div class="media-body text-right">
-                                <span class="font-weight-medium">${{ $cart->price }}</span>
+                                <span class="font-weight-medium">{{ format_price($cart->price) }}</span>
                             </div>
                         </div>
                     </div>

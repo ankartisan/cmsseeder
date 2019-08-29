@@ -43,7 +43,7 @@
                                 </a>
                             </div>
                             <div class="col-6 col-md-2 text-md-right">
-                                <span class="font-weight-medium">$ <span id="cart-product-{{$cartProduct->id}}-price">{{ $cartProduct->total_price }}</span></span>
+                                <span class="font-weight-medium"> <span id="cart-product-{{$cartProduct->id}}-price">{{ format_price($cartProduct->total_price) }}</span></span>
                             </div>
                         </div>
                     </div>

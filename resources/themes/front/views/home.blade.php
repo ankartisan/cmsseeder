@@ -22,7 +22,8 @@
                                     <h1 class="display-4 font-size-md-down-5 font-weight-semi-bold mb-4">{{ $product->name }}</h1>
                                     <p>{{ $product->description }}</p>
                                 </div>
-                                <a class="btn btn-primary btn-pill transition-3d-hover px-5 mr-2 btn-product-add" href="javascript:;" data-product-id="{{ $product->id }}">${{ $product->price }} - Add to Cart</a>
+                                <a class="btn btn-primary btn-pill transition-3d-hover px-5 mr-2 btn-product-add" href="javascript:;"
+                                   data-product-id="{{ $product->id }}">{{ format_price($product->price) }} - Add to Cart</a>
                             </div>
                             <div class="col-lg-6 order-lg-1">
                                 <div class="w-85 mx-auto">
@@ -156,7 +157,7 @@
                                 <a class="text-secondary" href="{{ route('product', ['id' => $product->id]) }}">{{ $product->name }}</a>
                             </h3>
                             <div class="d-block font-size-1">
-                                <span class="font-weight-medium">${{ $product->price }}</span>
+                                <span class="font-weight-medium">{{ format_price($product->price) }}</span>
                             </div>
                         </div>
                     </div>

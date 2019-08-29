@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="row form-group" data-error="price">
-                            <label class="col-sm-12 text-muted">Price ( USD )</label>
+                            <label class="col-sm-12 text-muted">Price</label>
                             <div class="col-sm-3 col-xs-12">
                                 <input type="number" required name="price" placeholder="100" class="form-control" value="{{ $entity->price }}" />
                                 <p class="text-danger text-left error-content"></p>

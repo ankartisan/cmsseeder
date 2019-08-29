@@ -50,7 +50,7 @@
                             <a class="text-secondary" href="{{ route('product', ['id' => $product->id]) }}">{{ $product->description }}</a>
                         </h3>
                         <div class="d-block font-size-1">
-                            <span class="font-weight-medium">${{ $product->price }}</span>
+                            <span class="font-weight-medium">{{ format_price($product->price) }}</span>
                         </div>
                     </div>
                 </div>

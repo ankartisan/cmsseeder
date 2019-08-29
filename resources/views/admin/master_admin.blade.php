@@ -74,6 +74,9 @@
                 <li class="@if(Route::current()->getName() == 'admin.users') active @endif">
                     <a href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span class="nav-label">Users</span></a>
                 </li>
+                <li class="@if(Route::current()->getName() == 'admin.configs') active @endif">
+                    <a href="{{ route('admin.configs') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Config</span></a>
+                </li>
             </ul>
 
         </div>
