@@ -35,5 +35,6 @@ class ContactMail extends Mailable
             ->view('emails.contact_form')
             ->with([
                 'data' => $this->data
-            ]);    }
+            ]);
+    }
 }

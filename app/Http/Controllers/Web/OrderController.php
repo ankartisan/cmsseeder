@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Events\OrderCreated;
 use App\Http\Controllers\ApiController;
 use App\Models\Account;
 use App\Models\Address;
@@ -77,6 +78,8 @@ class OrderController extends ApiController
             $cookie = Cookie::forget('cs_cart_hash');
 
             DB::commit();
+
+            event(new OrderCreated($entity));
 
             return $this->respond(["message" => "Order created successfully", "data" => $entity->id])->withCookie($cookie);
         } catch(\Exception $e) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Asset;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Project\Services\AwsService;
 use Project\Services\FileService;
@@ -37,7 +38,7 @@ class AssetController extends ApiController
         // Upload to AWS
         $filename = FileService::getFileNameFromPath($filePath);
 
-        $key = 'tmp/' . $filename;
+        $key = 'assets/' . Carbon::now()->format('Y/m/d') .'/'.Carbon::now()->timestamp .'/'. $filename;
         $result = AwsService::uploadToS3($key, $filePath);
 
         if (!$result["status"]) {
