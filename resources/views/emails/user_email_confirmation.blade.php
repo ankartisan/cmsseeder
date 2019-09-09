@@ -5,7 +5,6 @@
 @endsection
 
 @section('preheader')
-    {{--<span class="preheader">Thank you for using Brand.</span>--}}
 @endsection
 
 @section('content')
@@ -17,7 +16,7 @@
                     <tr>
                         <td>
                             <p>Hello,</p>
-                            <p>Thank you for using Brand. Please click on button bellow to confirm your email address.</p>
+                            <p>Please click on button bellow to confirm your email address.</p>
                             <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                 <tbody>
                                 <tr>

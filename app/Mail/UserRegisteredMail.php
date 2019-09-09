@@ -32,7 +32,7 @@ class UserRegisteredMail extends Mailable
     public function build()
     {
         return $this->to($this->user->email)
-                    ->subject('Welcome to Brand')
+                    ->subject('Thank you for registration')
                     ->view('emails.user_sign_up')
                     ->with([
                         'user' => $this->user

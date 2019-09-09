@@ -5,7 +5,6 @@
 @endsection
 
 @section('preheader')
-
 @endsection
 
 @section('content')
@@ -34,7 +33,6 @@
                                 </tbody>
                             </table>
                             <p>If you did not request a password reset, no further action is required.</p>
-                            <p>Feelena</p>
                         </td>
                     </tr>
                 </table>

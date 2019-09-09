@@ -312,6 +312,7 @@
 <script src="/themes/front/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
 <script src="/themes/front/assets/vendor/popper.js/dist/umd/popper.min.js"></script>
 <script src="/themes/front/assets/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="/js/plugins/jquery-validate/jquery.validate.js"></script>
 
 <!-- JS Implementing Plugins -->
 <script src="/themes/front/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>

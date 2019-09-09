@@ -26,7 +26,7 @@ class Language  {
         // Skip if sitemap
         $segments = $request->segments();
         if(isset($segments[0])) {
-            if(in_array($segments[0], ['sitemap.xml'])) {
+            if(in_array($segments[0], ['sitemap.xml', 'api'])) {
                 $this->app->setLocale("en");
                 return $next($request);
             }

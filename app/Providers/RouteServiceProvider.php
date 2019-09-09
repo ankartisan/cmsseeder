@@ -57,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
         if(isset($middlewareGroups['web']) && in_array('App\Http\Middleware\Language', $middlewareGroups['web'])) {
             $locale = $this->app->request->segment(1);
 
-            if(in_array($locale, ['sitemap.xml'])) {
+            if(in_array($locale, ['sitemap.xml', 'api'])) {
                 Route::middleware('web')
                     ->namespace($this->namespace)
                     ->group(base_path('routes/web.php'));

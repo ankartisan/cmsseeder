@@ -259,7 +259,7 @@
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td class="content-block">
-                                <span class="apple-link">Bran Inc, Address, City State ZIP</span>
+                                <span class="apple-link">Company, Address, City State ZIP</span>
                             </td>
                         </tr>
                     </table>
