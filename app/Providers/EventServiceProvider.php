@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\AssetUploaded;
 use App\Events\OrderCreated;
 use App\Events\UserRegistered;
+use App\Listeners\ResizeUploadedAsset;
 use App\Listeners\SendUserAccountConfirmationEmail;
 use App\Listeners\SendUserOrderCreateEmail;
 use App\Listeners\SendUserWelcomeEmail;
@@ -23,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderCreated::class => [
             SendUserOrderCreateEmail::class
+        ],
+        AssetUploaded::class => [
+            ResizeUploadedAsset::class
         ]
     ];
 

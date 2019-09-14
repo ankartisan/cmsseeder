@@ -9,6 +9,8 @@ use Intervention\Image\ImageManager;
 
 class FileService {
 
+    const FILES_DIR = "files";
+
     public static function createThumbnail($filePath, $options = [])
     {
         $dir = public_path("files/tmp/thumb");
@@ -34,14 +36,13 @@ class FileService {
 
     public static function saveFileLocal($uploadedFile)
     {
-        $dirPath = "files/tmp";
-        $dir = public_path($dirPath);
+        $dir = public_path(self::FILES_DIR);
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
 
         $filename = $uploadedFile->getClientOriginalName();
-        $filePath = $dirPath.'/'.$filename;
+        $filePath = self::FILES_DIR.'/'.$filename;
         $uploadedFile->move($dir,$filename);
 
         return $filePath;
@@ -63,70 +64,35 @@ class FileService {
         return $filePath;
     }
 
+    /**
+     * @param $filePath
+     * @param array $options
+     *              - size (int): new image width ( automatic height to keep aspect ratio)
+     *              - newFile (boolean): save new image od different destination
+     *              - filename (string): current filename
+     * @return string
+     */
     public static function resizeImage($filePath, $options = [])
     {
         $size = isset($options['size']) ? $options['size'] : 960;
 
-        $manager = new ImageManager(array('driver' => 'gd'));
+        $manager = new ImageManager(array('driver' => 'imagick'));
         $img = $manager->make($filePath)->resize($size, null, function ($constraint) {
             $constraint->aspectRatio();
         });
 
-        $img->save($filePath);
+        // If newFile and filename are sent, create new filename based on size ( ex. filename_width.jpg )
+        if(isset($options['newFile']) && isset($options['filename'])) {
+            $nameArr = explode(".", $options['filename']);
+            $nameArr[count($nameArr) - 2] = $nameArr[count($nameArr) - 2]."_".$size;
+            $name = implode(".", $nameArr);
+
+            $filePath = self::FILES_DIR."/".$name;
+        }
+
+        $img->save($filePath, 100);
 
         return $filePath;
     }
-
-    /**
-     * Upload file to a new entity
-     * @param $filePath
-     * @return array
-     */
-    public static function uploadAsset($filePath) {
-
-        DB::beginTransaction();
-
-        try {
-            $filename = FileService::getFileNameFromPath($filePath);
-
-            $key = 'tmp/'.$filename;
-            $result = AwsService::uploadToS3($key, $filePath);
-            if (!$result["status"]) {
-                DB::rollBack();
-                return $result;
-            }
-
-            $newFile = new Asset([
-                'name' => $filename,
-                'path' => $key,
-                'entity_id' => 0,
-                'entity_type' => 0,
-                'type' => 0,
-                'size' => filesize($filePath) ? filesize($filePath) : 0,
-                'user_id' => Auth::id()
-            ]);
-            $newFile->save();
-
-            // SAVE THUMB IF IMAGE
-            if($newFile->file_type == "image") {
-                $thumbPath = FileService::createThumbnail($filePath);
-                $key = 'tmp/thumb/' . $filename;
-                AwsService::uploadToS3($key,$thumbPath);
-                if (!$result["status"]) {
-                    DB::rollBack();
-                    return $result;
-                }
-            }
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return ["status" => false, "message" => $e->getMessage()];
-        }
-
-        DB::commit();
-
-        return ["status" => true, "message" => "Successfully", "data" => $newFile];
-    }
-
 
 }

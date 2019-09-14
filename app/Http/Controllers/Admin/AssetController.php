@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AssetUploaded;
 use App\Http\Controllers\ApiController;
 use App\Models\Asset;
 use Carbon\Carbon;
@@ -25,6 +26,12 @@ class AssetController extends ApiController
 
         AwsService::removeFromS3($file->path);
 
+        if(isset($file->data['sizes'])) {
+            foreach($file->data['sizes'] as $sizePath) {
+                AwsService::removeFromS3($sizePath);
+            }
+        }
+
         $file->delete();
 
         return $this->respond(["message" => "File deleted successfully"]);
@@ -32,10 +39,8 @@ class AssetController extends ApiController
 
     public function upload(Request $request)
     {
-
         $filePath = FileService::saveFileLocal($request->files->get('file'));
 
-        // Upload to AWS
         $filename = FileService::getFileNameFromPath($filePath);
 
         $key = 'assets/' . Carbon::now()->format('Y/m/d') .'/'.Carbon::now()->timestamp .'/'. $filename;
@@ -55,6 +60,10 @@ class AssetController extends ApiController
         ]);
 
         $newFile->save();
+
+        if(file_exists($filePath)) unlink($filePath);
+
+        event(new AssetUploaded($newFile));
 
         if($request->get('return') == "assets_container") {
             $assets = Asset::where(["entity_type" => $request->get('entity_type'), "entity_id" => $request->get('entity_id')])->get();
@@ -88,7 +97,6 @@ class AssetController extends ApiController
 
     public function search(Request $request)
     {
-
         $entities = Asset::search($request);
 
         return $this->respond(view('admin/asset/assets_list', ["entities" => $entities])->render());

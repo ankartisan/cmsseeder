@@ -15,6 +15,7 @@ class ConfigsTableSeeder extends Seeder
 
         $rows[] = [ 'name' => 'theme', 'value' => 'front', 'deletable' => 0];
         $rows[] = [ 'name' => 'currency', 'value' => 'USD', 'deletable' => 0];
+        $rows[] = [ 'name' => 'image_sizes', 'value' => '300,500,750', 'deletable' => 0];
 
         foreach($rows as $row) {
             $config = \App\Models\Config::where("name",$row['name'])->first();

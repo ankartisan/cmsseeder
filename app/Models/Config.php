@@ -35,6 +35,12 @@ class Config extends Model
         return Config::where('name',$name)->first()->value;
     }
 
+    public static function getImageSizes()
+    {
+        $config = Config::where('name','image_sizes')->first()->value;
+        return explode(",", $config);
+    }
+
 
     public static function search($request)
     {

@@ -20,6 +20,7 @@ class CreateAssetsTable extends Migration
             $table->boolean('featured')->nullable();
             $table->integer('entity_id');
             $table->string('entity_type');
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }
