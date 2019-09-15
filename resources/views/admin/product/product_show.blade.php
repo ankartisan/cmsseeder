@@ -37,6 +37,13 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="row form-group" data-error="internal_reference">
+                            <label class="col-sm-12 text-muted">Internal reference</label>
+                            <div class="col-sm-3 col-xs-12">
+                                <input type="number" name="internal_reference" placeholder="" class="form-control" value="{{ $entity->internal_reference }}" />
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
                         <div class="row form-group">
                             <label class="col-sm-12 text-muted">Flags</label>
                             <div class="col-sm-3 col-xs-12">

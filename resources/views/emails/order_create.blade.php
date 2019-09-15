@@ -51,6 +51,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Reference</th>
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
@@ -60,6 +61,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $cartProduct->product->name }}</td>
+                            <td>{{ $cartProduct->product->internal_reference }}</td>
                             <td>{{ $cartProduct->quantity }}</td>
                             <td>{{ format_price($cartProduct->total_price) }}</td>
                         </tr>

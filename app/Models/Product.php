@@ -32,7 +32,8 @@ class Product extends Model
         'status_id',
         'price',
         'discount_price',
-        'featured'
+        'featured',
+        'internal_reference'
     ];
 
     /**
@@ -113,6 +114,7 @@ class Product extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('products.name', 'LIKE', '%'.$search.'%');
                 $query->orWhere('products.description', 'LIKE', '%'.$search.'%');
+                $query->orWhere('products.internal_reference', 'LIKE', '%'.$search.'%');
             });
         }
 

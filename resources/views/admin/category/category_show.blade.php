@@ -52,6 +52,13 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="form-group" data-error="order">
+                            <label class="col-sm-12 text-muted">Order</label>
+                            <div class="col-sm-6">
+                                <input type="number" name="order" class="form-control" value="{{ $entity->order }}" />
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="clearfix"></div>

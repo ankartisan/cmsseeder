@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price')->nullable();
             $table->decimal('discount_price')->nullable();
             $table->boolean('featured')->nullable();
+            $table->string('internal_reference')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

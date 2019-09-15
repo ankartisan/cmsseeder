@@ -3,7 +3,8 @@
         <thead>
         <tr>
             <th> <span class="cursor-pointer sort" data-sort="id"> ID <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
-            <th> <span class="cursor-pointer sort" data-sort="name"> Name<i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="name"> Name <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="internal_reference"> Internal Reference <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="status_id"> Status <i class="fa fa-sort" aria-hidden="true"></i></span> </th>
             <th></th>
         </tr>
@@ -15,6 +16,7 @@
                     {{ $entity->id }}
                 </td>
                 <td>{{ $entity->name }}</td>
+                <td>{{ $entity->internal_reference }}</td>
                 <td>{{ $entity->status }}</td>
                 <td class="action">
                     <a href="{{ route('admin.product', ['id' => $entity->id]) }}" class="btn btn-outline btn-sm btn-success">Edit</a>

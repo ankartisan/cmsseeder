@@ -55,7 +55,7 @@ class Asset extends Model
         $nameArr = explode(".", $this->name);
         $ext = $nameArr[count($nameArr) - 1];
 
-        return in_array($ext, ['jpg', 'jpeg', 'png']);
+        return in_array(strtolower($ext), ['jpg', 'jpeg', 'png']);
     }
 
     public function thumbnail($size)
