@@ -55,7 +55,7 @@
                         <div class="form-group" data-error="order">
                             <label class="col-sm-12 text-muted">Order</label>
                             <div class="col-sm-6">
-                                <input type="number" name="order" class="form-control" value="{{ $entity->order }}" />
+                                <input type="number" name="order_number" class="form-control" value="{{ $entity->order_number }}" />
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>

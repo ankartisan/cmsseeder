@@ -6,7 +6,7 @@
             <th> <span class="cursor-pointer sort" data-sort="name"> Name <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="slug"> Slug <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="parent_id"> Parent <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
-            <th> <span class="cursor-pointer sort" data-sort="order"> Order <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="order_number"> Order <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th></th>
         </tr>
         </thead>
@@ -19,7 +19,7 @@
                 <td>{{ $entity->name }}</td>
                 <td>{{ $entity->slug }}</td>
                 <td>{{ $entity->parent ? $entity->parent->name : "" }}</td>
-                <td>{{ $entity->order }}</td>
+                <td>{{ $entity->order_number }}</td>
                 <td class="action">
                     <a href="{{ route('admin.category', ['id' => $entity->id]) }}" class="btn btn-outline btn-sm btn-success">Edit</a>
                 </td>
