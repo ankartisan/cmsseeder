@@ -20,7 +20,7 @@ if(['admin.page','admin.pages'].includes(window.route)) {
     require('./admin/page');
 }
 
-if(['admin.product','admin.products'].includes(window.route)) {
+if(['admin.product','admin.products', 'admin.product.variants'].includes(window.route)) {
     require('./admin/product');
 }
 

@@ -110,10 +110,12 @@ Route::group(['prefix' => 'admin'], function () {
 
         // E-COMMERCE
         Route::get('/products/search', 'Admin\ProductController@search');
+        Route::get('/products/{id}/variants', 'Admin\ProductController@variants')->name('admin.product.variants');
         Route::get('/products/{id}', 'Admin\ProductController@show')->name('admin.product');
         Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
         Route::post('products', 'Admin\ProductController@store');
         Route::put('products/{id}', 'Admin\ProductController@update');
+        Route::put('/products/{id}/variants', 'Admin\ProductController@updateVariants');
         Route::delete('products/{id}', 'Admin\ProductController@delete');
 
         Route::get('/orders/search', 'Admin\OrderController@search');

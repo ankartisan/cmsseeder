@@ -5,7 +5,7 @@ let errors = new Errors();
 
 
 /** =====================================
- *  Page
+ *  Product
  * =====================================
  */
 
@@ -225,4 +225,39 @@ $(document).on('change', '.chb-asset-featured-update', function(event){
         }).catch(function (error) {
         console.log(error);
     });
+});
+
+/**
+ * Add variant
+ */
+
+$(document).on('click', '.btn-variant-add', function(event){
+    $('.variant-container').last().after($('.variant-container').last().clone())
+
+    $( ".variant-container" ).each(function( index ) {
+        $(this).find('input.name').attr('name', 'variants['+index+'].name');
+        $(this).find('input.options').attr('name', 'variants['+index+'].options');
+    });
+});
+
+/**
+ * Update variants
+ */
+$(document).on('submit', '#update-product-variants', function(event){
+    errors.clear();
+    let data = Helper.getFormResults(this);
+
+    axios.put(base_api +'/products/' + data['id'] + '/variants' , data)
+        .then(function (response) {
+            //location.reload();
+            console.log(response);
+            Helper.endLoading();
+        })
+        .catch(function (error) {
+            Helper.endLoading();
+            errors.record(error.response.data.details);
+            errors.show();
+        });
+
+    event.preventDefault();
 });

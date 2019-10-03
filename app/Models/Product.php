@@ -59,6 +59,11 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'product_categories');
     }
 
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+
     public function getStatusAttribute()
     {
         $statuses = [
@@ -86,6 +91,26 @@ class Product extends Model
     public function hasCategory($id)
     {
         return in_array($id, $this->categories->pluck('id')->toArray());
+    }
+
+    /**
+     * Get product variants combinations
+     * Returns an array of array with string format {variant_id}:{option_id}
+     * @return array
+     */
+    public function getVariantCombinations()
+    {
+        $variants = [];
+        foreach($this->variants()->get() as $productVariant)
+        {
+            $array = [];
+            foreach($productVariant->options()->get() as $option) {
+                $array[] = $productVariant->id.":".$option->id;
+            }
+            $variants[] = $array;
+        }
+
+        return self::combinations($variants);
     }
 
     public function manageSeo($request)
@@ -140,6 +165,34 @@ class Product extends Model
         $query->distinct();
 
         return $query->paginate();
+    }
+
+    /*
+     * Generate variants combinations
+     */
+    public static function combinations($arrays, $i = 0) {
+        if (!isset($arrays[$i])) {
+            return array();
+        }
+        if ($i == count($arrays) - 1) {
+            return $arrays[$i];
+        }
+
+        // Get combinations from subsequent arrays
+        $tmp = self::combinations($arrays, $i + 1);
+
+        $result = array();
+
+        // Concat each array from tmp with each element from $arrays[$i]
+        foreach ($arrays[$i] as $v) {
+            foreach ($tmp as $t) {
+                $result[] = is_array($t) ?
+                    array_merge(array($v), $t) :
+                    array($v, $t);
+            }
+        }
+
+        return $result;
     }
 
 }
