@@ -5,10 +5,27 @@
         <div class="col-lg-12">
             <div class="m-b-md">
                 @if($entity->id)
-                    <h2>Product #{{ $entity->id }}</h2>
+                    <h2>{{ $entity->name }}</h2>
                 @else
                     <h2>New Product</h2>
                 @endif
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.products') }}">Products</a>
+                        </li>
+                        <li class="active">
+                            <a href="{{ route('admin.product', ['id' => $entity->id]) }}">{{ $entity->name }}</a>
+                        </li>
+                    </ol>
+            </div>
+            <div class="m-b-md">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="{{ route('admin.product', ['id' => $entity->id]) }}">Overview</a></li>
+                    <li><a href="{{ route('admin.product.skus', ['id' => $entity->id]) }}">Variants</a></li>
+                </ul>
             </div>
             <form id="update-product" class="form-horizontal">
                 @if($entity->id)

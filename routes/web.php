@@ -110,13 +110,18 @@ Route::group(['prefix' => 'admin'], function () {
 
         // E-COMMERCE
         Route::get('/products/search', 'Admin\ProductController@search');
-        Route::get('/products/{id}/variants', 'Admin\ProductController@variants')->name('admin.product.variants');
         Route::get('/products/{id}', 'Admin\ProductController@show')->name('admin.product');
         Route::get('/products', 'Admin\ProductController@index')->name('admin.products');
         Route::post('products', 'Admin\ProductController@store');
         Route::put('products/{id}', 'Admin\ProductController@update');
-        Route::put('/products/{id}/variants', 'Admin\ProductController@updateVariants');
         Route::delete('products/{id}', 'Admin\ProductController@delete');
+
+        Route::put('/products/{id}/variants', 'Admin\ProductController@updateVariants'); // Create SKUs based on variants
+
+        Route::get('/products/{id}/skus', 'Admin\ProductSkuController@index')->name('admin.product.skus');
+        Route::get('/skus/{id}', 'Admin\ProductSkuController@show')->name('admin.product.sku');
+        Route::put('skus/{id}', 'Admin\ProductSkuController@update');
+        Route::delete('skus/{id}', 'Admin\ProductSkuController@delete');
 
         Route::get('/orders/search', 'Admin\OrderController@search');
         Route::get('/orders/{id}', 'Admin\OrderController@show')->name('admin.order');

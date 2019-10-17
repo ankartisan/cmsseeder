@@ -142,11 +142,18 @@ class ProductController extends ApiController
         return view('admin/product/product_show', ["entity" => $entity, "categories" => $categories]);
     }
 
-    public function variants(Request $request, $id)
+    public function skus(Request $request, $id)
     {
         $entity = Product::find($id);
 
         return view('admin/product/product_variants', ["entity" => $entity]);
+    }
+
+    public function sku(Request $request, $id)
+    {
+        $entity = ProductSku::find($id);
+
+        return view('admin/product/product_variant_show', ["entity" => $entity]);
     }
 
 

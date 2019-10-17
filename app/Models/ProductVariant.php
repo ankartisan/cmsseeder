@@ -26,4 +26,11 @@ class ProductVariant extends Model
         return $this->hasMany(ProductVariantOption::class);
     }
 
+    public function getOptionsStringAttribute()
+    {
+        if(!count($this->options)) return "";
+
+        return implode(",",$this->options->pluck('name')->toArray());
+    }
+
 }

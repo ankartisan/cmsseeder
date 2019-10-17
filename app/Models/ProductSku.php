@@ -27,4 +27,9 @@ class ProductSku extends Model
         return $this->belongsTo(Product::class);
     }
 
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'entity_id', 'id')->where(["entity_type" => self::class]);
+    }
+
 }

@@ -64,6 +64,11 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
+    public function skus()
+    {
+        return $this->hasMany(ProductSku::class);
+    }
+
     public function getStatusAttribute()
     {
         $statuses = [
