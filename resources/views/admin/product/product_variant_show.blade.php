@@ -18,25 +18,38 @@
                         <a href="{{ route('admin.product', ['id' => $entity->product->id]) }}">{{ $entity->product->name }}</a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.product.skus', ['id' => $entity->product->id]) }}">Variants</a>
+                        <a href="{{ route('admin.product.variants', ['id' => $entity->product->id]) }}">Variants</a>
                     </li>
                     <li class="active">
-                        <strong>{{ $entity->variants }}</strong>
+                        <strong>{{ $entity->id }}</strong>
                     </li>
                 </ol>
             </div>
             <div class="m-b-md">
                 <ul class="nav nav-tabs">
                     <li ><a href="{{ route('admin.product', ['id' => $entity->product->id]) }}">Overview</a></li>
-                    <li class="active"><a href="{{ route('admin.product.skus', ['id' => $entity->product->id]) }}">Variants</a></li>
+                    <li class="active"><a href="{{ route('admin.product.variants', ['id' => $entity->product->id]) }}">Variants</a></li>
                 </ul>
             </div>
-            <form id="update-sku" class="form-horizontal">
+            <form id="update-variant" class="form-horizontal">
                 @if($entity->id)
                     <input type="hidden" name="id" value="{{ $entity->id }}" >
                 @endif
                 <div class="row">
                     <div class="col-sm-9">
+                        @foreach($entity->product->attributes as $attribute)
+                            <div class="row form-group">
+                                <label class="col-sm-12 text-muted">{{ $attribute->name }}</label>
+                                <div class="col-sm-3 col-xs-12">
+                                    @foreach($entity->options as $option)
+                                        @if(!$option->attributeOption) @continue @endif
+                                        @if($option->attributeOption->product_attribute_id != $attribute->id) @continue @endif
+                                        <input type="text" readonly class="form-control" value="{{  $option->attributeOption->name }}" />
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+
                         <div class="row form-group" data-error="price">
                             <label class="col-sm-12 text-muted">Price</label>
                             <div class="col-sm-3 col-xs-12">
@@ -88,7 +101,7 @@
             </form>
             <form class="hidden" enctype="multipart/form-data">
                 <input id="input-photo-upload" data-entity-id="{{$entity->id}}" type="file" name="file"
-                       data-entity-type="{{ \App\Models\ProductSku::class }}"/>
+                       data-entity-type="{{ \App\Models\ProductVariant::class }}"/>
             </form>
         </div>
     </div>

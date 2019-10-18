@@ -13,9 +13,9 @@ class CreateProductVariantOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_variant_options', function (Blueprint $table) {
+        Schema::create('product_attribute_options', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_variant_id');
+            $table->integer('product_attribute_id');
             $table->string('name');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateProductVariantOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_variant_options');
+        Schema::dropIfExists('product_attribute_options');
     }
 }

@@ -5,7 +5,7 @@ let errors = new Errors();
 
 
 /** =====================================
- *  Product SKU
+ *  Product Variant
  * =====================================
  */
 
@@ -13,12 +13,12 @@ let errors = new Errors();
 /**
  * Update  SKU
  */
-$(document).on('submit', '#update-sku', function(event){
+$(document).on('submit', '#update-variant', function(event){
     errors.clear();
     let data = Helper.getFormResults(this);
     Helper.startLoading();
 
-    axios.put(base_api +'/skus/'+ data['id'], data)
+    axios.put(base_api +'/variants/'+ data['id'], data)
         .then(function (response) {
             location.reload();
             Helper.endLoading();
@@ -48,9 +48,9 @@ $("#btn-delete-entity").on('click', function(evt) {
             if (willDelete) {
                 let entity_id = $(this).attr("data-entity-id");
                 let parent_id = $(this).attr("data-parent-id");
-                axios.delete(base_api + '/skus/'+entity_id, {})
+                axios.delete(base_api + '/variants/'+entity_id, {})
                     .then(function (response) {
-                        window.location.href = base_api + '/products/' + parent_id + '/skus';
+                        window.location.href = base_api + '/products/' + parent_id + '/variants';
                     })
                     .catch(function (error) {
                         console.log(error);

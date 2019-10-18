@@ -116,12 +116,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('products/{id}', 'Admin\ProductController@update');
         Route::delete('products/{id}', 'Admin\ProductController@delete');
 
-        Route::put('/products/{id}/variants', 'Admin\ProductController@updateVariants'); // Create SKUs based on variants
-
-        Route::get('/products/{id}/skus', 'Admin\ProductSkuController@index')->name('admin.product.skus');
-        Route::get('/skus/{id}', 'Admin\ProductSkuController@show')->name('admin.product.sku');
-        Route::put('skus/{id}', 'Admin\ProductSkuController@update');
-        Route::delete('skus/{id}', 'Admin\ProductSkuController@delete');
+        Route::put('/products/{id}/variants', 'Admin\ProductVariantController@generate'); // Create variants based on attributes
+        Route::get('/products/{id}/variants', 'Admin\ProductVariantController@index')->name('admin.product.variants');
+        Route::get('/variants/{id}', 'Admin\ProductVariantController@show')->name('admin.product.variant');
+        Route::put('variants/{id}', 'Admin\ProductVariantController@update');
+        Route::delete('variants/{id}', 'Admin\ProductVariantController@delete');
 
         Route::get('/orders/search', 'Admin\OrderController@search');
         Route::get('/orders/{id}', 'Admin\OrderController@show')->name('admin.order');

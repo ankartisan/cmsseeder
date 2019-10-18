@@ -24,7 +24,7 @@
             <div class="m-b-md">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="{{ route('admin.product', ['id' => $entity->id]) }}">Overview</a></li>
-                    <li><a href="{{ route('admin.product.skus', ['id' => $entity->id]) }}">Variants</a></li>
+                    <li><a href="{{ route('admin.product.variants', ['id' => $entity->id]) }}">Variants</a></li>
                 </ul>
             </div>
             <form id="update-product" class="form-horizontal">

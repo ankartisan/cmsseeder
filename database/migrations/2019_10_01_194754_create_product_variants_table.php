@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductVariantsTable extends Migration
+class CreateProductSkusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,12 @@ class CreateProductVariantsTable extends Migration
         Schema::create('product_variants', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
-            $table->string('name');
+            $table->string('uid')->unique();; // unique combination id
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('price')->nullable();
+            $table->decimal('discount_price')->nullable();
+            $table->string('internal_reference')->nullable();
             $table->timestamps();
         });
     }

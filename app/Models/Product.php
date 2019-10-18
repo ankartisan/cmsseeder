@@ -59,14 +59,14 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'product_categories');
     }
 
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
+
     public function variants()
     {
         return $this->hasMany(ProductVariant::class);
-    }
-
-    public function skus()
-    {
-        return $this->hasMany(ProductSku::class);
     }
 
     public function getStatusAttribute()
@@ -99,23 +99,23 @@ class Product extends Model
     }
 
     /**
-     * Get product variants combinations
-     * Returns an array of array with string format {variant_id}:{option_id}
+     * Get product attribute combinations
+     * Returns an array of array with string format {attribute_id}:{option_id}
      * @return array
      */
     public function getVariantCombinations()
     {
-        $variants = [];
-        foreach($this->variants()->get() as $productVariant)
+        $attributes = [];
+        foreach($this->attributes()->get() as $productAttribute)
         {
             $array = [];
-            foreach($productVariant->options()->get() as $option) {
-                $array[] = $productVariant->id.":".$option->id;
+            foreach($productAttribute->options()->get() as $option) {
+                $array[] = $productAttribute->id.":".$option->id;
             }
-            $variants[] = $array;
+            $attributes[] = $array;
         }
 
-        return self::combinations($variants);
+        return self::combinations($attributes);
     }
 
     public function manageSeo($request)

@@ -13,7 +13,13 @@ class ProductVariant extends Model
 
     protected $fillable = [
         'name',
-        'product_id'
+        'description',
+        'product_id',
+        'uid', // unique combination ID
+        'variants',
+        'price',
+        'price_discount',
+        'internal_reference'
     ];
 
     public function product()
@@ -23,14 +29,12 @@ class ProductVariant extends Model
 
     public function options()
     {
-        return $this->hasMany(ProductVariantOption::class);
+        return $this->hasMany(ProductAttributeOptionCombination::class, 'product_variant_id', 'id');
     }
 
-    public function getOptionsStringAttribute()
+    public function assets()
     {
-        if(!count($this->options)) return "";
-
-        return implode(",",$this->options->pluck('name')->toArray());
+        return $this->hasMany(Asset::class, 'entity_id', 'id')->where(["entity_type" => self::class]);
     }
 
 }

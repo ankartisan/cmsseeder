@@ -13,7 +13,7 @@ class CreateProductVariantOptionCombinations extends Migration
      */
     public function up()
     {
-        Schema::create('product_variant_option_combinations', function (Blueprint $table) {
+        Schema::create('product_attribute_option_combinations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_variant_option_id');
             $table->integer('sku_id');
@@ -28,6 +28,6 @@ class CreateProductVariantOptionCombinations extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_variant_option_combinations');
+        Schema::dropIfExists('product_attribute_option_combinations');
     }
 }

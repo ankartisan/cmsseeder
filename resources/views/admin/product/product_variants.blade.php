@@ -26,33 +26,43 @@
     <div class="m-b-md">
         <ul class="nav nav-tabs">
             <li><a href="{{ route('admin.product', ['id' => $entity->id]) }}">Overview</a></li>
-            <li class="active"><a href="{{ route('admin.product.skus', ['id' => $entity->id]) }}">Variants</a></li>
+            <li class="active"><a href="{{ route('admin.product.variants', ['id' => $entity->id]) }}">Variants</a></li>
         </ul>
     </div>
 
-    @if(count($entity->skus))
+    @if(count($entity->variants))
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th> <span class="cursor-pointer sort" data-sort="variants"> Variants </span>  </th>
+                        <th>ID</th>
+                        @foreach($entity->attributes as $attribute)
+                            <th> {{ $attribute->name }} </th>
+                        @endforeach
                         <th> <span class="cursor-pointer sort" data-sort="internal_reference"> Internal Reference </span>  </th>
                         <th> <span class="cursor-pointer sort" data-sort="price"> Price </span> </th>
-                        <th> <span class="cursor-pointer sort" data-sort="sku"> SKU </span>  </th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($entity->skus as $sku)
+                    @foreach($entity->variants as $variant)
                         <tr class="entity-row">
-                            <td><a href="{{ route('admin.product.sku', ['id' => $sku->id]) }}">{{ $sku->variants }}</a></td>
-                            <td>{{ $sku->internal_reference }}</td>
-                            <td>{{ $sku->price }}</td>
-                            <td>{{ $sku->sku }}</td>
+                            <td>{{ $variant->id }}</td>
+                            @foreach($entity->attributes as $attribute)
+                                <td>
+                                    @foreach($variant->options as $option)
+                                        @if(!$option->attributeOption) @continue @endif
+                                        @if($option->attributeOption->product_attribute_id != $attribute->id) @continue @endif
+                                        {{  $option->attributeOption->name }}
+                                    @endforeach
+                                </td>
+                            @endforeach
+                            <td>{{ $variant->internal_reference }}</td>
+                            <td>{{ $variant->price }}</td>
                             <td class="action">
-                                <a href="{{ route('admin.product.sku', ['id' => $sku->id]) }}" class="btn btn-outline btn-sm btn-success">Edit</a>
+                                <a href="{{ route('admin.product.variant', ['id' => $variant->id]) }}" class="btn btn-outline btn-sm btn-success">Edit</a>
                             </td>
                         </tr>
                     @endforeach
@@ -67,7 +77,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="m-b-md">
-                <h3>Generate variants</h3>
+                <h3>Attributes</h3>
             </div>
             <form id="update-product-variants" class="form-horizontal">
                 @if($entity->id)
@@ -75,7 +85,7 @@
                 @endif
                 <div class="row">
                     <div class="col-sm-9">
-                        @if(!count($entity->variants))
+                        @if(!count($entity->attributes))
                             <div id="product-variant-0" class="form-group variant-container">
                                 <div class="col-sm-4">
                                     <input type="text" required placeholder="Name" name="variants[0].name" class="form-control name" value="" />
@@ -87,14 +97,15 @@
                                 </div>
                             </div>
                         @else
-                            @foreach($entity->variants as $key => $variant)
+                            @foreach($entity->attributes as $key => $attribute)
                                 <div id="product-variant-{{ $key }}" class="form-group variant-container">
+                                    <input type="hidden" name="variants[{{ $key }}].id" value="{{ $attribute->id }}" />
                                     <div class="col-sm-4">
-                                        <input type="text" required placeholder="Name" name="variants[{{ $key }}].name" class="form-control name" value="{{ $variant->name }}" />
+                                        <input type="text" required placeholder="Name" name="variants[{{ $key }}].name" class="form-control name" value="{{ $attribute->name }}" />
                                     </div>
                                     <div class="col-sm-7">
                                         <input type="text" required placeholder="Options ( ex. separate them with comma )" name="variants[{{ $key }}].options"
-                                               class="form-control options" value="{{ $variant->options_string }}" />
+                                               class="form-control options" value="{{ $attribute->options_string }}" />
                                     </div>
                                     <div class="col-sm-1">
                                         <button role="button" type="button" data-index-id="{{$key}}" class="btn btn-warning btn-variant-remove">Remove</button>

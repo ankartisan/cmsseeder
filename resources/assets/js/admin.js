@@ -24,8 +24,8 @@ if(['admin.product','admin.products', 'admin.product.variants'].includes(window.
     require('./admin/product');
 }
 
-if(['admin.product.sku','admin.product.skus'].includes(window.route)) {
-    require('./admin/sku');
+if(['admin.product.variant','admin.product.variants'].includes(window.route)) {
+    require('./admin/variant');
 }
 
 if(['admin.order','admin.orders'].includes(window.route)) {
