@@ -8,6 +8,7 @@ use App\Http\Transformers\CartTransformer;
 use App\Models\Cart;
 use App\Models\CartProduct;
 use App\Models\Country;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,10 @@ class CartController extends ApiController
     {
         $product = Product::find($product_id);
 
+        if($request->has('product_variant_id')) {
+            $variant = ProductVariant::find($request->get('product_variant_id'));
+        }
+
         // Create cart if not exists
         $cart = Cart::where(['hash' => Cookie::get('cs_cart_hash')])->first();
 
@@ -47,13 +52,12 @@ class CartController extends ApiController
 
         // Add product to cart
         $quantity = $request->has('quantity') ? $request->get('quantity') : 1;
-        $product_variant_id =  !empty($request->get('product_variant_id')) ? $request->get('product_variant_id') : null;
         CartProduct::create([
             'cart_id' => $cart->id,
             'product_id' => $product->id,
             'quantity' => $quantity,
-            'price' => $product->price,
-            'product_variant_id' => $product_variant_id
+            'price' => $variant ? $variant->price : $product->price,
+            'product_variant_id' => $variant ? $variant->id : null
         ]);
 
         // Update cart price

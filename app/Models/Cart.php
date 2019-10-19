@@ -39,7 +39,7 @@ class Cart extends Model
     public function updatePrice()
     {
         $this->price = $this->products()->get()->reduce(function ($carry, $item) {
-            return $carry + ($item->product->price * $item->quantity);
+            return $carry + ($item->price * $item->quantity);
         }, 0);
     }
 

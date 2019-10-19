@@ -44,13 +44,13 @@
             </tr>
         @endif
         <tr>
-            <td>Summary</td>
-            <td>
+            <td colspan="2">
                 <table class="table">
                     <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Variants</th>
                         <th>Reference</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -61,7 +61,14 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $cartProduct->product->name }}</td>
-                            <td>{{ $cartProduct->product->internal_reference }}</td>
+                            <td>
+                                @if($cartProduct->productVariant)
+                                    @foreach($cartProduct->productVariant->options as $option)
+                                        <span>{{ $option->attributeOption->productAttribute->name  }} : {{ $option->attributeOption->name }}</span><br>
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>{{ $cartProduct->internal_reference }}</td>
                             <td>{{ $cartProduct->quantity }}</td>
                             <td>{{ format_price($cartProduct->total_price) }}</td>
                         </tr>

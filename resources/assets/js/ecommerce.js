@@ -375,6 +375,7 @@ $(document).on('change', '.select-attribute', function(){
         .then(function (response) {
             console.log(response);
             $("input[name='product_variant_id']").val(parseInt(response.data.id));
+            $("#product-price").html(response.data.price);
         })
         .catch(function (error) {
             console.log(error);

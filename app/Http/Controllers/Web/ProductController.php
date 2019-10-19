@@ -56,14 +56,21 @@ class ProductController extends ApiController
     {
         $product = Product::find($id);
 
-        $attributeOptions = ProductAttributeOption::find(explode(",",$request->get('options')));
+        $optionIds = explode(",",$request->get('options'));
+
+        $attributeOptions = [];
+        foreach($optionIds as $optionId) {
+            $attributeOptions[] = ProductAttributeOption::find($optionId);
+        }
 
         $uid = $product->generateVariantUid($attributeOptions);
 
         $variant = ProductVariant::where('uid', $uid)->first();
 
-        return ["id" => $variant ? $variant->id : 0];
-
+        return [
+            "id" => $variant ? $variant->id : 0,
+            "price" => $variant ? format_price($variant->price) : 0
+        ];
     }
 
 }

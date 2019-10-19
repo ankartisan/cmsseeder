@@ -49,4 +49,13 @@ class CartProduct extends Model
         return $this->price * $this->quantity;
     }
 
+    public function getInternalReferenceAttribute()
+    {
+        if($this->product_variant_id) {
+            return $this->productVariant->product->internal_reference;
+        } else {
+            return $this->product->internal_reference;
+        }
+    }
+
 }

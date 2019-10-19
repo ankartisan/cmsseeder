@@ -69,6 +69,18 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
+    /**
+     * Get final price if there are variants
+     */
+    public function getPriceFinalAttribute()
+    {
+        if(count($this->variants)) {
+            return $this->variants[0]->price;
+        }
+
+        return $this->price;
+    }
+
     public function getStatusAttribute()
     {
         $statuses = [
