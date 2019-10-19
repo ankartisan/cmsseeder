@@ -51,6 +51,10 @@ class ProductVariantController extends ApiController
             }
         }
 
+        if(!$attributes) {
+            return $this->respond(["message" => "Nothing to update"]);
+        }
+
         // Create/update product attribute and options
         foreach($attributes as $attribute) {
 
@@ -86,24 +90,20 @@ class ProductVariantController extends ApiController
         $combinations = $product->getVariantCombinations();
         foreach($combinations as $combination) {
 
-            $uid = ""; // Generate unique UID
-            $optionsArr = []; // Save SKU relation with variant options
-            var_dump($combination);
+            $options = [];
             if(is_array($combination)) {
                 foreach($combination as $value) {
                     $valueArr = explode(":", $value);
-                    $attribute = ProductAttribute::find($valueArr[0]);
                     $option = ProductAttributeOption::find($valueArr[1]);
-                    $optionsArr[] = $option->id;
-                    $uid .= $product->id . $attribute->id . $option->id;
+                    $options[] = $option;
                 }
             } else {
                 $valueArr = explode(":", $combination);
-                $attribute = ProductAttribute::find($valueArr[0]);
                 $option = ProductAttributeOption::find($valueArr[1]);
-                $optionsArr[] = $option->id;
-                $uid .= $product->id . $attribute->id . $option->id;
+                $options[] = $option;
             }
+
+            $uid = $product->generateVariantUid($options);
 
             // Check if variant exists
             $productVariant = ProductVariant::where('uid', $uid)->first();
@@ -117,10 +117,10 @@ class ProductVariantController extends ApiController
             ]);
 
             // Save variant option combinations
-            foreach($optionsArr as $optionId) {
+            foreach($options as $option) {
                 ProductAttributeOptionCombination::create([
                     'product_variant_id' => $productVariant->id,
-                    'product_attribute_option_id' => $optionId
+                    'product_attribute_option_id' => $option->id
                 ]);
             }
 

@@ -358,4 +358,28 @@ $(document).on('click', '#product-quantity-increment', function(){
     let quantity_input = $("#product-add-to-cart input[name='quantity']");
     quantity_input.val(parseInt(quantity_input.val()) + 1)
 });
+/**
+ * Update product attributes to variant ID
+ */
+$(document).on('change', '.select-attribute', function(){
+    let product_id = $(this).attr('data-product-id');
+    let options = [];
+
+    $(".select-attribute").each(function(){
+        options.push(($(this).val()));
+    });
+
+    let query = Helper.encodeQueryData({"options": options});
+
+    axios.get(base_api + '/products/' + product_id + '/variant?' + query)
+        .then(function (response) {
+            console.log(response);
+            $("input[name='product_variant_id']").val(parseInt(response.data.id));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+});
+
 

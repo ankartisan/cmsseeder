@@ -27,7 +27,11 @@
                                     <div class="media-body">
                                         <h2 class="h6">{{ $cartProduct->product->name }}</h2>
                                         <div class="text-secondary font-size-1 mb-1">
-                                            <span>{{ $cartProduct->product->description }}</span>
+                                            @if($cartProduct->productVariant)
+                                                @foreach($cartProduct->productVariant->options as $option)
+                                                    <span>{{ $option->attributeOption->productAttribute->name  }} : {{ $option->attributeOption->name }}</span><br>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

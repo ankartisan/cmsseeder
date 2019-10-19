@@ -47,7 +47,14 @@ class CartController extends ApiController
 
         // Add product to cart
         $quantity = $request->has('quantity') ? $request->get('quantity') : 1;
-        CartProduct::create(['cart_id' => $cart->id, 'product_id' => $product->id, 'quantity' => $quantity, 'price' => $product->price]);
+        $product_variant_id =  !empty($request->get('product_variant_id')) ? $request->get('product_variant_id') : null;
+        CartProduct::create([
+            'cart_id' => $cart->id,
+            'product_id' => $product->id,
+            'quantity' => $quantity,
+            'price' => $product->price,
+            'product_variant_id' => $product_variant_id
+        ]);
 
         // Update cart price
         $cart->updatePrice();

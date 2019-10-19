@@ -118,6 +118,23 @@ class Product extends Model
         return self::combinations($attributes);
     }
 
+    /**
+     * Generate unique combination id based on options
+     * @param $options
+     * @return mixed|string
+     */
+    public function generateVariantUid($options)
+    {
+        $uid = $this->id;
+
+        foreach($options as $option) {
+            $uid .= $option->id;
+        }
+
+        return $uid;
+
+    }
+
     public function manageSeo($request)
     {
         $seos = $request->get('seo');

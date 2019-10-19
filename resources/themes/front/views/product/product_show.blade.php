@@ -90,7 +90,11 @@
 
                 <form id="product-add-to-cart" class="js-validate">
                     <input type="hidden" name="product_id" value="{{ $product->id }}" />
+                    @if(count($product->variants))
+                        <input type="hidden" name="product_variant_id" value="{{ $product->variants->first()->id }}" />
+                    @endif
                     <!-- Quantity -->
+                    <div class="form-group">
                     <div class="border rounded py-2 px-3 mb-3">
                         <div class="js-quantity row align-items-center">
                             <div class="col-7">
@@ -107,7 +111,20 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                     <!-- End Quantity -->
+                    <!-- Attributes -->
+                    @foreach($product->attributes as $attribute)
+                    <div class="form-group">
+                        <label for="select-attribute-{{$attribute->id}}">{{ $attribute->name }}</label>
+                        <select class="form-control select-attribute" name="options[]" id="select-attribute-{{$attribute->id}}" data-product-id="{{ $product->id }}">
+                            @foreach($attribute->options as $option)
+                                <option value="{{$option->id}}">{{ $option->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @endforeach
+                    <!-- End Attributes -->
                     <div class="mb-4">
                         <input type="submit" class="btn btn-block btn-primary btn-pill transition-3d-hover" value="Add to Cart" />
                     </div>

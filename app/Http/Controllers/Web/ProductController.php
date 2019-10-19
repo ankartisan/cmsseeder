@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\ApiController;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductAttributeOption;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
 class ProductController extends ApiController
@@ -39,5 +41,29 @@ class ProductController extends ApiController
         return view('product/product_show', ["product" => $product]);
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | AJAX
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Get variant by options
+     * @param Request $request
+     * @return mixed
+     */
+    public function variant(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        $attributeOptions = ProductAttributeOption::find(explode(",",$request->get('options')));
+
+        $uid = $product->generateVariantUid($attributeOptions);
+
+        $variant = ProductVariant::where('uid', $uid)->first();
+
+        return ["id" => $variant ? $variant->id : 0];
+
+    }
 
 }
