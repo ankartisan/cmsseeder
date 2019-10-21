@@ -56,8 +56,8 @@ class CartController extends ApiController
             'cart_id' => $cart->id,
             'product_id' => $product->id,
             'quantity' => $quantity,
-            'price' => $variant ? $variant->price : $product->price,
-            'product_variant_id' => $variant ? $variant->id : null
+            'price' => isset($variant) ? $variant->price : $product->price,
+            'product_variant_id' => isset($variant) ? $variant->id : null
         ]);
 
         // Update cart price
