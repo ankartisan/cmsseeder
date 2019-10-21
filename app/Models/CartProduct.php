@@ -52,7 +52,7 @@ class CartProduct extends Model
     public function getInternalReferenceAttribute()
     {
         if($this->product_variant_id) {
-            return $this->productVariant->product->internal_reference;
+            return $this->productVariant->internal_reference;
         } else {
             return $this->product->internal_reference;
         }
