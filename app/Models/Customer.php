@@ -47,6 +47,11 @@ class Customer extends Model
         return $this->addresses()->where('type_id', Address::TYPE_BILLING_DELIVERY)->first();
     }
 
+    public function paymentMethods()
+    {
+        return $this->hasManyThrough(PaymentMethod::class, CustomerPaymentMethod::class, 'customer_id', 'id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | DOMAIN METHODS
