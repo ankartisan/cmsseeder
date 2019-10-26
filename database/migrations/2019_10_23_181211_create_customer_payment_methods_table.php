@@ -18,6 +18,7 @@ class CreateCustomerPaymentMethodsTable extends Migration
             $table->integer('customer_id');
             $table->integer('payment_method_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
