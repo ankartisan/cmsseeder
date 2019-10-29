@@ -40,6 +40,13 @@
                                 <p class="text-danger text-left error-content"></p>
                             </div>
                         </div>
+                        <div class="form-group" data-error="slug">
+                            <label class="col-sm-12 text-muted">Slug</label>
+                            <div class="col-sm-12">
+                                <input type="text" required name="slug" class="form-control" value="{{ $entity->slug }}" />
+                                <p class="text-danger text-left error-content"></p>
+                            </div>
+                        </div>
                         <div class="form-group" data-error="description">
                             <label class="col-sm-12 text-muted">Description</label>
                             <div class="col-sm-12">

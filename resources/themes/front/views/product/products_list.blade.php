@@ -29,7 +29,7 @@
             <!-- Product -->
             <div class="card text-center h-100">
                 <div class="position-relative">
-                    <a href="{{ route('product', ['id' => $product->id]) }}" >
+                    <a href="{{ route('product', ['slug' => $product->slug]) }}" >
                     @if($product->image)
                         <div class="image product-image-container" style="background-image: url('{{ $product->image->url }}')"></div>
                     @else
@@ -43,11 +43,11 @@
 
                 <div class="card-body pt-4 px-4 pb-0">
                     <div class="mb-2">
-                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="{{ route('product', ['id' => $product->id]) }}">
+                        <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="{{ route('product', ['slug' => $product->slug]) }}">
                             {{ $product->category ? $product->category->name : "" }}
                         </a>
                         <h3 class="font-size-1 font-weight-normal">
-                            <a class="text-secondary" href="{{ route('product', ['id' => $product->id]) }}">{{ $product->description }}</a>
+                            <a class="text-secondary" href="{{ route('product', ['slug' => $product->slug]) }}">{{ $product->description }}</a>
                         </h3>
                         <div class="d-block font-size-1">
                             <span class="font-weight-medium">{{ format_price($product->price) }}</span>

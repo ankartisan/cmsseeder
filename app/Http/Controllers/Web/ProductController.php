@@ -34,9 +34,9 @@ class ProductController extends ApiController
         return $this->respond(view('product/products_list', ["products" => $products])->render());
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $slug)
     {
-        $product = Product::find($id);
+        $product = Product::where('slug', $slug)->first();
 
         return view('product/product_show', ["product" => $product]);
     }
