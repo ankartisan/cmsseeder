@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Mail\ExceptionMail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Project\Services\AwsService;
 use Project\Services\FileService;
 
@@ -58,6 +60,12 @@ class Asset extends Model
         return in_array(strtolower($ext), ['jpg', 'jpeg', 'png']);
     }
 
+    public function getExtensionAttribute()
+    {
+        $nameArr = explode(".", $this->name);
+        return $nameArr[count($nameArr) - 1];
+    }
+
     public function thumbnail($size)
     {
         $data = $this->data;
@@ -65,6 +73,31 @@ class Asset extends Model
         $path = isset($data['sizes'][$size]) ? $data['sizes'][$size] : $this->path;
 
         return env('AWS_S3_BASE').'/'.env('AWS_S3_BUCKET').'/'.$path;
+    }
+
+    public function getSizeUrlsAttribute()
+    {
+        $sizes = [];
+        $data = $this->data;
+
+        if(!isset($data['sizes']))
+            return $sizes;
+
+        foreach($data['sizes'] as $key => $size) {
+            $sizes[$key] = env('AWS_S3_BASE').'/'.env('AWS_S3_BUCKET').'/'.$size;
+        }
+
+        return $sizes;
+    }
+
+    public function getCompressedUrlAttribute()
+    {
+        $data = $this->data;
+
+        if(!isset($data['sizes']))
+            return "";
+
+        return env('AWS_S3_BASE').'/'.env('AWS_S3_BUCKET').'/'.$data['compressed'];
     }
 
     /**
@@ -105,8 +138,56 @@ class Asset extends Model
 
         if(file_exists($path)) unlink($path);
 
-        return ["status" => True];
+        return true;
 
+    }
+
+    /**
+     * Compress ( download asset, compress and upload back )
+     **/
+    public function compress() {
+
+        try {
+
+            // Download asset
+            $path = getcwd()."/".FileService::ROOT_FILES_DIR."/".str_replace(" ","_",$this->name);
+            AwsService::getFromS3($this->path, $path);
+
+            // Compress
+            if(strtolower($this->extension) == "jpeg" || strtolower($this->extension) == "jpg") { // JPG: ImageMagic
+
+                exec('convert -strip -interlace Plane -quality 85% '.$path.' '.$path);
+                $filePath = $path;
+
+            } else if (strtolower($this->extension) == "png") { // PNG: PngQuant
+
+                exec('pngquant '.$path);
+                $filePath = str_replace(".png","-fs8.png",$path);
+            }
+
+            // Upload
+            $key = 'assets/' . Carbon::now()->format('Y/m/d') .'/'. Carbon::now()->timestamp .'/'. FileService::getFileNameFromPath($filePath);
+            $result = AwsService::uploadToS3($key, $filePath);
+            // Update
+            if ($result["status"]) {
+                $data = $this->data;
+                $data['compressed'] = $key;
+                $this->data = $data;
+                $this->save();
+            }
+
+            // Remove tmp files
+            if(file_exists($filePath)) unlink($filePath);
+            if(file_exists($path)) unlink($path);
+
+            return true;
+
+        } catch (\Exception $e) {
+
+            Mail::send(new ExceptionMail($e, debug_backtrace()));
+
+            return false;
+        }
     }
 
     public static function search($request)

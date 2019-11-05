@@ -37,4 +37,15 @@ class AwsService{
         ));
     }
 
+    public static function getFromS3($key, $filePath)
+    {
+        $s3 = App::make('aws')->createClient('s3');
+
+        $s3->getObject(array(
+            'Bucket' => env('AWS_S3_BUCKET'),
+            'Key'    => $key,
+            'SaveAs' => $filePath
+        ));
+    }
+
 }

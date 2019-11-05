@@ -11,6 +11,8 @@ class FileService {
 
     const FILES_DIR = "files";
 
+    const ROOT_FILES_DIR = "public/files";
+
     public static function createThumbnail($filePath, $options = [])
     {
         $dir = public_path("files/tmp/thumb");

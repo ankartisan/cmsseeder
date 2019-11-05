@@ -6,6 +6,7 @@
             <th> <span class="cursor-pointer sort" data-sort="name"> Name <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="path"> URL <i class="fa fa-sort" aria-hidden="true"></i></span>  </th>
             <th> <span class="cursor-pointer sort" data-sort="created_at"> Uploaded <i class="fa fa-sort" aria-hidden="true"></i> </span>  </th>
+            <th> <span class="cursor-pointer sort" data-sort="id"> Data </span>  </th>
             <th></th>
         </tr>
         </thead>
@@ -15,12 +16,27 @@
                 <td>
                     {{ $entity->id }}
                 </td>
-                <td>{{ $entity->name }}</td>
                 <td>
-                    <a href="{{ $entity->url }}" target="_blank">https://s3...{{ $entity->path }}</a>
+                    <a href="{{ route('admin.asset',['id' => $entity->id]) }}" >{{ substr($entity->name, 0, 30) }}</a>
+                </td>
+                <td>
+                    <a href="{{ $entity->url }}" target="_blank">https://s3...{{ substr($entity->path,-30) }}</a>
                 </td>
                 <td>
                     {{ $entity->created_at->toFormattedDateString() }}
+                </td>
+                <td>
+                    @if(count($entity->size_urls))
+                        <small>Sizes:</small><br>
+                        @foreach($entity->size_urls as $key => $value)
+                            <a href="{{ $value }}" target="_blank">{{ $key }}</a>
+                        @endforeach
+                        <br>
+                    @endif
+                    @if(!empty($entity->compressed_url))
+                        <small>Compressed:</small><br>
+                        <a href="{{$entity->compressed_url}}" target="_blank">URL</a>
+                    @endif
                 </td>
                 <td class="action">
                     <a data-entity-id="{{ $entity->id }}" class="btn btn-outline btn-sm btn-danger btn-delete-asset">Delete</a>
