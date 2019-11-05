@@ -94,7 +94,7 @@ class Asset extends Model
     {
         $data = $this->data;
 
-        if(!isset($data['sizes']))
+        if(!isset($data['compressed']))
             return "";
 
         return env('AWS_S3_BASE').'/'.env('AWS_S3_BUCKET').'/'.$data['compressed'];
@@ -156,12 +156,12 @@ class Asset extends Model
             // Compress
             if(strtolower($this->extension) == "jpeg" || strtolower($this->extension) == "jpg") { // JPG: ImageMagic
 
-                exec('convert -strip -interlace Plane -quality 85% '.$path.' '.$path);
+                exec('convert -strip -interlace Plane -quality 85% "'.$path.'" "'.$path.'"');
                 $filePath = $path;
 
             } else if (strtolower($this->extension) == "png") { // PNG: PngQuant
 
-                exec('pngquant '.$path);
+                exec('pngquant "'.$path.'"');
                 $filePath = str_replace(".png","-fs8.png",$path);
             }
 
