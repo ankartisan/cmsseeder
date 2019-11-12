@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('number', 255);
             $table->integer('customer_id');
-            $table->integer('cart_id');
+            $table->integer('cart_id')->nullable();
             $table->integer('status_id')->default(1);
             $table->decimal('price')->default(0);
             $table->timestamps();
