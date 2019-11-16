@@ -52,6 +52,11 @@ class Customer extends Model
         return $this->hasManyThrough(PaymentMethod::class, CustomerPaymentMethod::class, 'customer_id', 'id');
     }
 
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | DOMAIN METHODS
@@ -86,15 +91,15 @@ class Customer extends Model
 
     public static function search($request)
     {
-        $query = (new User())->newQuery();
+        $query = (new Customer())->newQuery();
         $query->select('customers.*');
 
         if($request->has('search')) {
             $search = $request->get('search');
 
             $query->where(function ($query) use ($search) {
-                $query->where('customers.username', 'LIKE', '%'.$search.'%');
-                $query->orWhere('customers.first_name', 'LIKE', '%'.$search.'%');
+                $query->where('customers.id', 'LIKE', '%'.$search.'%');
+                $query->orwhere('customers.first_name', 'LIKE', '%'.$search.'%');
                 $query->orWhere('customers.last_name', 'LIKE', '%'.$search.'%');
                 $query->orWhere('customers.email', 'LIKE', '%'.$search.'%');
             });

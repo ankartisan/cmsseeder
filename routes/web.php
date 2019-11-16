@@ -109,6 +109,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::put('configs/{id}', 'Admin\ConfigController@update');
         Route::delete('configs/{id}', 'Admin\ConfigController@delete');
 
+        Route::get('/customers/search', 'Admin\CustomerController@search');
+        Route::get('/customers/{id}', 'Admin\CustomerController@show')->name('admin.customer');
+        Route::get('/customers', 'Admin\CustomerController@index')->name('admin.customers');
+        Route::post('customers', 'Admin\CustomerController@store');
+        Route::put('customers/{id}', 'Admin\CustomerController@update');
+        Route::delete('customers/{id}', 'Admin\CustomerController@delete');
+
         // E-COMMERCE
         Route::get('/products/search', 'Admin\ProductController@search');
         Route::get('/products/{id}', 'Admin\ProductController@show')->name('admin.product');

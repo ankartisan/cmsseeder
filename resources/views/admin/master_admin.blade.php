@@ -53,6 +53,12 @@
                         <span class="nav-label">Products</span>
                     </a>
                 </li>
+                <li class="@if(Route::current()->getName() == 'admin.customers') active @endif">
+                    <a href="{{ route('admin.customers') }}">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <span class="nav-label">Customers</span>
+                    </a>
+                </li>
                 <li class="@if(Route::current()->getName() == 'admin.orders') active @endif">
                     <a href="{{ route('admin.orders') }}">
                         <i class="fa fa-line-chart" aria-hidden="true"></i>
