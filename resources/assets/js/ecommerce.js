@@ -192,6 +192,12 @@ $(document).on('change', '.cart-product-update', function(){
     let cart_product_id = $(this).attr('data-cart-product-id');
     let quantity = $(this).val();
 
+    // Validate quantity is positive
+    if(quantity === "" || parseInt(quantity) < 1) {
+        $(this).val(1);
+        quantity = 1;
+    }
+
     axios.post(base_api + '/cart/update/' + cart_product_id, { quantity: quantity })
         .then(function (response) {
             console.log(response);
@@ -349,7 +355,10 @@ $("#product-add-to-cart").submit(function( event ) {
  */
 $(document).on('click', '#product-quantity-decrement', function(){
     let quantity_input = $("#product-add-to-cart input[name='quantity']");
-    quantity_input.val(parseInt(quantity_input.val()) - 1)
+    let quantity = parseInt(quantity_input.val()) - 1;
+    // Validate quantity is positive
+    if(quantity < 1) { quantity = 1 }
+    quantity_input.val(quantity)
 });
 /**
  * Increment product quantity
@@ -357,6 +366,16 @@ $(document).on('click', '#product-quantity-decrement', function(){
 $(document).on('click', '#product-quantity-increment', function(){
     let quantity_input = $("#product-add-to-cart input[name='quantity']");
     quantity_input.val(parseInt(quantity_input.val()) + 1)
+});
+/**
+ * Product quantity change
+ */
+$(document).on('change', '#product-add-to-cart input[name="quantity"]', function(){
+    let quantity_input = $(this).val();
+    // Validate quantity is positive
+    if(quantity_input === "" || parseInt(quantity_input) < 1) {
+        $(this).val(1)
+    }
 });
 /**
  * Update product attributes to variant ID
